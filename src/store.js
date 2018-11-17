@@ -5,6 +5,6 @@ import conReducers from './reducers/home/con-reducers'
 import congressReducers from './reducers/home/congress-reducers'
 
 const reducers = combineReducers({proReducers, conReducers});
-const store = createStore(reducers, {modals: { isShowing: false}}, applyMiddleware(thunk));
+const store = createStore(reducers, applyMiddleware(thunk));
 
 export default store;

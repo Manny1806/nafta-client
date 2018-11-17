@@ -3,8 +3,39 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 import './home.css';
+import './current-column.css';
+import {fetchProPosts} from '../actions/home/pro-actions'
 
 class Home extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      currentColumn: "none",
+    }
+  }
+
+  getCurrentColumn() {
+    if(this.state.currentColumn === "none") {
+      return 
+    }
+    else if (this.state.currentColumn === "pro"){
+      return (
+        <ul className="pro-list-ul">
+          {this.props.proPosts.map((item, index) => {
+            return (
+              <li className="pro-list-item" key={index}>
+                <h2>{item.title}</h2>
+                <p>{item.quote}</p>
+                <div className="read-more"/>
+              </li>
+            )
+          })}
+        </ul>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="Home">
@@ -21,7 +52,13 @@ class Home extends Component {
           </div>
         </header>
         <div className="column-header-container">
-          <div className="for-header">
+          <div className="for-header" onClick={()=>{
+            console.log(this.props.proPosts)
+            this.props.dispatch(fetchProPosts())
+            this.setState({
+              currentColumn: "pro"
+            })
+            }}>
             <div className="column-header-hover"/>
             <span>Who likes the new NAFTA?</span>
           </div>
@@ -35,7 +72,10 @@ class Home extends Component {
           </div>
         </div>
         <div className="column-entries-container">
-
+        {/* Where current column will be displayed */}
+        <div className="current-column">
+          {this.getCurrentColumn()}
+        </div>
         </div>
         <footer className="home-footer">
         </footer>
@@ -44,4 +84,8 @@ class Home extends Component {
   }
 }
 
-export default connect()(Home);
+const mapStateToProps = state => ({
+  proPosts: state.proReducers.proPosts,
+});
+
+export default connect(mapStateToProps)(Home);
