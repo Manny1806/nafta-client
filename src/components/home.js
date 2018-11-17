@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
+import { connect } from 'react-redux';
 import './home.css';
 
 class Home extends Component {
@@ -9,10 +10,15 @@ class Home extends Component {
       <div className="Home">
         <header className="home-header">
           <div className="home-banner-container">
-            <h1>NAFTA Reactor</h1>
-            <h2>Sorting out Trump's New NAFTA, the USMCA</h2>
+            <span className="home-title"> NAFTA Reactor</span>
+            <span className="home-sub-title">Sorting out Trump's New NAFTA</span>
+            <div className="home-header-menu">
+              <nav><span>home</span></nav>
+              <nav><span>about</span></nav>
+              <nav><span>login</span></nav>
+              <nav><span>contact</span></nav>
           </div>
-          <div className="home-header-menu"></div>
+          </div>
         </header>
         <div className="column-header-container">
           <div className="for-header">
@@ -38,4 +44,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default connect()(Home);
