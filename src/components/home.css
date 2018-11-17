@@ -1,0 +1,138 @@
+.Home {
+    text-align: center;
+}
+
+.home-banner-container{
+    padding-top: 30px;
+    width: 100%;
+    height: 200px;
+    font-size: 20px;
+    background-color: rgb(1, 1, 148);
+    color: white;
+}
+
+.column-header-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    position: absolute;
+}
+
+.column-header-hover{
+    position: absolute;
+    /* bottom:0; */
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.6;
+    box-sizing: border-box;
+    pointer-events: none;
+    transition: height 0.5s;
+    /* z-index: 0; */
+}
+
+.for-header {
+    top: 0;
+    position: absolute;
+    width: 33.33%;
+    font-size: 30px;
+    background-image: url('https://nuovonovalis.files.wordpress.com/2014/05/cigar_chomping_liberals.jpg');
+    background-position: center;
+    height: 100%;
+    border-top: solid black 2px;
+    border-left: solid black 2px;
+    border-bottom: solid black 2px;
+    box-sizing: border-box;
+    /* z-index: 0; */
+    color: white;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.for-header span{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 55px;
+    /* z-index: 1; */
+}
+
+.for-header:hover {
+    color: black;
+}
+
+.for-header:hover .column-header-hover{
+    height: 0%;
+}
+
+.con-header {
+    position: absolute;
+    left: 33.33%;
+    font-size: 30px;
+    width: 33.33%;
+    height: 100%;
+    display: block;
+    background-image: url('https://as1.ftcdn.net/jpg/00/83/13/94/500_F_83139423_jB7UufgedPD7EI31mvqcBWpBgnpU4bLd.jpg');
+    border: solid black 2px;
+    box-sizing: border-box;
+    color: white;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.con-header span{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 55px;
+}
+
+.con-header:hover {
+    color: black;
+}
+
+.con-header:hover .column-header-hover{
+    height: 0%;
+}
+
+.congress-header {
+    color: white;
+    position: absolute;
+    font-size: 30px;
+    left: 66.66%;
+    width: 33.33%;
+    height: 100%;
+    display: block;
+    background-image: url('https://as2.ftcdn.net/jpg/00/65/35/01/500_F_65350108_Lp9kpNGF2iNSSOeLNqsKq1RifAmCXq3j.jpg');
+    background-position-y: center;
+    border-top: solid black 2px;
+    border-right: solid black 2px;
+    border-bottom: solid black 2px;
+    box-sizing: border-box;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.congress-header span{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 40px;
+}
+
+.congress-header:hover .column-header-hover{
+    height: 0%;
+}
+
+.congress-header:hover {
+    color: black;
+}

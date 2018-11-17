@@ -1,10 +1,10 @@
-import {createStore, applyMiddleware, combineReducers} from 'redux'
-import thunk from 'redux-thunk'
-import proReducers from './reducers/home/pro-reducers'
-import conReducers from './reducers/home/con-reducers'
-import congressReducers from './reducers/home/congress-reducers'
+// import {createStore, applyMiddleware, combineReducers} from 'redux'
+// import thunk from 'redux-thunk'
+// import proReducers from './reducers/home/pro-reducers'
+// import conReducers from './reducers/home/con-reducers'
+// import congressReducers from './reducers/home/congress-reducers'
 
-const reducers = combineReducers({proReducers, conReducers});
-const store = createStore(reducers, {modals: { isShowing: false}}, applyMiddleware(thunk));
+// const reducers = combineReducers({proReducers, conReducers});
+// const store = createStore(reducers, {modals: { isShowing: false}}, applyMiddleware(thunk));
 
-export default store;
+// export default store;
