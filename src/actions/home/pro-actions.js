@@ -1,9 +1,9 @@
-export const PRO_POSTS_REQUEST = 'PRO_POST_REQUEST'
+export const PRO_POSTS_REQUEST = 'PRO_POSTS_REQUEST'
 export const fetchProPostsRequest = () =>({
     type: PRO_POSTS_REQUEST
 })
 
-export const PRO_POSTS_SUCCESS = 'PRO_POST_SUCCESS'
+export const PRO_POSTS_SUCCESS = 'PRO_POSTS_SUCCESS'
 export const fetchProPostsSuccess = (posts) =>({
     type: PRO_POSTS_SUCCESS,
     proPosts: [{
