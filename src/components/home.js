@@ -4,28 +4,38 @@ import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 import './home.css';
 import './current-column.css';
-import {fetchProPosts} from '../actions/home/pro-actions';
+import {fetchProPosts, addEmptyProEntry} from '../actions/home/pro-actions';
 import { wrapGrid } from 'animate-css-grid'
 
+//class for individual card entries
 class Card extends React.Component {
-  state = { expanded: false };
+  //cards start out collapsed 
+  state = { expanded: false, editing: false };
 
   render() {
-    return (
-      <div
-        className={this.state.expanded ? "pro-list-item-active" : "pro-list-item"
-        }
-        onClick={() => {
-          this.setState({ expanded: !this.state.expanded });
-        }}
-      >
-      <div>
-                <h2>{this.props.cardItem.title}</h2>
-                <p>{this.props.cardItem.quote}</p>
-                <div className="read-more"/>
-      </div>
-      </div>
-    );
+    
+    if(this.state.editing || this.props.cardItem.new){
+      return (
+        <div className="pro-list-item-active">
+          <div>
+            <h2><input value={this.props.cardItem.title}/></h2>
+            <p><input value={this.props.cardItem.quote}/></p>
+            <div className="read-more"/>
+          </div>
+        </div>
+      );
+    } else if(!this.state.editing){
+      return (
+        <div className={this.state.expanded ? "pro-list-item-active" : "pro-list-item"}
+          onClick={() => {this.setState({ expanded: !this.state.expanded });}}>
+          <div>
+            <h2>{this.props.cardItem.title}</h2>
+            <p>{this.props.cardItem.quote}</p>
+            <div className="read-more"/>
+          </div>
+        </div>
+      );
+    }
   }
 }
 
@@ -34,7 +44,8 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-      currentColumn: "none"
+      currentColumn: "none",
+      editing: false
     }
   }
 
@@ -48,17 +59,29 @@ class Home extends Component {
       return (<ul className="pro-list-ul"/>)
     }
     else if (this.state.currentColumn === "pro"){
-      // const grid = document.querySelector(".pro-list-ul");
-      // wrapGrid(grid)
       return (
+        
         <ul className="pro-list-ul">
           {this.props.proPosts.map((item, index) => {
             return (
               <Card key={index} cardItem={item}/>
             )
           })}
-        </ul>
+          </ul>
       )
+    }
+  }
+
+  getCurrentFilter() {
+    if(this.state.currentColumn === "none") {
+      return (<div/>)
+    }
+    else if (this.state.currentColumn === "pro"){
+    return (
+      <div className="filter-bar">
+        <section className="new-entry-button" onClick={()=>{this.props.dispatch(addEmptyProEntry())}}>New Entry</section>
+      </div>
+    )
     }
   }
 
@@ -79,7 +102,6 @@ class Home extends Component {
         </header>
         <div className="column-header-container">
           <div className="for-header" onClick={()=>{
-            console.log(this.props.proPosts)
             this.props.dispatch(fetchProPosts())
             this.setState({
               currentColumn: "pro"
@@ -100,6 +122,7 @@ class Home extends Component {
         <div className="column-entries-container">
         {/* Where current column will be displayed */}
         <div className="current-column" >
+          {this.getCurrentFilter()}
           {this.getCurrentColumn()}
         </div>
         </div>

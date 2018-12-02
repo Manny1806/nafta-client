@@ -1,6 +1,7 @@
 import {
     PRO_POSTS_REQUEST,
-    PRO_POSTS_SUCCESS
+    PRO_POSTS_SUCCESS,
+    ADD_EMPTY_PRO_ENTRY
 }   from '../../actions/home/pro-actions'
 
 const initialState = {
@@ -12,8 +13,10 @@ export default function reducer(state = initialState, action) {
         return {...state}
     }
     else if (action.type === PRO_POSTS_SUCCESS) {
-        console.log("triggered")
         return {...state, proPosts: action.proPosts}
+    }
+    else if (action.type === ADD_EMPTY_PRO_ENTRY) {
+        return {...state, proPosts: [action.proPost].concat(state.proPosts)}
     }
 
     return state
