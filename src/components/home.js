@@ -5,80 +5,9 @@ import { connect } from 'react-redux';
 import './home.css';
 import './current-column.css';
 import './edit.css'
+import Card from './card'
 import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost} from '../actions/home/pro-actions';
 import { wrapGrid } from 'animate-css-grid'
-
-//class for individual card entries
-class Card extends React.Component {
-  //cards start out collapsed 
-  state = { expanded: false, editing: false,
-            values: { title: this.props.cardItem.title ? this.props.cardItem.title : "",
-                      quote: this.props.cardItem.quote ? this.props.cardItem.quote : ""
-            }      
-  };
-
-  render() {
-    console.log(this.props.cardItem.title)
-    if(this.state.editing || this.props.cardItem.new){
-      return (
-        <div className="pro-list-item-active">
-          <div>
-            <h2><label>Title<input className="title-input"defaultValue={this.props.cardItem.title} onChange={(e)=>{
-              var x = Object.assign(this.state.values, {title: e.target.value})
-              this.setState({values: x})}}/></label></h2>
-
-            <p><label>Quote<textarea className="quote-input"defaultValue={this.props.cardItem.quote} onChange={(e)=>{
-              var x = Object.assign(this.state.values, {quote: e.target.value})
-              this.setState({values: x})}}/></label></p>
-
-            <button onClick={()=>{
-              if(this.props.cardItem.new){
-                this.props.onAdd(addProPost(this.state.values))
-                this.setState({editing: false})
-              } else {
-                console.log("triggered")
-                this.props.onAdd(editProPost(this.props.id, this.state.values))
-                this.setState({editing: false})
-              }
-              
-              }}>Confirm</button>
-
-            <button onClick={()=>{
-              if(this.props.cardItem.new){
-                this.props.onAdd(fetchProPosts())
-              } else {
-                this.setState({editing: false})
-              }
-              }}>Cancel</button>
-          </div>
-        </div>
-      );
-    } else if(!this.state.editing && !this.state.expanded){
-      return (
-        <div className="pro-list-item"
-          onClick={() => {this.setState({ expanded: !this.state.expanded });}}>
-          <div>
-            <h2>{this.props.cardItem.title}</h2>
-            <p>{this.props.cardItem.quote}</p>
-            <div className="read-more"/>
-          </div>
-        </div>
-      );
-    } else if(!this.state.editing && this.state.expanded){
-      return(
-      <div className="pro-list-item-active">
-          <div>
-            <h2>{this.props.cardItem.title}</h2>
-            <p>{this.props.cardItem.quote}</p>
-            <button onClick={()=>this.setState({expanded: false})}>Collapse</button>
-            <button onClick={()=>this.setState({editing: true})}>Edit</button>
-            <button onClick={()=>this.props.onAdd(deleteProPost(this.props.id))}>Delete</button>
-          </div>
-        </div>
-      )
-    }
-  }
-}
 
 class Home extends Component {
 
@@ -95,6 +24,7 @@ class Home extends Component {
     wrapGrid(document.querySelector(".pro-list-ul"), { easing : 'circOut', stagger: 10, duration: 500 });
   }
 
+
   getCurrentColumn() {
     if(this.state.currentColumn === "none") {
       return (<ul className="pro-list-ul"/>)
@@ -104,9 +34,8 @@ class Home extends Component {
         
         <ul className="pro-list-ul">
           {this.props.proPosts.map((item, index) => {
-            // console.log(item._links ? item._links.self.href.substring(item._links.self.href.lastIndexOf('/')+1): "")
             return (
-              <Card key={index} onAdd={(func) => this.props.dispatch(func)} cardItem={item} id={item._links ? item._links.self.href.substring(item._links.self.href.lastIndexOf('/')+1) : ""}/>
+              <Card key={index} cardItem={item} id={item._links ? item._links.self.href.substring(item._links.self.href.lastIndexOf('/')+1) : ""}/>
             )
           })}
           </ul>
@@ -157,7 +86,7 @@ class Home extends Component {
             <span>Who's left behind?</span>
           </div>
           <div className="congress-header">
-            <div className="column-header-hover"/>props.dispatch(editProPost
+            <div className="column-header-hover"/>
             <span>Where do our representatives stand?</span>
           </div>
         </div>
