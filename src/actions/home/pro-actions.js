@@ -51,7 +51,7 @@ export const deleteProPostSuccess = () => ({
 
 export const fetchProPosts = () => dispatch =>{
     dispatch(fetchProPostsRequest())
-    fetch(`${API_BASE_URL}pro`)
+    fetch(`${API_BASE_URL}pro/?page=0&size=200`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => {
         console.log(res._embedded.pro)
