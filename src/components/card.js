@@ -17,20 +17,21 @@ class Card extends React.Component {
         return (
           <div className="pro-list-item-active">
             <div>
-              <h2><label>Title<input className="title-input"defaultValue={this.props.cardItem.title} onChange={(e)=>{
+              <label className="title-label">Title</label>
+              <input className="title-input"defaultValue={this.props.cardItem.title} onChange={(e)=>{
                 var x = Object.assign(this.state.values, {title: e.target.value})
-                this.setState({values: x})}}/></label></h2>
+                this.setState({values: x})}}/>
   
-              <p><label>Quote<textarea className="quote-input"defaultValue={this.props.cardItem.quote} onChange={(e)=>{
+              <label className="quote-label">Quote</label>
+              <textarea className="quote-input"defaultValue={this.props.cardItem.quote} onChange={(e)=>{
                 var x = Object.assign(this.state.values, {quote: e.target.value})
-                this.setState({values: x})}}/></label></p>
+                this.setState({values: x})}}/>
   
-              <button onClick={()=>{
+              <button className="confirm-button" onClick={()=>{
                 if(this.props.id === "new"){
                   this.props.dispatch(proSetEdit("none"))
                   this.props.dispatch(proSetExpanded("none"))
                   this.props.dispatch(addProPost(this.state.values))
-                  .then((res)=>this.props.dispatch(fetchProPosts()))
                   // this.setState({editing: false})
                 } else {
                   this.props.dispatch(editProPost(this.props.id, this.state.values))
@@ -39,7 +40,7 @@ class Card extends React.Component {
                 
                 }}>Confirm</button>
   
-              <button onClick={()=>{
+              <button className="cancel-button" onClick={()=>{
                 if(this.props.id === "new"){
                   this.props.dispatch(proSetEdit("none"))
                   this.props.dispatch(proSetExpanded("none"))
