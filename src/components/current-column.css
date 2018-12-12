@@ -30,16 +30,23 @@
 
 .pro-list-ul{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   grid-template-rows: minmax(13rem, 1fr);
   grid-auto-rows: 1fr;
-  grid-gap: 16px;
-  padding: 0;
+  grid-gap: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+  animation: fade 1s forwards
 }
+
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 
 .pro-list-item{
-    background-color: blanchedalmond;
+    background-color: rgb(255, 235, 205);
     overflow: hidden;
     margin: 10px;
     box-shadow: rgb(60, 59, 59) 10px 10px 10px;
@@ -48,19 +55,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 0;
     position: relative;
+    height: 200px;
+    margin: 0;
+    bottom: 0;
+    transition: 0.5s box-shadow, 0.5s border-radius, 0.5s bottom;
 }
 
 .pro-list-item > div {
-    display: flex;
-  flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    grid-auto-rows: 20% 20% 20%;
+    /* padding-top: 15px;
+    padding-bottom: 10px; */
+    min-height: 0;
+    align-items: center;
+    justify-items: center;
+  /* flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  /* animation: fade 1s forwards; */
 }
 
 .pro-list-item:hover{
-    bottom: 5px;
+    box-shadow: rgb(60, 59, 59) 20px 20px 10px;
+    border-radius: 10px;
+    bottom: 10px;
+    /* background-color: rgb(214, 193, 173) */
+    /* bottom: 5px; */
 }
 
 .pro-list-item-active{
@@ -76,17 +100,58 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    
 }
 
 .pro-list-item-active > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  /* grid-auto-rows: auto; */
+  /* grid-gap: 5px; */
+  /* grid-auto-rows: 20% 20% 20%; */
+  /* flex-direction: column; */
+  /* justify-content: center;
+  align-items: center; */
+  height: 100%;
+  width: 100%;
+  animation: fade 2s forwards;
 }
 
+.pro-list-item-active p {
+    grid-column: 1/11;
+    grid-row: 5/10;
+}
+
+.pro-list-item-active h2 {
+    grid-column: 1/7;
+    grid-row: 1/4;
+}
+
+.active-image-container {
+    grid-column: 8/11;
+    grid-row: 1/5;
+    position: relative;
+    overflow: hidden;
+}
+
+.active-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* .delete {
+    grid-row: 10;
+    grid-column: 1;
+} */
+
 .pro-list-item h2{
-  margin-bottom: 5px; 
+  grid-column: 1 / 4;
+  grid-row: 1/2;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 18px;
+  animation: fade 2s forwards;
 }
 
 .pro-list-item p{
@@ -94,20 +159,44 @@
     overflow: hidden;
     text-overflow: ellipsis;
     height: 100px;
-    width: 250px;
+    width: 90%;
+    font-size: 14px;
+    font-style: italic;
+    animation: fade 2s forwards;
 }
 
 .quote-container {
+    grid-column: 1/5;
+    grid-row: 2/4;
     position: relative;
+    margin-bottom: 10px;
+}
+
+.quote-container p{
+    margin-bottom: 0;
+    margin-top: 8px;
+    line-height: 1.8
 }
 
 .read-more{
   position: absolute; 
   text-align: right;
-  bottom: 16px; 
+  bottom: 0;
   right: 0;
   width: 50%; 
   height: 1.5em;
   margin: 0;
   background: linear-gradient(to right, rgba(255, 255, 255, 0), blanchedalmond 60%);
+}
+
+.image-container{
+    /* width: 50px; */
+    grid-column: 4;
+    grid-row: 1;
+    animation: fade 2s forwards;
+    /* justify-content: center; */
+}
+
+.image {
+    width: 70%;
 }

@@ -6,7 +6,7 @@ import './home.css';
 import './current-column.css';
 import './edit.css'
 import Card from './card'
-import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost} from '../actions/home/pro-actions';
+import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded} from '../actions/home/pro-actions';
 import { wrapGrid } from 'animate-css-grid'
 
 class Home extends Component {
@@ -30,17 +30,28 @@ class Home extends Component {
       return (<ul className="pro-list-ul"/>)
     }
     else if (this.state.currentColumn === "pro"){
+      if(this.props.loading){
+        return (<ul className="loader"></ul>)
+      } else {
       return (
         
         <ul className="pro-list-ul">
+          {}
           {this.props.proPosts.map((item, index) => {
-            return (
-              <Card key={index} cardItem={item} id={item._links ? item._links.self.href.substring(item._links.self.href.lastIndexOf('/')+1) : ""}/>
-            )
+            if(item.id === "new"){
+              
+              return (
+                <Card key={index} cardItem={item} id="new" />
+              )
+            } else {
+              return (
+                <Card key={index} cardItem={item} id={item._links ? item._links.self.href.substring(item._links.self.href.lastIndexOf('/')+1) : ""}/>
+              )
+            }
           })}
           </ul>
       )
-    }
+    }}
   }
 
   getCurrentFilter() {
@@ -50,7 +61,10 @@ class Home extends Component {
     else if (this.state.currentColumn === "pro"){
     return (
       <div className="filter-bar">
-        <section className="new-entry-button" onClick={()=>{this.props.dispatch(addEmptyProEntry())}}>New Entry</section>
+        <section className="new-entry-button" onClick={()=>{
+          this.props.dispatch(proSetEdit("new"))
+          this.props.dispatch(proSetExpanded("new"))
+          this.props.dispatch(addEmptyProEntry())}}>New Entry</section>
       </div>
     )
     }
@@ -106,6 +120,8 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   proPosts: state.proReducers.proPosts,
+  editing: state.proReducers.editing,
+  loading: state.proReducers.loading
 });
 
 export default connect(mapStateToProps)(Home);

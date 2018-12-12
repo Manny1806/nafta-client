@@ -16,7 +16,7 @@ export const addEmptyProEntry = () =>({
     type: ADD_EMPTY_PRO_ENTRY,
     proPost: {title: "",
               quote: "",
-              new: true}
+              id: "new"}
 })
 
 export const EDIT_PRO_POST_REQUEST = 'EDIT_PRO_POST_REQUEST'
@@ -92,3 +92,15 @@ export const deleteProPost = (id) => dispatch => {
     .then(res => dispatch(deleteProPostSuccess()))
     .then(res => dispatch(fetchProPosts()))
 }
+
+export const PRO_SET_EDIT = 'PRO_SET_EDIT'
+export const proSetEdit = (id) => ({
+    type: PRO_SET_EDIT,
+    editing: id
+})
+
+export const PRO_SET_EXPANDED = 'PRO_SET_EXPANDED'
+export const proSetExpanded = (id) => ({
+    type: PRO_SET_EXPANDED,
+    expanded: id
+})

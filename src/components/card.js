@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost} from '../actions/home/pro-actions';
+import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded} from '../actions/home/pro-actions';
 import './current-column.css';
 import './edit.css'
 
 class Card extends React.Component {
     //cards start out collapsed 
-    state = { expanded: false, editing: false,
+    state = { 
               values: { title: this.props.cardItem.title ? this.props.cardItem.title : "",
                         quote: this.props.cardItem.quote ? this.props.cardItem.quote : ""
               }      
     };
 
     render() {
-      if(this.state.editing || this.props.cardItem.new){
-        console.log(this.props.cardItem.title)
-        console.log(this.state.values.title)
+      if((this.props.expanded === this.props.id) && (this.props.editing === this.props.id)){
         return (
           <div className="pro-list-item-active">
             <div>
@@ -28,32 +26,46 @@ class Card extends React.Component {
                 this.setState({values: x})}}/></label></p>
   
               <button onClick={()=>{
-                if(this.props.cardItem.new){
+                if(this.props.id === "new"){
+                  this.props.dispatch(proSetEdit("none"))
+                  this.props.dispatch(proSetExpanded("none"))
                   this.props.dispatch(addProPost(this.state.values))
-                  this.setState({editing: false})
+                  .then((res)=>this.props.dispatch(fetchProPosts()))
+                  // this.setState({editing: false})
                 } else {
                   this.props.dispatch(editProPost(this.props.id, this.state.values))
-                  this.setState({editing: false})
+                  this.props.dispatch(proSetEdit("none"))
                 }
                 
                 }}>Confirm</button>
   
               <button onClick={()=>{
-                if(this.props.cardItem.new){
+                if(this.props.id === "new"){
+                  this.props.dispatch(proSetEdit("none"))
+                  this.props.dispatch(proSetExpanded("none"))
                   this.props.dispatch(fetchProPosts())
                 } else {
-                  this.setState({editing: false})
+                  this.props.dispatch(proSetEdit("none"))
                 }
                 }}>Cancel</button>
             </div>
           </div>
         );
-      } else if(!this.state.editing && !this.state.expanded){
+      } else if(!(this.props.editing === this.props.id) && !(this.props.expanded === this.props.id)){
+        
         return (
           <div className="pro-list-item"
-            onClick={() => {this.setState({ expanded: !this.state.expanded });}}>
+            onClick={() => {
+              if(this.props.expanded === "new"){
+                this.props.dispatch(fetchProPosts())
+              }
+              this.props.dispatch(proSetEdit("none"))
+              this.props.dispatch(proSetExpanded(this.props.id));}}>
             <div>
               <h2>{this.props.cardItem.title}</h2>
+              <div className="image-container">
+                <img className="image" src="https://www.w3.org/html/logo/downloads/HTML5_Badge_256.png"/>
+              </div>
               <div className="quote-container">
                 <p>{this.props.cardItem.quote}</p>
                 <div className="read-more"/>
@@ -61,19 +73,25 @@ class Card extends React.Component {
             </div>
           </div>
         );
-      } else if(!this.state.editing && this.state.expanded){
+      } else if(!(this.props.editing === this.props.id) && (this.props.expanded === this.props.id)){
         return(
         <div className="pro-list-item-active">
             <div>
               <h2>{this.props.cardItem.title}</h2>
+              <div className="active-image-container">
+                <img className="image" src="https://www.w3.org/html/logo/downloads/HTML5_Badge_256.png"/>
+              </div>
               <p>{this.props.cardItem.quote}</p>
-              <button onClick={()=>this.setState({expanded: false})}>Collapse</button>
-              <button onClick={()=>this.setState({editing: true, values: { title: this.props.cardItem.title ? this.props.cardItem.title : "",
+              <button className="collapse" onClick={()=>this.props.dispatch(proSetExpanded("none"))}>Collapse</button>
+              <button className="edit"onClick={()=>{ 
+                this.setState({ values: { title: this.props.cardItem.title ? this.props.cardItem.title : "",
                         quote: this.props.cardItem.quote ? this.props.cardItem.quote : ""}
-              })}>Edit</button>
-              <button onClick={()=>{
+              })
+                this.props.dispatch(proSetEdit(this.props.id))
+              }}>Edit</button>
+              <button className="delete" onClick={()=>{
                 this.props.dispatch(deleteProPost(this.props.id))
-                this.setState({expanded: false})
+                this.props.dispatch(proSetExpanded("none"))
                 }}>Delete</button>
             </div>
           </div>
@@ -82,6 +100,9 @@ class Card extends React.Component {
     }
   }
 
-  
+  const mapStateToProps = state => ({
+    editing: state.proReducers.editing,
+    expanded: state.proReducers.expanded
+  });
 
-  export default connect () (Card)
+  export default connect (mapStateToProps) (Card)
