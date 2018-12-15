@@ -16,7 +16,8 @@ const initialState = {
     proPosts: [],
     editing: "none",
     expanded: "none",
-    loading: false
+    loading: false,
+    editLoading: false
 }
 
 export default function reducer(state = initialState, action) {
@@ -27,10 +28,10 @@ export default function reducer(state = initialState, action) {
         return {...state, proPosts: action.proPosts, loading: false}
     }
     else if (action.type === EDIT_PRO_POST_REQUEST) {
-        return {...state}
+        return {...state, editLoading: true}
     }
     else if (action.type === EDIT_PRO_POST_SUCCESS) {
-        return {...state}
+        return {...state, editLoading: false}
     }
     else if (action.type === ADD_PRO_POST_REQUEST) {
         return {...state}

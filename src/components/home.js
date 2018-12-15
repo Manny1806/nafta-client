@@ -45,7 +45,7 @@ class Home extends Component {
               )
             } else {
               return (
-                <Card key={index} cardItem={item} id={item._links ? item._links.self.href.substring(item._links.self.href.lastIndexOf('/')+1) : ""}/>
+                <Card key={index} cardItem={item} id={item._id}/>
               )
             }
           })}

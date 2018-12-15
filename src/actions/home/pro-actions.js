@@ -51,16 +51,16 @@ export const deleteProPostSuccess = () => ({
 
 export const fetchProPosts = () => dispatch =>{
     dispatch(fetchProPostsRequest())
-    fetch(`${API_BASE_URL}pro/?page=0&size=200`)
+    fetch(`${API_BASE_URL}/api/pro/`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => {
-        console.log(res._embedded.pro)
-        dispatch(fetchProPostsSuccess(res._embedded.pro))})
+        console.log(res)
+        dispatch(fetchProPostsSuccess(res))})
 }
 
 export const editProPost = (id, values) => dispatch => {
     dispatch(editProPostRequest())
-    fetch(`${API_BASE_URL}pro/${id}`, {
+    fetch(`${API_BASE_URL}/api/pro/${id}`, {
         method: 'PUT',
         body: JSON.stringify(values),
         headers: {
@@ -68,12 +68,12 @@ export const editProPost = (id, values) => dispatch => {
         }
     }).then(res => !res.ok ? Promise.reject(res.statusText) : undefined)
     .then(res => dispatch(editProPostSuccess()))
-    .then(res => dispatch(fetchProPosts()))
+    // .then(res => dispatch(fetchProPosts()))
 }
 
 export const addProPost = (values) => dispatch => {
     dispatch(addProPostRequest())
-    fetch(`${API_BASE_URL}pro/`, {
+    fetch(`${API_BASE_URL}/api/pro/`, {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
@@ -86,7 +86,7 @@ export const addProPost = (values) => dispatch => {
 
 export const deleteProPost = (id) => dispatch => {
     dispatch(deleteProPostRequest())
-    fetch(`${API_BASE_URL}pro/${id}`, {
+    fetch(`${API_BASE_URL}/api/pro/${id}`, {
         method: 'DELETE'
     }).then(res => !res.ok ? Promise.reject(res.statusText) : undefined)
     .then(res => dispatch(deleteProPostSuccess()))
