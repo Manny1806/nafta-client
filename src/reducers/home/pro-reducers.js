@@ -31,7 +31,13 @@ export default function reducer(state = initialState, action) {
         return {...state, editLoading: true}
     }
     else if (action.type === EDIT_PRO_POST_SUCCESS) {
-        return {...state, editLoading: false}
+        return {...state, editLoading: false, proPosts: state.proPosts.map((x, index)=>{
+            console.log(action.index)
+            if(index === action.index){
+                return action.proPost
+            }
+            return x
+        })} 
     }
     else if (action.type === ADD_PRO_POST_REQUEST) {
         return {...state}

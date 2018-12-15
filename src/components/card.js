@@ -26,18 +26,20 @@ class Card extends React.Component {
               <img className="image" src="https://www.w3.org/html/logo/downloads/HTML5_Badge_256.png"/>
             </div>
             <p className="quote">{this.props.cardItem.quote}
-                {this.props.cardItem.quoteLink ? <span className="reference-span">-<a target="_blank" href={this.props.cardItem.quoteLink}>{this.props.cardItem.quoteReference}</a></span> : <span className="reference-span">-{this.props.cardItem.quoteReference}</span>}</p>
-            <p className="comments">
-            {this.props.cardItem.description}
-            </p>
-            <button className="collapse" onClick={()=>this.props.dispatch(proSetExpanded("none"))}>Collapse</button>
-            <button className="edit"onClick={()=>{ 
+                {this.props.cardItem.quoteLink ? <span className="reference-span">- <a target="_blank" href={this.props.cardItem.quoteLink}>{this.props.cardItem.quoteReference}</a></span> : <span className="reference-span">- {this.props.cardItem.quoteReference}</span>}</p>
+            {this.props.cardItem.description ? <p className="comments">{this.props.cardItem.description}</p> : <p/>}
+            <button className="collapse-button" onClick={()=>this.props.dispatch(proSetExpanded("none"))}>Collapse</button>
+            <button className="edit-button"onClick={()=>{ 
               this.setState({ values: { title: this.props.cardItem.title ? this.props.cardItem.title : "",
-                      quote: this.props.cardItem.quote ? this.props.cardItem.quote : ""}
+                      quote: this.props.cardItem.quote ? this.props.cardItem.quote : "",
+                      quoteReference: this.props.cardItem.quoteReference ? this.props.cardItem.quoteReference : "",
+                      quoteLink: this.props.cardItem.quoteLink ? this.props.cardItem.quoteLink : "",
+                      description: this.props.cardItem.description ? this.props.cardItem.description : ""
+                    }
               })
               this.props.dispatch(proSetEdit(this.props.id))
             }}>Edit</button>
-            <button className="delete" onClick={()=>{
+            <button className="delete-button" onClick={()=>{
               this.props.dispatch(deleteProPost(this.props.id))
               this.props.dispatch(proSetExpanded("none"))
               }}>Delete</button>
@@ -83,7 +85,8 @@ class Card extends React.Component {
                   this.props.dispatch(addProPost(this.state.values))
                   // this.setState({editing: false})
                 } else {
-                  this.props.dispatch(editProPost(this.props.id, this.state.values))
+                  console.log(this.props.cardIndex)
+                  this.props.dispatch(editProPost(this.props.id, this.props.cardIndex, this.state.values))
                   this.props.dispatch(proSetEdit("none"))
                 }
                 

@@ -45,7 +45,7 @@ class Home extends Component {
               )
             } else {
               return (
-                <Card key={index} cardItem={item} id={item._id}/>
+                <Card key={index} cardIndex={index} cardItem={item} id={item._id}/>
               )
             }
           })}

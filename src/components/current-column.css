@@ -60,7 +60,7 @@
     height: 200px;
     margin: 0;
     bottom: 0;
-    transition: 0.5s box-shadow, 0.5s border-radius, 0.5s bottom;
+    transition: 0.5s box-shadow, 0.5s bottom;
 }
 
 .pro-list-item > div {
@@ -81,7 +81,6 @@
 
 .pro-list-item:hover{
     box-shadow: rgb(60, 59, 59) 20px 20px 10px;
-    border-radius: 10px;
     bottom: 10px;
     /* background-color: rgb(214, 193, 173) */
     /* bottom: 5px; */
@@ -291,4 +290,22 @@
 .description-input {
     grid-column: 1/11;
     grid-row: 8/11;
+}
+
+.edit-button {
+    margin: 5px;
+    grid-column: 7;
+    grid-row: 2;
+}
+
+.delete-button {
+    margin: 5px;
+    grid-column: 7;
+    grid-row: 3;
+}
+
+.collapse-button {
+    margin: 5px;
+    grid-column: 7;
+    grid-row: 1;
 }

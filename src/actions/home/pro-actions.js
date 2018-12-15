@@ -25,8 +25,10 @@ export const editProPostRequest = () =>({
 })
 
 export const EDIT_PRO_POST_SUCCESS = 'EDIT_PRO_POST_SUCCESS'
-export const editProPostSuccess = () => ({
-    type: EDIT_PRO_POST_SUCCESS
+export const editProPostSuccess = (proPost, index) => ({
+    type: EDIT_PRO_POST_SUCCESS,
+    proPost,
+    index: index
 })
 
 export const ADD_PRO_POST_REQUEST = 'ADD_PRO_POST_REQUEST'
@@ -54,11 +56,11 @@ export const fetchProPosts = () => dispatch =>{
     fetch(`${API_BASE_URL}/api/pro/`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => {
-        console.log(res)
+        // console.log(res)
         dispatch(fetchProPostsSuccess(res))})
 }
 
-export const editProPost = (id, values) => dispatch => {
+export const editProPost = (id, index, values) => dispatch => {
     dispatch(editProPostRequest())
     fetch(`${API_BASE_URL}/api/pro/${id}`, {
         method: 'PUT',
@@ -66,9 +68,11 @@ export const editProPost = (id, values) => dispatch => {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(res => !res.ok ? Promise.reject(res.statusText) : undefined)
-    .then(res => dispatch(editProPostSuccess()))
-    // .then(res => dispatch(fetchProPosts()))
+    }).then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
+    // .then( res => fetch(`${API_BASE_URL}/api/pro/${id}`))
+    .then(res => {
+        console.log(res)
+        dispatch(editProPostSuccess(res, index))})
 }
 
 export const addProPost = (values) => dispatch => {
