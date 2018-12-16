@@ -9,7 +9,10 @@ import {
     DELETE_PRO_POST_REQUEST,
     DELETE_PRO_POST_SUCCESS,
     PRO_SET_EDIT,
-    PRO_SET_EXPANDED
+    PRO_SET_EXPANDED,
+    UPLOAD_PRO_IMAGE_REQUEST,
+    UPLOAD_PRO_IMAGE_SUCCESS,
+    PRO_SET_IMG_URL
 }   from '../../actions/home/pro-actions'
 
 const initialState = {
@@ -17,7 +20,8 @@ const initialState = {
     editing: "none",
     expanded: "none",
     loading: false,
-    editLoading: false
+    editLoading: false,
+    imgUrl: ''
 }
 
 export default function reducer(state = initialState, action) {
@@ -32,7 +36,7 @@ export default function reducer(state = initialState, action) {
     }
     else if (action.type === EDIT_PRO_POST_SUCCESS) {
         return {...state, editLoading: false, proPosts: state.proPosts.map((x, index)=>{
-            console.log(action.index)
+            // console.log(action.index)
             if(index === action.index){
                 return action.proPost
             }
@@ -53,6 +57,16 @@ export default function reducer(state = initialState, action) {
     }
     else if (action.type === PRO_SET_EXPANDED) {
         return {...state, expanded: action.expanded}
+    }
+    else if (action.type === UPLOAD_PRO_IMAGE_REQUEST) {
+        return {...state}
+    }
+    else if (action.type === UPLOAD_PRO_IMAGE_SUCCESS) {
+        // console.log(action.imgUrl)
+        return {...state, imgUrl: action.imgUrl.url}
+    }
+    else if (action.type === PRO_SET_IMG_URL) {
+        return {...state, imgUrl: action.imgUrl}
     }
 
     return state

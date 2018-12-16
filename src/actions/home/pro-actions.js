@@ -51,13 +51,33 @@ export const deleteProPostSuccess = () => ({
     type: DELETE_PRO_POST_SUCCESS
 })
 
+export const UPLOAD_PRO_IMAGE_REQUEST = 'UPLOAD_PRO_IMAGE_REQUEST'
+export const uploadProImageRequest = () => ({
+    type: UPLOAD_PRO_IMAGE_REQUEST
+})
+
+export const UPLOAD_PRO_IMAGE_SUCCESS = 'UPLOAD_PRO_IMAGE_SUCCESS'
+export const uploadProImageSuccess = (imgUrl) => ({
+    type: UPLOAD_PRO_IMAGE_SUCCESS,
+    imgUrl
+})
+
+export const uploadProImage = (file) => dispatch => {
+    console.log(file)
+    dispatch(uploadProImageRequest())
+    fetch(`${API_BASE_URL}/api/pro/img/`, {
+        method: 'POST',
+        body: file
+    })
+    .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
+    .then(res => dispatch(uploadProImageSuccess(res)))
+}
+
 export const fetchProPosts = () => dispatch =>{
     dispatch(fetchProPostsRequest())
     fetch(`${API_BASE_URL}/api/pro/`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
-    .then(res => {
-        // console.log(res)
-        dispatch(fetchProPostsSuccess(res))})
+    .then(res => dispatch(fetchProPostsSuccess(res)))
 }
 
 export const editProPost = (id, index, values) => dispatch => {
@@ -71,7 +91,7 @@ export const editProPost = (id, index, values) => dispatch => {
     }).then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     // .then( res => fetch(`${API_BASE_URL}/api/pro/${id}`))
     .then(res => {
-        console.log(res)
+        // console.log(res)
         dispatch(editProPostSuccess(res, index))})
 }
 
@@ -107,4 +127,10 @@ export const PRO_SET_EXPANDED = 'PRO_SET_EXPANDED'
 export const proSetExpanded = (id) => ({
     type: PRO_SET_EXPANDED,
     expanded: id
+})
+
+export const PRO_SET_IMG_URL = 'PRO_SET_IMG_URL'
+export const proSetImgUrl = (url) => ({
+    type: PRO_SET_IMG_URL,
+    imgUrl: url
 })
