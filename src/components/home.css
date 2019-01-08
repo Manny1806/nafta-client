@@ -1,9 +1,14 @@
 body{
     background-color: rgb(64, 93, 255);
+    
 }
 .Home {
     text-align: center;
     background-color: bisque;
+    position: relative;
+    max-width: 1500px;
+    margin-left:auto;
+    margin-right: auto;
 }
 
 /* container for page banner which has two headers and possibly the sit menu */
