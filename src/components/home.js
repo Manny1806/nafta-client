@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
+import Modal from './modal'
+import { showModal } from '../actions/home/modal'
 import './home.css';
 import './current-column.css';
 import './edit.css'
@@ -21,7 +23,7 @@ class Home extends Component {
 
   componentDidMount() {
     // will automatically clean itself up when dom node is removed
-    wrapGrid(document.querySelector(".pro-list-ul"), { easing : 'circOut', stagger: 10, duration: 500 });
+    // wrapGrid(document.querySelector(".pro-list-ul"), { easing : 'circOut', stagger: 0, duration: 300 });
   }
 
 
@@ -62,9 +64,10 @@ class Home extends Component {
     return (
       <div className="filter-bar">
         <section className="new-entry-button" onClick={()=>{
-          this.props.dispatch(proSetEdit("new"))
-          this.props.dispatch(proSetExpanded("new"))
-          this.props.dispatch(addEmptyProEntry())}}>New Entry</section>
+          // this.props.dispatch(proSetEdit("new"))
+          // this.props.dispatch(proSetExpanded("new"))
+          this.props.dispatch(showModal('active-card'))
+          }}>New Entry</section>
       </div>
     )
     }
@@ -73,6 +76,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
+      <Modal />
         <header className="home-header">
           <div className="home-banner-container">
             <span className="home-title"> NAFTA Reactor</span>

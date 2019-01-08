@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ActiveCard from './active-card'
 
 
 import './modal.css'
 
 class Modal extends Component {
   setPage() {
-    if (this.props.page === 'add-post-form'){
-      return <AddPostForm />
+    if (this.props.page === 'active-card'){
+      return <ActiveCard />
     }
   }
   render() {
@@ -30,9 +31,9 @@ class Modal extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isShowing: state.modals.isShowing,
-    page: state.modals.page,
-    id: state.modals.id
+    isShowing: state.modal.isShowing,
+    page: state.modal.page,
+    id: state.modal.id
   }
 }
 
