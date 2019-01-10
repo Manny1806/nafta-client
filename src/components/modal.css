@@ -13,8 +13,9 @@
   .confirm-modal-content {
     position: fixed;
     left: 50%;
-    top: 40%;
+    top: 50%;
     transform: translate(-50%, -50%);
+    /* height: 400px; */
     /* width: 300px; */
     background: lightgray;
     z-index: 11;

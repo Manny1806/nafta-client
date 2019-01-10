@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ActiveCard from './active-card'
+import ActiveProCard from './active-pro-card'
 
 
 import './modal.css'
 
 class Modal extends Component {
   setPage() {
-    if (this.props.page === 'active-card'){
-      return <ActiveCard />
+    if (this.props.page === 'active-pro-card-new'){
+      return <ActiveProCard id="new"/>
+    }
+    else if (this.props.page === 'active-pro-card'){
+      return <ActiveProCard />
     }
   }
   render() {

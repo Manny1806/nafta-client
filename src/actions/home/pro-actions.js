@@ -19,6 +19,24 @@ export const addEmptyProEntry = () =>({
               id: "new"}
 })
 
+export const GET_ACTIVE_PRO_POST_REQUEST = 'GET_ACTIVE_PRO_POST_REQUEST'
+export const getActiveProPostRequest = () => ({
+    type: GET_ACTIVE_PRO_POST_REQUEST
+})
+
+export const GET_ACTIVE_PRO_POST_SUCCESS = 'GET_ACTIVE_PRO_POST_SUCCESS'
+export const getActiveProPostSuccess = (activeProPost) => ({
+    type: GET_ACTIVE_PRO_POST_SUCCESS,
+    activeProPost
+})
+
+export const getActiveProPost = (id) => dispatch =>{
+    dispatch(getActiveProPostRequest())
+    fetch(`${API_BASE_URL}/api/pro/${id}`)
+    .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
+    .then(res => dispatch(getActiveProPostSuccess(res)))
+}
+
 export const EDIT_PRO_POST_REQUEST = 'EDIT_PRO_POST_REQUEST'
 export const editProPostRequest = () =>({
     type: EDIT_PRO_POST_REQUEST
@@ -118,9 +136,9 @@ export const deleteProPost = (id) => dispatch => {
 }
 
 export const PRO_SET_EDIT = 'PRO_SET_EDIT'
-export const proSetEdit = (id) => ({
+export const proSetEdit = (bool) => ({
     type: PRO_SET_EDIT,
-    editing: id
+    editing: bool
 })
 
 export const PRO_SET_EXPANDED = 'PRO_SET_EXPANDED'

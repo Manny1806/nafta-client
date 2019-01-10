@@ -66,7 +66,7 @@ class Home extends Component {
         <section className="new-entry-button" onClick={()=>{
           // this.props.dispatch(proSetEdit("new"))
           // this.props.dispatch(proSetExpanded("new"))
-          this.props.dispatch(showModal('active-card'))
+          this.props.dispatch(showModal('active-pro-card-new'))
           }}>New Entry</section>
       </div>
     )

@@ -2,6 +2,8 @@ import {
     PRO_POSTS_REQUEST,
     PRO_POSTS_SUCCESS,
     ADD_EMPTY_PRO_ENTRY,
+    GET_ACTIVE_PRO_POST_REQUEST,
+    GET_ACTIVE_PRO_POST_SUCCESS,
     EDIT_PRO_POST_REQUEST,
     EDIT_PRO_POST_SUCCESS,
     ADD_PRO_POST_REQUEST,
@@ -17,11 +19,13 @@ import {
 
 const initialState = {
     proPosts: [],
-    editing: "none",
+    editing: false,
     expanded: "none",
     loading: false,
     editLoading: false,
-    imgUrl: ''
+    imgUrl: '',
+    activeProPost: {},
+    activeProPostLoading: false
 }
 
 export default function reducer(state = initialState, action) {
@@ -30,6 +34,12 @@ export default function reducer(state = initialState, action) {
     }
     else if (action.type === PRO_POSTS_SUCCESS) {
         return {...state, proPosts: action.proPosts, loading: false}
+    }
+    else if (action.type === GET_ACTIVE_PRO_POST_REQUEST){
+        return {...state, activeProPostLoading: true}
+    }
+    else if (action.type === GET_ACTIVE_PRO_POST_SUCCESS){
+        return {...state, activeProPost: action.activeProPost, activeProPostLoading: false}
     }
     else if (action.type === EDIT_PRO_POST_REQUEST) {
         return {...state, editLoading: true}

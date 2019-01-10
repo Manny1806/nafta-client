@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded, uploadProImage, proSetImgUrl} from '../actions/home/pro-actions';
+import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded, uploadProImage, proSetImgUrl, getActiveProPost} from '../actions/home/pro-actions';
+import { showModal } from '../actions/home/modal'
 import './current-column.css';
 import './edit.css'
 
@@ -119,11 +120,14 @@ class Card extends React.Component {
         return (
           <div className="pro-list-item"
             onClick={() => {
-              if(this.props.expanded === "new"){
-                this.props.dispatch(fetchProPosts())
-              }
-              this.props.dispatch(proSetEdit("none"))
-              this.props.dispatch(proSetExpanded(this.props.id));}}>
+              // if(this.props.expanded === "new"){
+              //   this.props.dispatch(fetchProPosts())
+              // }
+              // this.props.dispatch(proSetEdit("none"))
+              // this.props.dispatch(proSetExpanded(this.props.id));
+              this.props.dispatch(getActiveProPost(this.props.id))
+              this.props.dispatch(showModal("active-pro-card"))
+              }}>
             <div>
               <h2>{this.props.cardItem.title}</h2>
               <div className="image-container">
