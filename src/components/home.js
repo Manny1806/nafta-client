@@ -9,7 +9,7 @@ import './current-column.css';
 import './edit.css'
 import Card from './card'
 import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded} from '../actions/home/pro-actions';
-import { wrapGrid } from 'animate-css-grid'
+
 
 class Home extends Component {
 
@@ -20,12 +20,6 @@ class Home extends Component {
       editing: false
     }
   }
-
-  componentDidMount() {
-    // will automatically clean itself up when dom node is removed
-    // wrapGrid(document.querySelector(".pro-list-ul"), { easing : 'circOut', stagger: 0, duration: 300 });
-  }
-
 
   getCurrentColumn() {
     if(this.state.currentColumn === "none") {
@@ -64,9 +58,8 @@ class Home extends Component {
     return (
       <div className="filter-bar">
         <section className="new-entry-button" onClick={()=>{
-          // this.props.dispatch(proSetEdit("new"))
-          // this.props.dispatch(proSetExpanded("new"))
           this.props.dispatch(showModal('active-pro-card-new'))
+          document.body.style.overflow = "hidden"
           }}>New Entry</section>
       </div>
     )
@@ -75,7 +68,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="Home">
+      <section className="Home">
       <Modal />
         <header className="home-header">
           <div className="home-banner-container">
@@ -86,7 +79,7 @@ class Home extends Component {
               <nav><span>about</span></nav>
               <nav><span>login</span></nav>
               <nav><span>contact</span></nav>
-          </div>
+            </div>
           </div>
         </header>
         <div className="column-header-container">
@@ -110,14 +103,14 @@ class Home extends Component {
         </div>
         <div className="column-entries-container">
         {/* Where current column will be displayed */}
-        <div className="current-column" >
+        <div className='current-column' >
           {this.getCurrentFilter()}
           {this.getCurrentColumn()}
         </div>
         </div>
         <footer className="home-footer">
         </footer>
-      </div>
+      </section>
     );
   }
 }
@@ -125,7 +118,8 @@ class Home extends Component {
 const mapStateToProps = state => ({
   proPosts: state.proReducers.proPosts,
   editing: state.proReducers.editing,
-  loading: state.proReducers.loading
+  loading: state.proReducers.loading,
+  isShowing: state.modal.isShowing
 });
 
 export default connect(mapStateToProps)(Home);

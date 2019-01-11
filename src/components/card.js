@@ -120,11 +120,7 @@ class Card extends React.Component {
         return (
           <div className="pro-list-item"
             onClick={() => {
-              // if(this.props.expanded === "new"){
-              //   this.props.dispatch(fetchProPosts())
-              // }
-              // this.props.dispatch(proSetEdit("none"))
-              // this.props.dispatch(proSetExpanded(this.props.id));
+              document.body.style.overflow = "hidden"
               this.props.dispatch(getActiveProPost(this.props.id))
               this.props.dispatch(showModal("active-pro-card"))
               }}>
