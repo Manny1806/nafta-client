@@ -60,7 +60,7 @@ export default function reducer(state = initialState, action) {
         return {...state}
     }
     else if (action.type === ADD_EMPTY_PRO_ENTRY) {
-        return {...state, proPosts: [action.proPost].concat(state.proPosts)}
+        return {...state, activeProPost: action.activeProPost}
     }
     else if (action.type === PRO_SET_EDIT) {
         return {...state, editing: action.editing}

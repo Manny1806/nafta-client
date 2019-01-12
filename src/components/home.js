@@ -58,7 +58,9 @@ class Home extends Component {
     return (
       <div className="filter-bar">
         <section className="new-entry-button" onClick={()=>{
-          this.props.dispatch(showModal('active-pro-card-new'))
+          this.props.dispatch(proSetEdit(true))
+          this.props.dispatch(addEmptyProEntry())
+          this.props.dispatch(showModal('active-pro-card'))
           document.body.style.overflow = "hidden"
           }}>New Entry</section>
       </div>

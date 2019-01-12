@@ -7,12 +7,12 @@ import './modal.css'
 
 class Modal extends Component {
   setPage() {
-    if (this.props.page === 'active-pro-card-new'){
-      return <ActiveProCard id="new"/>
-    }
-    else if (this.props.page === 'active-pro-card'){
+    if (this.props.page === 'active-pro-card'){
       return <ActiveProCard />
     }
+    // else if (this.props.page === 'active-pro-card'){
+    //   return <ActiveProCard />
+    // }
   }
   render() {
 
