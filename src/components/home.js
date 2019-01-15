@@ -86,10 +86,11 @@ class Home extends Component {
         </header>
         <div className="column-header-container">
           <div className="for-header" onClick={()=>{
-            this.props.dispatch(fetchProPosts())
-            this.setState({
+            if(this.state.currentColumn !== "pro"){
+              this.props.dispatch(fetchProPosts())
+              this.setState({
               currentColumn: "pro"
-            })
+            })}
             }}>
             <div className="column-header-hover"/>
             <span>Who likes the new NAFTA?</span>

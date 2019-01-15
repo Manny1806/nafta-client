@@ -13,7 +13,9 @@ class ActiveProCard extends React.Component {
       this.title = React.createRef();
       this.image = React.createRef();
       this.state = {
-        key: Math.random()
+        key: Math.random(),
+        submitDisabled: false,
+        titleError: ""
       }
     }
     render() {
@@ -28,7 +30,21 @@ class ActiveProCard extends React.Component {
             <div className="pro-list-item-active-edit">
               <div>
                 <label className="title-label">Title</label>
-                <input className="title-input" ref={this.title} defaultValue={this.props.activeProPost.title || ""}/>
+                <input className="title-input" ref={this.title} defaultValue={this.props.activeProPost.title || ""}
+                onChange={(e)=>{
+                  if(e.target.value.length < 1){
+                    this.setState({
+                      titleError: "title field is required",
+                      submitDisabled: true
+                    })
+                  } else if (e.target.value.length >= 1 && e.target.value.length < 70){
+                    this.setState({
+                      titleError: "",
+                      submitDisabled: false
+                    })
+                  } 
+                }}/>
+                <label className="title-error">{this.state.titleError}</label>
     
                 <label className="quote-label">Quote</label>
                 <textarea className="quote-input" ref={this.quote} defaultValue={this.props.activeProPost.quote || ""}/>
