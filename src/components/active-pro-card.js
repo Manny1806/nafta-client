@@ -13,10 +13,13 @@ class ActiveProCard extends React.Component {
       this.title = React.createRef();
       this.image = React.createRef();
       this.state = {
-        key: Math.random(),
+        editImg: "",
         submitDisabled: false,
         titleError: ""
       }
+    }
+    componentDidMount(){
+      
     }
     render() {
         if(this.props.loading){
@@ -43,7 +46,8 @@ class ActiveProCard extends React.Component {
                       submitDisabled: false
                     })
                   } 
-                }}/>
+                }}
+                />
                 <label className="title-error">{this.state.titleError}</label>
     
                 <label className="quote-label">Quote</label>
@@ -59,29 +63,55 @@ class ActiveProCard extends React.Component {
                 <textarea className="description-input" ref={this.description} defaultValue={this.props.activeProPost.description || ""}/>
   
                 <label className="image-upload-label">Image</label>
-                <input className="image-upload-input" key={this.state.key} onChange={(e)=>{ this.setState({key: Math.random()})}} 
+                <input className="image-upload-input" key={this.state.key} onChange={(e)=>{
+                  this.setState({
+                    editImg: URL.createObjectURL(this.image.current.files[0])
+                  })
+                }
+                } 
                   name="file" ref={this.image} type="file" accept="image/png, image/jpeg"/>
   
                 <div className="active-image-container-edit">
-                  <img className="image" src={this.image.current? URL.createObjectURL(this.image.current.files[0]) : this.props.activeProPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"}/>
+                  <img className="image" src={
+                    this.state.editImg
+                    }/>
                 </div>
   
                 <button className="confirm-button" onClick={()=>{
                   var id = this.props.activeProPost._id
-                  const data = {
-                    title: this.title.current.value,
-                    quote: this.quote.current.value,
-                    quoteReference: this.quoteReference.current.value || "",
-                    quoteLink: this.quoteLink.current.value || "",
-                    description: this.description.current.value || "",
-                    imgUrl: ""
-                  }
-                  
-                  // data.append('file', this.image.current.files[0])
-                  id ? this.props.dispatch(editProPost(id, data)) : this.props.dispatch(addProPost(data))
-                  document.body.style.overflow = "visible"
-                  this.props.dispatch(hideModal())
-                  this.props.dispatch(proSetEdit(false))
+                  if(this.image.current.files[0]){
+                    var imgData = new FormData()
+                    imgData.append("file", this.image.current.files[0])
+                    this.props.dispatch(uploadProImage(imgData))
+                    .then((res)=>{
+                    console.log(res)
+                    const data = {
+                      title: this.title.current.value,
+                      quote: this.quote.current.value,
+                      quoteReference: this.quoteReference.current.value || "",
+                      quoteLink: this.quoteLink.current.value || "",
+                      description: this.description.current.value || "",
+                      imgUrl: res.imgUrl.url
+                    }
+                    id ? this.props.dispatch(editProPost(id, data)) : this.props.dispatch(addProPost(data))
+                    document.body.style.overflow = "visible"
+                    this.props.dispatch(hideModal())
+                    this.props.dispatch(proSetEdit(false))
+                  })
+                  } else {
+                    const data = {
+                      title: this.title.current.value,
+                      quote: this.quote.current.value,
+                      quoteReference: this.quoteReference.current.value || "",
+                      quoteLink: this.quoteLink.current.value || "",
+                      description: this.description.current.value || "",
+                      imgUrl: this.props.activeProPost.imgUrl || ""
+                    }
+                    id ? this.props.dispatch(editProPost(id, data)) : this.props.dispatch(addProPost(data))
+                    document.body.style.overflow = "visible"
+                    this.props.dispatch(hideModal())
+                    this.props.dispatch(proSetEdit(false))
+                  } 
                 }}>Confirm</button>
     
                 <button className="cancel-button" onClick={()=>{
@@ -116,6 +146,9 @@ class ActiveProCard extends React.Component {
             }}>X</button>
 
             <button className="edit-button"onClick={()=>{
+              this.setState({
+                editImg: this.props.activeProPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"
+              })
               this.props.dispatch(proSetEdit(true))
             }}>Edit</button>
             <button className="delete-button" onClick={()=>{

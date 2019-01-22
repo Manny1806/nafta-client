@@ -80,7 +80,7 @@ export const uploadProImageSuccess = (imgUrl) => ({
 export const uploadProImage = (file) => dispatch => {
     console.log(file)
     dispatch(uploadProImageRequest())
-    fetch(`${API_BASE_URL}/api/pro/img/`, {
+    return fetch(`${API_BASE_URL}/api/pro/img/`, {
         method: 'POST',
         body: file
     })
