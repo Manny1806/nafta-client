@@ -8,6 +8,8 @@ import './home.css';
 import './current-column.css';
 import './edit.css'
 import ProCard from './pro/pro-card'
+import ConCard from './con/con-card'
+import CongressCard from './congress/congress-card'
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import {fetchProPosts, addEmptyProEntry, proSetEdit} from '../actions/home/pro-actions';
@@ -52,8 +54,52 @@ class Home extends Component {
           })}
           </ul>
       )
+    }} else if (this.state.currentColumn === "con"){
+      if(this.props.loading){
+        return (<ul className="loader"></ul>)
+      } else {
+      return (
+        
+        <ul className="pro-list-ul">
+          {}
+          {this.props.conPosts.map((item, index) => {
+            if(item.id === "new"){
+              
+              return (
+                <ConCard key={index} cardItem={item} id="new" />
+              )
+            } else {
+              return (
+                <ConCard key={index} cardIndex={index} cardItem={item} id={item._id}/>
+              )
+            }
+          })}
+          </ul>
+      )
+    }} else if (this.state.currentColumn === "congress"){
+      if(this.props.loading){
+        return (<ul className="loader"></ul>)
+      } else {
+      return (
+        
+        <ul className="pro-list-ul">
+          {}
+          {this.props.congressPosts.map((item, index) => {
+            if(item.id === "new"){
+              
+              return (
+                <CongressCard key={index} cardItem={item} id="new" />
+              )
+            } else {
+              return (
+                <CongressCard key={index} cardIndex={index} cardItem={item} id={item._id}/>
+              )
+            }
+          })}
+          </ul>
+      )
     }}
-  }
+  } 
 
   getCurrentFilter() {
     if(this.state.currentColumn === "none") {
@@ -66,17 +112,54 @@ class Home extends Component {
       </div>
     )
     }
+    else if (this.state.currentColumn === "con"){
+      return (
+        <div className="filter-bar">
+          {this.props.loggedIn?this.getNewEntryButton(): ""}
+        </div>
+      )
+    }
+    else if (this.state.currentColumn === "congress"){
+      return (
+        <div className="filter-bar">
+          {this.props.loggedIn?this.getNewEntryButton(): ""}
+        </div>
+      )
+    }
   }
 
   getNewEntryButton() {
-    return (
-      <section className="new-entry-button" onClick={()=>{
-        this.props.dispatch(proSetEdit(true))
-        this.props.dispatch(addEmptyProEntry())
-        this.props.dispatch(showModal('active-pro-card'))
-        document.body.style.overflow = "hidden"
-        }}>New Entry</section>
-    )
+    if(this.state.currentColumn === "pro"){
+      return (
+        <section className="new-entry-button" onClick={()=>{
+          this.props.dispatch(proSetEdit(true))
+          this.props.dispatch(addEmptyProEntry())
+          this.props.dispatch(showModal('active-pro-card'))
+          document.body.style.overflow = "hidden"
+          }}>New Entry</section>
+      )
+    }
+    else if(this.state.currentColumn === "con"){
+      return (
+        <section className="new-entry-button" onClick={()=>{
+          this.props.dispatch(conSetEdit(true))
+          this.props.dispatch(addEmptyConEntry())
+          this.props.dispatch(showModal('active-con-card'))
+          document.body.style.overflow = "hidden"
+          }}>New Entry</section>
+      )
+    }
+    else if(this.state.currentColumn === "congress"){
+      return (
+        <section className="new-entry-button" onClick={()=>{
+          this.props.dispatch(congressSetEdit(true))
+          this.props.dispatch(addEmptyCongressEntry())
+          this.props.dispatch(showModal('active-congress-card'))
+          document.body.style.overflow = "hidden"
+          }}>New Entry</section>
+      )
+    }
+    
   }
 
   getLoginNav() {
@@ -125,11 +208,23 @@ class Home extends Component {
             <div className="column-header-hover"/>
             <span>Who likes the new NAFTA?</span>
           </div>
-          <div className="con-header">
+          <div className="con-header" onClick={()=>{
+            if(this.state.currentColumn !== "con"){
+              this.props.dispatch(fetchConPosts())
+              this.setState({
+              currentColumn: "con"
+            })}
+            }}>
             <div className="column-header-hover"/>
             <span>Who's left behind?</span>
           </div>
-          <div className="congress-header">
+          <div className="congress-header" onClick={()=>{
+            if(this.state.currentColumn !== "congress"){
+              this.props.dispatch(fetchCongressPosts())
+              this.setState({
+              currentColumn: "congress"
+            })}
+            }}>
             <div className="column-header-hover"/>
             <span>Where do our representatives stand?</span>
           </div>
@@ -150,8 +245,10 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   proPosts: state.proReducers.proPosts,
+  conPosts: state.conReducers.conPosts,
+  congressPosts: state.congressReducers.congressPosts,
   editing: state.proReducers.editing,
-  loading: state.proReducers.loading,
+  loading: state.proReducers.loading || state.conReducers.loading || state.congressReducers.loading,
   loggedIn: state.auth.currentUser !== null,
   isShowing: state.modal.isShowing
 });

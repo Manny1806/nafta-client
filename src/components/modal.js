@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ActiveProCard from './pro/active-pro-card'
+import ActiveConCard from './con/active-con-card'
+import ActiveCongressCard from './congress/active-congress-card'
 import Login from './login/login'
 
 
@@ -10,6 +12,12 @@ class Modal extends Component {
   setPage() {
     if (this.props.page === 'active-pro-card'){
       return <ActiveProCard />
+    }
+    else if (this.props.page === 'active-con-card'){
+      return <ActiveConCard />
+    }
+    else if (this.props.page === 'active-congress-card'){
+      return <ActiveCongressCard />
     }
     else if (this.props.page === 'login'){
       return <Login />
