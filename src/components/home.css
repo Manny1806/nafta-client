@@ -53,10 +53,11 @@ body{
     margin-right: 20px;
     cursor: pointer;
     transition: 0.3s color;
+    font-style: bold;
 }
 
 .home-header-menu nav:hover{
-    color: black;
+    color: rgb(107, 107, 107);
 }
 
 /* container for the three different 'column' header buttons */

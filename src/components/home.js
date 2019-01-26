@@ -7,8 +7,13 @@ import { showModal } from '../actions/home/modal'
 import './home.css';
 import './current-column.css';
 import './edit.css'
-import Card from './card'
-import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded} from '../actions/home/pro-actions';
+import ProCard from './pro/pro-card'
+import {clearAuth} from '../actions/auth';
+import {clearAuthToken} from '../local-storage';
+import {fetchProPosts, addEmptyProEntry, proSetEdit} from '../actions/home/pro-actions';
+import {fetchConPosts, addEmptyConEntry, conSetEdit} from '../actions/home/con-actions';
+import {fetchCongressPosts, addEmptyCongressEntry, congressSetEdit} from '../actions/home/congress-actions';
+
 
 
 class Home extends Component {
@@ -37,11 +42,11 @@ class Home extends Component {
             if(item.id === "new"){
               
               return (
-                <Card key={index} cardItem={item} id="new" />
+                <ProCard key={index} cardItem={item} id="new" />
               )
             } else {
               return (
-                <Card key={index} cardIndex={index} cardItem={item} id={item._id}/>
+                <ProCard key={index} cardIndex={index} cardItem={item} id={item._id}/>
               )
             }
           })}
@@ -57,14 +62,39 @@ class Home extends Component {
     else if (this.state.currentColumn === "pro"){
     return (
       <div className="filter-bar">
-        <section className="new-entry-button" onClick={()=>{
-          this.props.dispatch(proSetEdit(true))
-          this.props.dispatch(addEmptyProEntry())
-          this.props.dispatch(showModal('active-pro-card'))
-          document.body.style.overflow = "hidden"
-          }}>New Entry</section>
+        {this.props.loggedIn?this.getNewEntryButton(): ""}
       </div>
     )
+    }
+  }
+
+  getNewEntryButton() {
+    return (
+      <section className="new-entry-button" onClick={()=>{
+        this.props.dispatch(proSetEdit(true))
+        this.props.dispatch(addEmptyProEntry())
+        this.props.dispatch(showModal('active-pro-card'))
+        document.body.style.overflow = "hidden"
+        }}>New Entry</section>
+    )
+  }
+
+  getLoginNav() {
+    if(this.props.loggedIn){
+      return (
+        <nav onClick={()=>{
+            this.props.dispatch(clearAuth())
+            clearAuthToken()
+            }}>
+          <span>log out</span>
+        </nav>
+      )
+    } else {
+      return (
+        <nav onClick={()=>this.props.dispatch(showModal('login'))}>
+          <span>log in</span>
+        </nav>
+      )
     }
   }
 
@@ -79,7 +109,7 @@ class Home extends Component {
             <div className="home-header-menu">
               <nav><span>home</span></nav>
               <nav><span>about</span></nav>
-              <nav><span>login</span></nav>
+              {this.getLoginNav()}
               <nav><span>contact</span></nav>
             </div>
           </div>
@@ -122,7 +152,9 @@ const mapStateToProps = state => ({
   proPosts: state.proReducers.proPosts,
   editing: state.proReducers.editing,
   loading: state.proReducers.loading,
+  loggedIn: state.auth.currentUser !== null,
   isShowing: state.modal.isShowing
 });
+
 
 export default connect(mapStateToProps)(Home);

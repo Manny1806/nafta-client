@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ActiveProCard from './active-pro-card'
+import ActiveProCard from './pro/active-pro-card'
+import Login from './login/login'
 
 
 import './modal.css'
@@ -10,9 +11,9 @@ class Modal extends Component {
     if (this.props.page === 'active-pro-card'){
       return <ActiveProCard />
     }
-    // else if (this.props.page === 'active-pro-card'){
-    //   return <ActiveProCard />
-    // }
+    else if (this.props.page === 'login'){
+      return <Login />
+    }
   }
   render() {
 

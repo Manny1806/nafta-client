@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { hideModal } from '../actions/home/modal'
-import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded, uploadProImage, proSetImgUrl} from '../actions/home/pro-actions';
+import { hideModal } from '../../actions/home/modal'
+import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded, uploadProImage, proSetImgUrl} from '../../actions/home/pro-actions';
 
 class ActiveProCard extends React.Component {
     constructor(props) {
@@ -18,9 +18,28 @@ class ActiveProCard extends React.Component {
         titleError: ""
       }
     }
-    componentDidMount(){
-      
+
+    getEditButton () {
+      return (
+          <button className="edit-button"onClick={()=>{
+          this.setState({
+            editImg: this.props.activeProPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"
+          })
+          this.props.dispatch(proSetEdit(true))
+          }}>Edit</button>
+      )
     }
+
+    getDeleteButton () {
+      return (
+          <button className="delete-button" onClick={()=>{
+          this.props.dispatch(deleteProPost(this.props.activeProPost._id))
+          document.body.style.overflow = "visible"
+          this.props.dispatch(this.props.dispatch(hideModal()))
+          }}>Delete</button>
+      )
+    }
+    
     render() {
         if(this.props.loading){
           return (
@@ -144,18 +163,9 @@ class ActiveProCard extends React.Component {
               document.body.style.overflow = "visible"
               this.props.dispatch(this.props.dispatch(hideModal()))
             }}>X</button>
-
-            <button className="edit-button"onClick={()=>{
-              this.setState({
-                editImg: this.props.activeProPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"
-              })
-              this.props.dispatch(proSetEdit(true))
-            }}>Edit</button>
-            <button className="delete-button" onClick={()=>{
-              this.props.dispatch(deleteProPost(this.props.activeProPost._id))
-              document.body.style.overflow = "visible"
-              this.props.dispatch(this.props.dispatch(hideModal()))
-              }}>Delete</button>
+              {/* if logged in show edit and delete buttons */}
+              {this.props.loggedIn ? this.getEditButton() : ""}
+              {this.props.loggedIn ? this.getDeleteButton() : ""}
               </div>
             </div>)
         }
@@ -167,6 +177,7 @@ const mapStateToProps = state => ({
     editing: state.proReducers.editing,
     loading: state.proReducers.activeProPostLoading,
     imgUrl: state.proReducers.imgUrl,
+    loggedIn: state.auth.currentUser !== null,
     activeProPost: state.proReducers.activeProPost
   });
 

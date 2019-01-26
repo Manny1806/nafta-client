@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded, uploadProImage, proSetImgUrl, getActiveProPost} from '../actions/home/pro-actions';
-import { showModal } from '../actions/home/modal'
-import './current-column.css';
-import './edit.css'
+import {fetchCongressPosts, addEmptyCongressEntry, editCongressPost, addCongressPost, deleteCongressPost, congressSetEdit, congressSetExpanded, uploadCongressImage, congressSetImgUrl, getActiveCongressPost} from '../../actions/home/congress-actions';
+import { showModal } from '../../actions/home/modal'
+import '../current-column.css';
+import '../edit.css'
 
-class Card extends React.Component {
+class CongressCard extends React.Component {
     render() 
       {
         return (
           <div className="pro-list-item"
             onClick={() => {
               document.body.style.overflow = "hidden"
-              this.props.dispatch(getActiveProPost(this.props.id))
-              this.props.dispatch(showModal("active-pro-card"))
+              this.props.dispatch(getActiveCongressPost(this.props.id))
+              this.props.dispatch(showModal("active-congress-card"))
               }}>
             <div>
               <div className="image-container">
@@ -32,10 +32,10 @@ class Card extends React.Component {
   
 
   const mapStateToProps = state => ({
-    editing: state.proReducers.editing,
-    expanded: state.proReducers.expanded,
-    loading: state.proReducers.editLoading,
-    imgUrl: state.proReducers.imgUrl
+    editing: state.congressReducers.editing,
+    expanded: state.congressReducers.expanded,
+    loading: state.congressReducers.editLoading,
+    imgUrl: state.congressReducers.imgUrl
   });
 
-  export default connect (mapStateToProps) (Card)
+  export default connect (mapStateToProps) (CongressCard)
