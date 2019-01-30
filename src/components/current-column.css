@@ -194,9 +194,9 @@
 
 .pro-list-item p{
     display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 170px;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* height: 170px; */
     width: 90%;
     font-size: 14px;
     font-style: italic;

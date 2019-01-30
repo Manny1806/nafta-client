@@ -48,7 +48,7 @@ class Home extends Component {
               )
             } else {
               return (
-                <ProCard key={index} cardIndex={index} cardItem={item} id={item._id}/>
+                <ProCard key={index} cardIndex={index} cardItem={item} id={item._id} quoteText={`quote${index}`}/>
               )
             }
           })}
