@@ -103,7 +103,12 @@ class Home extends Component {
 
   getCurrentFilter() {
     if(this.state.currentColumn === "none") {
-      return (<div/>)
+      return (
+      <div className="landing-page-text-container">
+        <p>On November 30, 2018 the U.S., Mexico, and Canada signed a trade deal to replace NAFTA. 
+            <br/>It is known as the United States-Mexico-Canada Agreement, or USMCA.</p>
+      </div>
+      )
     }
     else if (this.state.currentColumn === "pro"){
     return (
@@ -237,6 +242,7 @@ class Home extends Component {
         </div>
         </div>
         <footer className="home-footer">
+
         </footer>
       </section>
     );
