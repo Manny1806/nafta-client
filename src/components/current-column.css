@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0, 0.3);
+    /* background-color: rgb(0, 0, 0, 0.3); */
 }
 
 .new-entry-button {
@@ -26,8 +26,8 @@
     height: auto;
     position: absolute;
     top: 250px;
-    background-color: rgb(57, 83, 213);
-    background-image: linear-gradient(141deg, #9fb8ad 0%, #1f71db 51%, #2cb5e8 75%);
+    /* background-color: rgb(57, 83, 213); */
+    /* background-image: linear-gradient(141deg, #9fb8ad 0%, #1f71db 51%, #2cb5e8 75%); */
 }
 
 .column-entries-container{
@@ -36,8 +36,10 @@
     /* padding-top: 10px; */
     padding-bottom: 10px;
     /* top: 250px; */
-    background-color: rgb(57, 83, 213);
-    background-image: linear-gradient(141deg, #9fb8ad 0%, #1f71db 51%, #2cb5e8 75%);
+    /* background-color: rgb(57, 83, 213); */
+    /* background-image: linear-gradient(141deg, #9fb8ad 0%, #1f71db 51%, #2cb5e8 75%);
+     */
+     /* background-color: #88BBE9; */
     transition: 1s max-height;
 }
 
@@ -61,7 +63,7 @@
 
 
 .pro-list-item{
-    background-color: rgb(183, 193, 250);
+    background-color: rgb(255, 255, 255);
     overflow: hidden;
     margin: 10px;
     border-radius: 3px;
@@ -146,10 +148,16 @@
 }
 
 .reference-span{
-    width: 80%;
-    text-align: right;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
     display: block;
     font-style: italic;
+}
+
+.reference-span a{
+    text-decoration: none;
+    border-bottom: solid 1px blue
 }
 
 .pro-list-item-active h2 {

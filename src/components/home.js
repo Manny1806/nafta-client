@@ -105,8 +105,25 @@ class Home extends Component {
     if(this.state.currentColumn === "none") {
       return (
       <div className="landing-page-text-container">
-        <p>On November 30, 2018 the U.S., Mexico, and Canada signed a trade deal to replace NAFTA. 
-            <br/>It is known as the United States-Mexico-Canada Agreement, or USMCA.</p>
+        
+        <p className="landing-text-1">The U.S. Congress is set to take up the new version of the 
+          North American Free Trade Agreement. Called NAFTA 2.0 by many—called 
+          the USMCA (United States-Mexico-Canada Agreement) by the Trump 
+          administration—this is highly contested ground, the trade battle of our day.</p>
+
+          <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed off to, in a ceremony
+           on November 30, by the executives of Mexico, Canada, and the U.S.  It takes
+            effect if the legislatures of these signatory countries pass it.</p>
+
+          <p className="landing-text-3">President Donald Trump touts the text that was agreed to as the fix NAFTA needed.</p>
+
+          <p className="landing-text-4">What are other people saying about the new NAFTA?
+          Click on a section above to take in a range of views by people and 
+          organizations on the deal—whether they be the sort to like NAFTA 2.0, 
+          to be left behind by NAFTA and NAFTA 2.0, or to be our own members of 
+          Congress, whose pleasure or displeasure at the new NAFTA makes all the 
+          difference.
+          </p>
       </div>
       )
     }
@@ -192,14 +209,19 @@ class Home extends Component {
       <Modal />
         <header className="home-header">
           <div className="home-banner-container">
-            <span className="home-title"> NAFTA Reactor</span>
-            <span className="home-sub-title">Sorting out Trump's New NAFTA</span>
+          <div className="home-banner-transparency"/>
+            <div className="logo-image-container">
+              <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549333501/NAFTA_Reactor_logo.png"/>
+            </div>
+            {/* <span className="home-title"> NAFTA Reactor</span> */}
+            {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
             <div className="home-header-menu">
               <nav><span>home</span></nav>
               <nav><span>about</span></nav>
               {this.getLoginNav()}
               <nav><span>contact</span></nav>
             </div>
+          
           </div>
         </header>
         <div className="column-header-container">
@@ -242,7 +264,7 @@ class Home extends Component {
         </div>
         </div>
         <footer className="home-footer">
-
+            <p>&copy;2019 Alex Widner</p>
         </footer>
       </section>
     );

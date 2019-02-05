@@ -4,7 +4,7 @@ body{
 }
 .Home {
     text-align: center;
-    background-color: bisque;
+    background-color:#88BBE9;
     position: relative;
     max-width: 1500px;
     margin-left:auto;
@@ -20,31 +20,63 @@ body{
 /* container for page banner which has two headers and possibly the sit menu */
 .home-banner-container{
     /* padding-top: 10px; */
+    position: relative;
     width: 100%;
-    height: 100px;
+    height: 180px;
     font-size: 20px;
-    background-color: rgb(1, 1, 148);
+    /* background-color: #2e81b8; */
+    background-image: url(https://res.cloudinary.com/siouxcitymusic/image/upload/v1549335138/horizon.png);
+    background-size: cover;
+    background-position: center;
     color: white;
 }
 
+.home-banner-transparency{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://res.cloudinary.com/siouxcitymusic/image/upload/v1549334732/png-seamless-chainlink-fence.png);
+    opacity: 1;
+    
+}
+
+.logo-image-container{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top:0;
+    bottom:0;
+    margin-top: auto;
+    margin-bottom: auto;
+    left: 20px;
+}
+
+.logo-image{
+    height: 100%
+}
+
 .home-title{
-    font-size: 30px;
+    font-size: 40px;
     position: absolute;
     left: 30px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .home-sub-title{
-    font-size: 15px;
+    font-size: 25px;
     position: absolute;
     left: 30px;
-    margin-top: 65px;
+    margin-top: 95px;
+}
+
+.home-header{
+    box-shadow: 0px 10px 40px -10px black;
 }
 
 .home-header-menu{
-    margin-top: 40px;
+    margin-top: 80px;
     position: absolute;
-    right: 10px;
+    right: 5px;
     display: flex;
     /* width: 30%; */
 }
@@ -62,14 +94,36 @@ body{
 
 .home-footer{
     border-top: solid black 2px;
+    height: 50px;
+    color: rgb(89, 89, 89);
+    background-color: rgb(169, 202, 230);
+}
+
+.landing-text-1{
+    font-family: Poppins;
+}
+
+.landing-text-2{
+    font-family: Poppins;
+}
+
+.landing-text-3{
+    font-family: Poppins;
+}
+
+.landing-text-4{
+    font-family: Poppins;
 }
 
 /* container for the three different 'column' header buttons */
 .column-header-container {
     width: 100%;
-    height: 150px;
+    height: 200px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: relative;
+    /* background-color: #88BBE9; */
 }
 
 /*class for the hover effect div on each column header button */
@@ -81,25 +135,30 @@ body{
     background-color: black;
     opacity: 0.4;
     pointer-events: none;
+    border-radius: 5px;
     transition: height 0.5s;
 }
 
 /* header button/div for those in favor of new NAFTA */
 .for-header {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 33.33%;
+    position: relative;
+    /* top: 0; */
+    height: 75%;
+    width: 30%;
     background-image: url('https://nuovonovalis.files.wordpress.com/2014/05/cigar_chomping_liberals.jpg');
     background-position: center;
-    border-top: solid black 2px;
+    /* border-top: solid black 2px;
     border-left: solid black 2px;
-    border-bottom: solid black 2px;
+    border-bottom: solid black 2px; */
+    -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(80%);
     box-sizing: border-box;
     font-size: 30px;
     color: white;
-    transition: color 0.5s;
+    transition: all 0.5s;
     cursor: pointer;
+    box-shadow: 0px 10px 40px -10px black;
+    border-radius: 5px;
 }
 
 .for-header span{
@@ -114,6 +173,8 @@ body{
 
 .for-header:hover {
     color: black;
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
 }
 
 .for-header:hover .column-header-hover{
@@ -123,17 +184,21 @@ body{
 /* header button/div for those against new NAFTA */
 .con-header {
     display: block;
-    position: absolute;
-    height: 100%;
-    width: 33.33%;
-    left: 33.33%;
+    position: relative;;
+    height: 75%;
+    width: 30%;
+    /* left: 33.33%; */
     background-image: url('https://as1.ftcdn.net/jpg/00/83/13/94/500_F_83139423_jB7UufgedPD7EI31mvqcBWpBgnpU4bLd.jpg');
-    border: solid black 2px;
+    /* border: solid black 2px; */
     box-sizing: border-box;
     font-size: 30px;
     color: white;
-    transition: color 0.5s;
+    transition: all 0.5s;
+    -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(80%);
     cursor: pointer;
+    box-shadow: 0px 10px 40px -10px black;
+    border-radius: 5px;
 }
 
 .con-header span{
@@ -148,6 +213,8 @@ body{
 
 .con-header:hover {
     color: black;
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
 }
 
 .con-header:hover .column-header-hover{
@@ -157,20 +224,24 @@ body{
 /* header button/div for members of congress' stances */
 .congress-header {
     display: block;
-    position: absolute;
-    height: 100%;
-    width: 33.33%;
-    left: 66.66%;
+    position: relative;
+    height: 75%;
+    width: 30%;
+    /* left: 66.66%; */
     background-image: url('https://as2.ftcdn.net/jpg/00/65/35/01/500_F_65350108_Lp9kpNGF2iNSSOeLNqsKq1RifAmCXq3j.jpg');
     background-position-y: center;
-    border-top: solid black 2px;
+    /* border-top: solid black 2px;
     border-right: solid black 2px;
-    border-bottom: solid black 2px;
+    border-bottom: solid black 2px; */
     box-sizing: border-box;
     font-size: 30px;
     color: white;
-    transition: color 0.5s;
+    -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(80%);
+    transition: all 0.5s;
     cursor: pointer;
+    box-shadow: 0px 10px 40px -10px black;
+    border-radius: 5px;
 }
 
 .congress-header span{
@@ -189,6 +260,8 @@ body{
 
 .congress-header:hover {
     color: black;
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
 }
 
 .loader {
@@ -218,3 +291,31 @@ body{
   .landing-page-text-container {
       padding-top: 10px;
   }
+
+  .landing-text-1 {
+      margin-right: auto;
+      margin-left:auto;
+      font-size: 25px;
+      max-width: 70%;
+  }
+
+  .landing-text-2 {
+    margin-right: auto;
+    margin-left:auto;
+    font-size: 25px;
+    max-width: 70%;
+}
+
+.landing-text-3 {
+    margin-right: auto;
+    margin-left:auto;
+    font-size: 25px;
+    max-width: 70%;
+}
+
+.landing-text-4 {
+    margin-right: auto;
+    margin-left:auto;
+    font-size: 25px;
+    max-width: 70%;
+}
