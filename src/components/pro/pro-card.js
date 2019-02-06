@@ -10,9 +10,11 @@ class ProCard extends React.Component {
     super(props);
     this.quoteTitle = React.createRef();
     this.quoteText = React.createRef();
+    this.image = React.createRef();
     }
     
     componentDidMount(){
+      console.log(this.image)
       //add elipsis to quotes that all too long for collapsed card
       let titleHeight = this.quoteTitle.current.clientHeight
       //240 - titleHeight
@@ -36,7 +38,7 @@ class ProCard extends React.Component {
               }}>
             <div>
               <div className="image-container">
-                <img className="image" src={this.props.cardItem.imgUrl || "https://www.freeiconspng.com/uploads/no-image-icon-11.PNG"}/>
+                <img ref={this.image} className="image" src={this.props.cardItem.imgUrl || "https://www.freeiconspng.com/uploads/no-image-icon-11.PNG"}/>
               </div>
               <h2 ref={this.quoteTitle}>{this.props.cardItem.title}</h2>
               <div className="quote-container">

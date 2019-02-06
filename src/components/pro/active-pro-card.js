@@ -12,12 +12,15 @@ class ActiveProCard extends React.Component {
       this.description = React.createRef();
       this.title = React.createRef();
       this.image = React.createRef();
+      
+      // this.staticImage = this.staticImage.bind(this);
       this.state = {
         editImg: "",
         submitDisabled: false,
         titleError: ""
       }
     }
+
 
     getEditButton () {
       return (
@@ -41,11 +44,11 @@ class ActiveProCard extends React.Component {
     }
     
     render() {
-        if(this.props.loading){
-          return (
-            <section className="small-loader"/>
-          )
-        } else {
+        // if(this.props.loading){
+        //   return (
+        //     <section className="small-loader"/>
+        //   )
+        // } else {
         if(this.props.editing){
           
           return (
@@ -148,7 +151,7 @@ class ActiveProCard extends React.Component {
             <h2>{this.props.activeProPost.title}</h2>
 
             <div className="active-image-container">
-              <img className="image" src={this.props.activeProPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"}/>
+              <img className="image"  src={this.props.activeProPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"}/>
             </div>
 
             <p className="quote">
@@ -171,7 +174,7 @@ class ActiveProCard extends React.Component {
         }
       }
     }
-}
+
 
 const mapStateToProps = state => ({
     editing: state.proReducers.editing,
