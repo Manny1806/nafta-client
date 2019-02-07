@@ -17,6 +17,7 @@
     transform: translate(-50%, -50%);
     /* height: 400px; */
     /* width: 300px; */
+    max-height: 90vh;
     background: lightgray;
     z-index: 11;
     /* padding: 20px; */
@@ -28,7 +29,13 @@
   @media only screen and (max-width: 500px) {
     .confirm-modal-content {
       transform: translate(-50%, -50%);
-      top:45%;
+      top:50%;
+    }
+    @media only screen and (max-width: 420px) {
+      .confirm-modal-content{
+        max-height: 90vh;
+        overflow: auto;
+      }
     }
 }
 

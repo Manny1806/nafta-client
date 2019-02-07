@@ -100,7 +100,7 @@
     background-color: blanchedalmond;
     overflow: hidden;
     width: 600px;
-    max-height: 90vh;
+    /* max-height: 90vh; */
     border-radius: 3px;
     padding: 1rem;
 }
@@ -411,6 +411,7 @@
     }
 
     .pro-list-item-active {
+        height: 80vw;
         width: 90vw;
     }
 
@@ -487,4 +488,6 @@
     .quote-ref-label{
         grid-column: 1/6;
     }
+
+    
 }
