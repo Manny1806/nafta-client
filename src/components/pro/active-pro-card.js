@@ -44,11 +44,11 @@ class ActiveProCard extends React.Component {
     }
     
     render() {
-        // if(this.props.loading){
-        //   return (
-        //     <section className="small-loader"/>
-        //   )
-        // } else {
+        if(this.props.loading){
+          return (
+            <section className="small-loader"/>
+          )
+        } else {
         if(this.props.editing){
           
           return (
@@ -174,7 +174,7 @@ class ActiveProCard extends React.Component {
         }
       }
     }
-
+  }
 
 const mapStateToProps = state => ({
     editing: state.proReducers.editing,

@@ -276,7 +276,7 @@
 
 .confirm-button {
     margin: 5px;
-    grid-column: 4/6;
+    grid-column: 5/7;
     grid-row: 14;
     height: 50%;
     align-self: end;
@@ -381,4 +381,110 @@
 .image-upload-input{
     grid-column: 7/11;
     grid-row: 7;
+}
+
+@media only screen and (max-width: 420px) {
+    .quote-container {
+        display: none;
+    }
+
+    .pro-list-ul{
+        grid-template-columns: repeat(auto-fit, 100%);
+        grid-gap: 10px;
+    }
+
+    .pro-list-item{
+        height: 100px;
+    }
+
+    .pro-list-item > div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-items: flex-start;
+    }
+
+    .pro-list-item h2 {
+        font-size: 14px;
+        width: 60%;
+    }
+
+    .pro-list-item-active {
+        width: 90vw;
+    }
+
+    .pro-list-item-active-edit{
+        width: 90vw;
+    }
+
+    .con-list-item{
+        height: 100px;
+    }
+
+    .con-list-item > div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-items: flex-start;
+    }
+
+    .con-list-item h2 {
+        font-size: 14px;
+        width: 60%;
+    }
+
+    .con-list-item-active {
+        width: 90vw;
+    }
+
+    .con-list-item-active-edit{
+        width: 90vw;
+    }
+
+    .congress-list-item{
+        height: 100px;
+    }
+
+    .congress-list-item > div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-items: flex-start;
+    }
+
+    .congress-list-item h2 {
+        font-size: 14px;
+        width: 60%;
+    }
+
+    .congress-list-item-active {
+        width: 90vw;
+    }
+
+    .congress-list-item-active-edit{
+        width: 90vw;
+    }
+
+    .image-container {
+        height: 100px;
+        display: flex;
+        width: 40%;
+        /* justify-content: center; */
+        align-items: center;
+    }
+
+    .image{
+        max-width: 100%;
+    }
+
+    .filter-bar{
+        height: 40px;
+    }
+
+    .quote-ref-label{
+        grid-column: 1/6;
+    }
 }

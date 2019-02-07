@@ -19,7 +19,7 @@
         height: 50px;
         -webkit-animation: spin 1s linear infinite; /* Safari */
         animation: spin 1s linear infinite;
-       
+       background-color: transparent;
         /* background-color: gray; */
 }
       

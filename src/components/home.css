@@ -138,11 +138,13 @@ body{
     pointer-events: none;
     border-radius: 5px;
     transition: height 0.5s;
+    z-index: 0;
 }
 
 /* header button/div for those in favor of new NAFTA */
 .for-header {
     position: relative;
+    display: flex;
     /* top: 0; */
     height: 75%;
     width: 30%;
@@ -163,13 +165,15 @@ body{
 }
 
 .for-header span{
-    display: block;
+    /* display: block;
     position: absolute;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 55px;
+    margin-top: 55px; */
+    margin: auto;
+    z-index: 1;
 }
 
 .for-header:hover {
@@ -184,7 +188,7 @@ body{
 
 /* header button/div for those against new NAFTA */
 .con-header {
-    display: block;
+    display: flex;
     position: relative;;
     height: 75%;
     width: 30%;
@@ -203,13 +207,15 @@ body{
 }
 
 .con-header span{
-    display: block;
+    /* display: block;
     position: absolute;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 55px;
+    margin-top: 55px; */
+    margin: auto;
+    z-index: 1;
 }
 
 .con-header:hover {
@@ -224,7 +230,7 @@ body{
 
 /* header button/div for members of congress' stances */
 .congress-header {
-    display: block;
+    display: flex;
     position: relative;
     height: 75%;
     width: 30%;
@@ -246,13 +252,15 @@ body{
 }
 
 .congress-header span{
-    position: absolute;
+    /* position: absolute;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    margin-top: 40px;
+    margin-top: 40px; */
+    margin: auto;
+    z-index: 1;
 }
 
 .congress-header:hover .column-header-hover{
@@ -319,4 +327,64 @@ body{
     margin-left:auto;
     font-size: 25px;
     max-width: 70%;
+}
+
+@media only screen and (max-width: 420px) {
+    
+    .for-header{
+        background-size: auto 100%;
+    }
+
+    .for-header span{
+        font-size: 17px;
+        
+    }
+    
+    .con-header {
+        background-size: auto 100%;
+    }
+
+    .con-header span{
+        font-size: 17px;
+    }
+
+    .congress-header{
+        background-size: auto 100%;
+    }
+
+    .congress-header span{
+        font-size: 17px;
+    }
+
+    .column-header-container{
+        height: 120px;
+    }
+
+    .landing-text-1 {
+        font-size: 16px;
+        max-width: 85%;
+    }
+  
+    .landing-text-2 {
+        font-size: 16px;
+        max-width: 85%;
+    }
+  
+    .landing-text-3 {
+        font-size: 16px;
+        max-width: 85%;
+    }
+  
+    .landing-text-4 {
+        font-size: 16px;
+        max-width: 85%;
+    }
+
+    .loader{
+        width: 80px;
+        height: 80px;
+        border: 12px solid #f3f3f3;
+        border-top: 12px solid #3498db;
+        
+    }
 }
