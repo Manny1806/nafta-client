@@ -112,7 +112,7 @@ class Home extends Component {
           administration—this is highly contested ground, the trade battle of our day.</p>
 
           <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed off to, in a ceremony
-           on November 30, by the executives of Mexico, Canada, and the U.S.  It takes
+           on November 30, by the executives of Mexico, Canada, and the U.S.<img className="signing-photo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>  It takes
             effect if the legislatures of these signatory countries pass it.</p>
 
           <p className="landing-text-3">President Donald Trump touts the text that was agreed to as the fix NAFTA needed.</p>
@@ -233,6 +233,7 @@ class Home extends Component {
             })}
             }}>
             <div className="column-header-hover"/>
+            <div className="column-header-hover-white"/>
             <span>Who likes the new NAFTA?</span>
           </div>
           <div className="con-header" onClick={()=>{
@@ -243,6 +244,7 @@ class Home extends Component {
             })}
             }}>
             <div className="column-header-hover"/>
+            <div className="column-header-hover-white"/>
             <span>Who's left behind?</span>
           </div>
           <div className="congress-header" onClick={()=>{
@@ -253,6 +255,7 @@ class Home extends Component {
             })}
             }}>
             <div className="column-header-hover"/>
+            <div className="column-header-hover-white"/>
             <span>Where do our representatives stand?</span>
           </div>
         </div>

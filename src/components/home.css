@@ -124,6 +124,7 @@ body{
     justify-content: space-around;
     align-items: center;
     position: relative;
+    font-family: Francois One;
     /* background-color: #88BBE9; */
 }
 
@@ -134,11 +135,28 @@ body{
     width: 100%;
     box-sizing: border-box;
     background-color: black;
-    opacity: 0.4;
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(0, 0, 0)); */
+    opacity: 0.6;
     pointer-events: none;
-    border-radius: 5px;
-    transition: height 0.5s;
+    /* border-radius: 5px; */
+    transition: height 0.5s, bottom 0.5s;
     z-index: 0;
+    bottom:0;
+}
+
+.column-header-hover-white{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    /* background-image: radial-gradient(circle, white, rgba(255, 255, 255, 0)); */
+    opacity: 0.3;
+    pointer-events: none;
+    /* border-radius: 5px; */
+    transition: height 0.5s, bottom 0.5s;
+    z-index: 0;
+    bottom: -100%;
 }
 
 /* header button/div for those in favor of new NAFTA */
@@ -150,6 +168,7 @@ body{
     width: 30%;
     background-image: url('https://nuovonovalis.files.wordpress.com/2014/05/cigar_chomping_liberals.jpg');
     background-position: center;
+    background-size: cover;
     /* border-top: solid black 2px;
     border-left: solid black 2px;
     border-bottom: solid black 2px; */
@@ -162,18 +181,18 @@ body{
     cursor: pointer;
     box-shadow: 0px 10px 40px -10px black;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .for-header span{
-    /* display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 55px; */
-    margin: auto;
+    width: 100%;
+    height: 100%;
     z-index: 1;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .for-header:hover {
@@ -183,7 +202,12 @@ body{
 }
 
 .for-header:hover .column-header-hover{
-    height: 0%;
+    /* height: 0%; */
+    bottom: 100%;
+}
+
+.for-header:hover .column-header-hover-white{
+    bottom: 0;
 }
 
 /* header button/div for those against new NAFTA */
@@ -193,8 +217,10 @@ body{
     height: 75%;
     width: 30%;
     /* left: 33.33%; */
-    background-image: url('https://as1.ftcdn.net/jpg/00/83/13/94/500_F_83139423_jB7UufgedPD7EI31mvqcBWpBgnpU4bLd.jpg');
+    background-image: url('https://res.cloudinary.com/siouxcitymusic/image/upload/v1549571378/grass-plant-field-meadow-wheat-grain-750831-pxhere.com.jpg');
     /* border: solid black 2px; */
+    background-size: cover;
+    background-position-y: -20px;
     box-sizing: border-box;
     font-size: 30px;
     color: white;
@@ -204,28 +230,35 @@ body{
     cursor: pointer;
     box-shadow: 0px 10px 40px -10px black;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .con-header span{
-    /* display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 55px; */
-    margin: auto;
+    width: 100%;
+    height: 100%;
+    /* margin: auto; */
     z-index: 1;
+    /* transition-delay: 0.3s; */
+    /* justify-self: center;
+    align-self: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+
 .con-header:hover {
-    color: black;
+    color: rgb(0, 0, 0);
     -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
     filter: grayscale(0%);
 }
 
 .con-header:hover .column-header-hover{
-    height: 0%;
+    bottom: 100%;
+}
+
+.con-header:hover .column-header-hover-white{
+    bottom: 0;
 }
 
 /* header button/div for members of congress' stances */
@@ -235,8 +268,9 @@ body{
     height: 75%;
     width: 30%;
     /* left: 66.66%; */
-    background-image: url('https://as2.ftcdn.net/jpg/00/65/35/01/500_F_65350108_Lp9kpNGF2iNSSOeLNqsKq1RifAmCXq3j.jpg');
+    background-image: url('https://res.cloudinary.com/siouxcitymusic/image/upload/v1549580389/louis-velazquez-588272-unsplash.jpg');
     background-position-y: center;
+    background-size: 100%;
     /* border-top: solid black 2px;
     border-right: solid black 2px;
     border-bottom: solid black 2px; */
@@ -249,6 +283,7 @@ body{
     cursor: pointer;
     box-shadow: 0px 10px 40px -10px black;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .congress-header span{
@@ -264,7 +299,11 @@ body{
 }
 
 .congress-header:hover .column-header-hover{
-    height: 0%;
+    bottom: 100%;
+}
+
+.congress-header:hover .column-header-hover-white{
+    bottom: 0;
 }
 
 .congress-header:hover {
@@ -287,6 +326,15 @@ body{
   padding: 0;
 }
 
+.signing-photo{
+    float: right;
+    height: 300px;
+    box-shadow: -10px 10px 40px -10px black;
+    margin: 20px;
+    /* border: solid rgba(63, 63, 63, 0.474) 2px; */
+    border-radius: 5px;
+}
+
 @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
@@ -304,29 +352,33 @@ body{
   .landing-text-1 {
       margin-right: auto;
       margin-left:auto;
-      font-size: 25px;
+      font-size: 22px;
       max-width: 70%;
+      text-align: left;
   }
 
   .landing-text-2 {
     margin-right: auto;
     margin-left:auto;
-    font-size: 25px;
+    font-size: 22px;
     max-width: 70%;
+    text-align: left;
 }
 
 .landing-text-3 {
     margin-right: auto;
     margin-left:auto;
-    font-size: 25px;
+    font-size: 22px;
     max-width: 70%;
+    text-align: left;
 }
 
 .landing-text-4 {
     margin-right: auto;
     margin-left:auto;
-    font-size: 25px;
+    font-size: 22px;
     max-width: 70%;
+    text-align: left;
 }
 
 @media only screen and (max-width: 420px) {
@@ -342,6 +394,7 @@ body{
     
     .con-header {
         background-size: auto 100%;
+        background-position-y: 0;
     }
 
     .con-header span{
@@ -386,5 +439,15 @@ body{
         border: 12px solid #f3f3f3;
         border-top: 12px solid #3498db;
         
+    }
+
+    .signing-photo{
+        /* float: left; */
+        height: auto;
+        width: 90%;
+        box-shadow: -10px 10px 40px -10px black;
+        margin: 20px;
+        /* border: solid rgba(63, 63, 63, 0.474) 2px; */
+        border-radius: 5px;
     }
 }
