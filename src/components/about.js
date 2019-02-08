@@ -49,6 +49,13 @@ class About extends Component {
               <nav><span><Link to="/about">about</Link></span></nav>
               {this.getLoginNav()}
               <nav><span>contact</span></nav>
+              <nav>
+                <div className="ham-menu">
+                  <div className="ham-menu-bar"/>
+                  <div className="ham-menu-bar"/>
+                  <div className="ham-menu-bar"/>
+                </div>
+              </nav>
             </div>
           
           </header>

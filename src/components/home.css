@@ -76,11 +76,23 @@ body{
 }
 
 .home-header-menu{
-    margin-top: 80px;
+    margin-top: 75px;
     position: absolute;
     right: 5px;
     display: flex;
     /* width: 30%; */
+    font-size: 25px;
+}
+
+.ham-menu{
+ cursor: pointer;
+}
+
+.ham-menu-bar {
+  width: 35px;
+  height: 5px;
+  background-color: rgb(255, 255, 255);
+  margin: 6px 0;
 }
 
 .home-header-menu nav{
@@ -88,6 +100,10 @@ body{
     cursor: pointer;
     transition: 0.3s color;
     font-style: bold;
+}
+
+.home-header-menu nav:last-child{
+    display: none;
 }
 
 .home-header-menu a{
@@ -388,7 +404,16 @@ body{
 }
 
 @media only screen and (max-width: 420px) {
+
     
+    .home-header-menu nav:not(:last-child){
+        display: none;
+    }
+
+    .home-header-menu nav:last-child {
+        display: block;
+    }
+
     .for-header{
         background-size: auto 100%;
     }
