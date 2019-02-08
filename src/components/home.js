@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 import Modal from './modal'
@@ -211,13 +212,13 @@ class Home extends Component {
           <div className="home-banner-container">
           <div className="home-banner-transparency"/>
             <div className="logo-image-container">
-              <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549333501/NAFTA_Reactor_logo.png"/>
+              <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
             </div>
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
             <div className="home-header-menu">
-              <nav><span>home</span></nav>
-              <nav><span>about</span></nav>
+              <nav><span><Link to="/">home</Link></span></nav>
+              <nav><span><Link to="/about">about</Link></span></nav>
               {this.getLoginNav()}
               <nav><span>contact</span></nav>
             </div>

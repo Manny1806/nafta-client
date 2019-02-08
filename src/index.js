@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './components/home';
+import About from './components/about';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
@@ -10,7 +11,10 @@ import store from './store';
 ReactDOM.render(
     <Provider store={store}>
     <Router>
+        <div>
         <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        </div>
     </Router>
     </Provider>
 , document.getElementById('root'));

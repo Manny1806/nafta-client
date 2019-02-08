@@ -38,6 +38,7 @@ body{
     height: 100%;
     background-image: url(https://res.cloudinary.com/siouxcitymusic/image/upload/v1549334732/png-seamless-chainlink-fence.png);
     opacity: 1;
+    background-size: 60px;
     
 }
 
@@ -87,6 +88,11 @@ body{
     cursor: pointer;
     transition: 0.3s color;
     font-style: bold;
+}
+
+.home-header-menu a{
+    text-decoration: none;
+    color: inherit;
 }
 
 .home-header-menu nav:hover{

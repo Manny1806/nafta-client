@@ -1,0 +1,107 @@
+body{
+    background-color: rgb(64, 93, 255);
+    /* overflow: hidden; */
+}
+.About {
+    text-align: center;
+    background-color:rgb(124, 167, 196);
+    position: relative;
+    max-width: 1500px;
+    margin-left:auto;
+    margin-right: auto;
+}
+
+.about-banner-container{
+    position: relative;
+    width: 100%;
+    height: 180px;
+    font-size: 20px;
+    background-image: url(https://res.cloudinary.com/siouxcitymusic/image/upload/v1549348895/horizon6.png);
+    background-size: auto 100%;
+    background-position: center;
+    color: white;
+    box-shadow: 0px 10px 40px -10px black;
+}
+
+.about-banner-transparency{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://res.cloudinary.com/siouxcitymusic/image/upload/v1549334732/png-seamless-chainlink-fence.png);
+    opacity: 1;
+    background-size: 60px;
+    
+}
+
+.logo-image-container{
+    position: absolute;
+    width: 150px;
+    height: 170px;
+    top:0;
+    bottom:0;
+    margin-top: auto;
+    margin-bottom: auto;
+    left: 20px;
+}
+
+.logo-image{
+    height: 100%
+}
+
+.about-header-menu{
+    margin-top: 80px;
+    position: absolute;
+    right: 5px;
+    display: flex;
+    /* width: 30%; */
+}
+
+.about-header-menu nav{
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.3s color;
+    font-style: bold;
+}
+
+.about-header-menu a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.about-header-menu nav:hover{
+    color: rgb(107, 107, 107);
+}
+
+.about-body{
+    font-family: Poppins;
+}
+
+.about-text-1 {
+    margin-right: auto;
+    margin-left:auto;
+    font-size: 22px;
+    max-width: 70%;
+    text-align: left;
+}
+
+.about-text-1 h2{
+    text-align: center;
+}
+
+.about-text-1 a{
+    text-decoration: none;
+}
+
+.about-footer{
+    border-top: solid black 2px;
+    height: 50px;
+    color: rgb(89, 89, 89);
+    background-color: rgb(169, 202, 230);
+}
+
+@media only screen and (max-width: 420px) {
+    .about-text-1 {
+        font-size: 16px;
+        max-width: 85%;
+    }
+}
