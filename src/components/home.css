@@ -334,6 +334,11 @@ body{
     filter: grayscale(0%);
 }
 
+.search-input{
+    height: 25px;
+    font-size: 15px;
+}
+
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
@@ -346,6 +351,10 @@ body{
   margin-left: auto;
   list-style: none;
   padding: 0;
+}
+
+.loader-container{
+    height: 600px;
 }
 
 .signing-photo{

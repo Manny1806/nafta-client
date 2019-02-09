@@ -1,6 +1,8 @@
 import {
     PRO_POSTS_REQUEST,
     PRO_POSTS_SUCCESS,
+    PRO_POSTS_SEARCH_REQUEST,
+    PRO_POSTS_SEARCH_SUCCESS,
     ADD_EMPTY_PRO_ENTRY,
     GET_ACTIVE_PRO_POST_REQUEST,
     GET_ACTIVE_PRO_POST_SUCCESS,
@@ -14,7 +16,8 @@ import {
     PRO_SET_EXPANDED,
     UPLOAD_PRO_IMAGE_REQUEST,
     UPLOAD_PRO_IMAGE_SUCCESS,
-    PRO_SET_IMG_URL
+    PRO_SET_IMG_URL,
+    // PRO_POSTS_SEARCH_REQUEST
 }   from '../../actions/home/pro-actions'
 
 const initialState = {
@@ -33,6 +36,12 @@ export default function reducer(state = initialState, action) {
         return {...state, loading: true}
     }
     else if (action.type === PRO_POSTS_SUCCESS) {
+        return {...state, proPosts: action.proPosts, loading: false}
+    }
+    else if (action.type === PRO_POSTS_SEARCH_REQUEST) {
+        return {...state, loading: true}
+    }
+    else if (action.type === PRO_POSTS_SEARCH_SUCCESS) {
         return {...state, proPosts: action.proPosts, loading: false}
     }
     else if (action.type === GET_ACTIVE_PRO_POST_REQUEST){

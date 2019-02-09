@@ -53,7 +53,8 @@
   padding-left: 10px;
   padding-right: 10px;
   justify-content: center;
-  animation: fade 0.5s forwards
+  animation: fade 0.5s forwards;
+  min-height: 450px;
 }
 
 @keyframes fade {

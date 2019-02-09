@@ -13,7 +13,7 @@ import ConCard from './con/con-card'
 import CongressCard from './congress/congress-card'
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
-import {fetchProPosts, addEmptyProEntry, proSetEdit} from '../actions/home/pro-actions';
+import {fetchProPosts, fecthProPostsSearch, addEmptyProEntry, proSetEdit} from '../actions/home/pro-actions';
 import {fetchConPosts, addEmptyConEntry, conSetEdit} from '../actions/home/con-actions';
 import {fetchCongressPosts, addEmptyCongressEntry, congressSetEdit} from '../actions/home/congress-actions';
 
@@ -27,6 +27,14 @@ class Home extends Component {
       currentColumn: "none",
       editing: false
     }
+    this.timeout = 0
+  }
+
+  search(e){
+    let searchText = e.target.value
+    if(this.timeout) clearTimeout(this.timeout)
+    this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText))
+    }, 500)
   }
 
   getCurrentColumn() {
@@ -35,7 +43,11 @@ class Home extends Component {
     }
     else if (this.state.currentColumn === "pro"){
       if(this.props.loading){
-        return (<ul className="loader"></ul>)
+        return (
+        <div className="loader-container">
+          <ul className="loader"></ul>
+        </div>
+        )
       } else {
       return (
         
@@ -131,6 +143,7 @@ class Home extends Component {
     else if (this.state.currentColumn === "pro"){
     return (
       <div className="filter-bar">
+        <input className="search-input" placeholder="Search" onChange={e=>{e.target.value?this.search(e):this.props.dispatch(fetchProPosts())}}/>
         {this.props.loggedIn?this.getNewEntryButton(): ""}
       </div>
     )

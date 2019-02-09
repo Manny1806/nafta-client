@@ -11,6 +11,17 @@ export const fetchProPostsSuccess = (proPosts) =>({
     proPosts
 })
 
+export const PRO_POSTS_SEARCH_REQUEST = 'PRO_POSTS_SEARCH_REQUEST'
+export const fetchProPostsSearchRequest = () =>({
+    type: PRO_POSTS_SEARCH_REQUEST
+})
+
+export const PRO_POSTS_SEARCH_SUCCESS = 'PRO_POSTS_SEARCH_SUCCESS'
+export const fetchProPostsSearchSuccess = (proPosts) =>({
+    type: PRO_POSTS_SEARCH_SUCCESS,
+    proPosts
+})
+
 export const ADD_EMPTY_PRO_ENTRY = 'ADD_EMPTY_PRO_ENTRY'
 export const addEmptyProEntry = () =>({
     type: ADD_EMPTY_PRO_ENTRY,
@@ -93,6 +104,13 @@ export const fetchProPosts = () => dispatch =>{
     fetch(`${API_BASE_URL}/api/pro/`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => dispatch(fetchProPostsSuccess(res)))
+}
+
+export const fecthProPostsSearch = (term) => dispatch => {
+    dispatch(fetchProPostsSearchRequest())
+    fetch(`${API_BASE_URL}/api/pro/search/${term}`)
+    .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
+    .then(res => dispatch(fetchProPostsSearchSuccess(res)))
 }
 
 export const editProPost = (id, values) => dispatch => {
