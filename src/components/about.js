@@ -47,7 +47,7 @@ class About extends Component {
             <div className="about-header-menu">
               <nav><span><Link to="/">home</Link></span></nav>
               <nav><span><Link to="/about">about</Link></span></nav>
-              {this.getLoginNav()}
+              
               <nav><span>contact</span></nav>
               <nav>
                 <div className="ham-menu">
@@ -85,7 +85,7 @@ class About extends Component {
         </div>
         
         <footer className="about-footer">
-            <p>&copy;2019 Alex Widner</p>
+            <p>&copy;2019 Alex Widner {this.getLoginNav()}</p>
         </footer>
       </section>
     );

@@ -4,7 +4,7 @@ body{
 }
 .About {
     text-align: center;
-    background-color:rgb(124, 167, 196);
+    background-color:#aed5e5;
     position: relative;
     max-width: 1500px;
     margin-left:auto;
@@ -103,6 +103,20 @@ body{
     color: rgb(89, 89, 89);
     background-color: rgb(169, 202, 230);
 }
+
+.about-footer nav{
+    display: inline-block;
+    margin-left: 90px;
+    cursor: pointer;
+    transition: 0.3s color;
+    font-style: bold;
+}
+
+.about-footer nav:hover{
+    color: white;
+}
+
+
 
 @media only screen and (max-width: 420px) {
     .about-text-1 {

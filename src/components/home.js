@@ -14,8 +14,8 @@ import CongressCard from './congress/congress-card'
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import {fetchProPosts, fecthProPostsSearch, addEmptyProEntry, proSetEdit} from '../actions/home/pro-actions';
-import {fetchConPosts, addEmptyConEntry, conSetEdit} from '../actions/home/con-actions';
-import {fetchCongressPosts, addEmptyCongressEntry, congressSetEdit} from '../actions/home/congress-actions';
+import {fetchConPosts, fetchConPostsSearch, addEmptyConEntry, conSetEdit} from '../actions/home/con-actions';
+import {fetchCongressPosts, fetchCongressPostsSearch, addEmptyCongressEntry, congressSetEdit} from '../actions/home/congress-actions';
 
 
 
@@ -30,16 +30,70 @@ class Home extends Component {
     this.timeout = 0
   }
 
-  search(e){
+  proSearch(e){
     let searchText = e.target.value
     if(this.timeout) clearTimeout(this.timeout)
-    this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText))
-    }, 500)
+    if(searchText){
+      this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText))
+      }, 500)
+    } else {
+      this.timeout = setTimeout(()=>{this.props.dispatch(fetchProPosts())
+      }, 500)
+    }
+    
+  }
+
+  conSearch(e){
+    let searchText = e.target.value
+    if(this.timeout) clearTimeout(this.timeout)
+    if(searchText){
+      this.timeout = setTimeout(()=>{this.props.dispatch(fetchConPostsSearch(searchText))
+      }, 500)
+    } else {
+      this.timeout = setTimeout(()=>{this.props.dispatch(fetchConPosts())
+      }, 500)
+    }
+    
+  }
+
+  congressSearch(e){
+    let searchText = e.target.value
+    if(this.timeout) clearTimeout(this.timeout)
+    if(searchText){
+      this.timeout = setTimeout(()=>{this.props.dispatch(fetchCongressPostsSearch(searchText))
+      }, 500)
+    } else {
+      this.timeout = setTimeout(()=>{this.props.dispatch(fetchCongressPosts())
+      }, 500)
+    }
+    
   }
 
   getCurrentColumn() {
     if(this.state.currentColumn === "none") {
-      return (<ul className="pro-list-ul"/>)
+      return (
+        <div className="landing-page-text-container">
+        
+        <p className="landing-text-1">The U.S. Congress is set to take up the new version of the 
+          North American Free Trade Agreement. Called NAFTA 2.0 by many—called 
+          the USMCA (United States-Mexico-Canada Agreement) by the Trump 
+          administration—this is highly contested ground, the trade battle of our day.</p>
+
+          <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed off to, in a ceremony
+           on November 30, by the executives of Mexico, Canada, and the U.S.<img className="signing-photo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>  It takes
+            effect if the legislatures of these signatory countries pass it.</p>
+
+          <p className="landing-text-3">President Donald Trump touts the text that was agreed to as the fix NAFTA needed.</p>
+
+          <p className="landing-text-4">What are other people saying about the new NAFTA?
+          Click on a section above to take in a range of views by people and 
+          organizations on the deal—whether they be the sort to like NAFTA 2.0, 
+          to be left behind by NAFTA and NAFTA 2.0, or to be our own members of 
+          Congress, whose pleasure or displeasure at the new NAFTA makes all the 
+          difference.
+          </p>
+      </div>
+      )
     }
     else if (this.state.currentColumn === "pro"){
       if(this.props.loading){
@@ -69,7 +123,11 @@ class Home extends Component {
       )
     }} else if (this.state.currentColumn === "con"){
       if(this.props.loading){
-        return (<ul className="loader"></ul>)
+        return (
+          <div className="loader-container">
+          <ul className="loader"></ul>
+          </div>
+      )
       } else {
       return (
         
@@ -91,7 +149,9 @@ class Home extends Component {
       )
     }} else if (this.state.currentColumn === "congress"){
       if(this.props.loading){
-        return (<ul className="loader"></ul>)
+        return (<div className="loader-container">
+        <ul className="loader"></ul>
+        </div>)
       } else {
       return (
         
@@ -117,33 +177,13 @@ class Home extends Component {
   getCurrentFilter() {
     if(this.state.currentColumn === "none") {
       return (
-      <div className="landing-page-text-container">
-        
-        <p className="landing-text-1">The U.S. Congress is set to take up the new version of the 
-          North American Free Trade Agreement. Called NAFTA 2.0 by many—called 
-          the USMCA (United States-Mexico-Canada Agreement) by the Trump 
-          administration—this is highly contested ground, the trade battle of our day.</p>
-
-          <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed off to, in a ceremony
-           on November 30, by the executives of Mexico, Canada, and the U.S.<img className="signing-photo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>  It takes
-            effect if the legislatures of these signatory countries pass it.</p>
-
-          <p className="landing-text-3">President Donald Trump touts the text that was agreed to as the fix NAFTA needed.</p>
-
-          <p className="landing-text-4">What are other people saying about the new NAFTA?
-          Click on a section above to take in a range of views by people and 
-          organizations on the deal—whether they be the sort to like NAFTA 2.0, 
-          to be left behind by NAFTA and NAFTA 2.0, or to be our own members of 
-          Congress, whose pleasure or displeasure at the new NAFTA makes all the 
-          difference.
-          </p>
-      </div>
+      <div />
       )
     }
     else if (this.state.currentColumn === "pro"){
     return (
       <div className="filter-bar">
-        <input className="search-input" placeholder="Search" onChange={e=>{e.target.value?this.search(e):this.props.dispatch(fetchProPosts())}}/>
+        <input className="search-input" placeholder="Search" onChange={e=>this.proSearch(e)}/>
         {this.props.loggedIn?this.getNewEntryButton(): ""}
       </div>
     )
@@ -151,6 +191,7 @@ class Home extends Component {
     else if (this.state.currentColumn === "con"){
       return (
         <div className="filter-bar">
+          <input className="search-input" placeholder="Search" onChange={e=>this.conSearch(e)}/>
           {this.props.loggedIn?this.getNewEntryButton(): ""}
         </div>
       )
@@ -158,6 +199,7 @@ class Home extends Component {
     else if (this.state.currentColumn === "congress"){
       return (
         <div className="filter-bar">
+          <input className="search-input" placeholder="Search" onChange={e=>this.congressSearch(e)}/>
           {this.props.loggedIn?this.getNewEntryButton(): ""}
         </div>
       )
@@ -177,7 +219,7 @@ class Home extends Component {
     }
     else if(this.state.currentColumn === "con"){
       return (
-        <section className="new-entry-button" onClick={()=>{
+        <section className="new-entry-b color: white;utton" onClick={()=>{
           this.props.dispatch(conSetEdit(true))
           this.props.dispatch(addEmptyConEntry())
           this.props.dispatch(showModal('active-con-card'))
@@ -232,7 +274,6 @@ class Home extends Component {
             <div className="home-header-menu">
               <nav><span><Link to="/">home</Link></span></nav>
               <nav><span><Link to="/about">about</Link></span></nav>
-              {this.getLoginNav()}
               <nav><span>contact</span></nav>
               <nav>
                 <div className="ham-menu">
@@ -289,7 +330,8 @@ class Home extends Component {
         </div>
         </div>
         <footer className="home-footer">
-            <p>&copy;2019 Alex Widner</p>
+            <p>&copy;2019 Alex Widner {this.getLoginNav()}</p>
+            
         </footer>
       </section>
     );

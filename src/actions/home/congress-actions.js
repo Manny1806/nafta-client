@@ -11,6 +11,17 @@ export const fetchCongressPostsSuccess = (congressPosts) =>({
     congressPosts
 })
 
+export const CONGRESS_POSTS_SEARCH_REQUEST = 'CONGRESS_POSTS_SEARCH_REQUEST'
+export const fetchCongressPostsSearchRequest = () =>({
+    type: CONGRESS_POSTS_SEARCH_REQUEST
+})
+
+export const CONGRESS_POSTS_SEARCH_SUCCESS = 'CONGRESS_POSTS_SEARCH_SUCCESS'
+export const fetchCongressPostsSearchSuccess = (congressPosts) =>({
+    type: CONGRESS_POSTS_SEARCH_SUCCESS,
+    congressPosts
+})
+
 export const ADD_EMPTY_CONGRESS_ENTRY = 'ADD_EMPTY_CONGRESS_ENTRY'
 export const addEmptyCongressEntry = () =>({
     type: ADD_EMPTY_CONGRESS_ENTRY,
@@ -93,6 +104,13 @@ export const fetchCongressPosts = () => dispatch =>{
     fetch(`${API_BASE_URL}/api/congress/`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => dispatch(fetchCongressPostsSuccess(res)))
+}
+
+export const fetchCongressPostsSearch = (term) => dispatch => {
+    dispatch(fetchCongressPostsSearchRequest())
+    fetch(`${API_BASE_URL}/api/congress/search/${term}`)
+    .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
+    .then(res => dispatch(fetchCongressPostsSearchSuccess(res)))
 }
 
 export const editCongressPost = (id, values) => dispatch => {

@@ -11,6 +11,17 @@ export const fetchConPostsSuccess = (conPosts) =>({
     conPosts
 })
 
+export const CON_POSTS_SEARCH_REQUEST = 'CON_POSTS_SEARCH_REQUEST'
+export const fetchConPostsSearchRequest = () =>({
+    type: CON_POSTS_SEARCH_REQUEST
+})
+
+export const CON_POSTS_SEARCH_SUCCESS = 'CON_POSTS_SEARCH_SUCCESS'
+export const fetchConPostsSearchSuccess = (conPosts) =>({
+    type: CON_POSTS_SEARCH_SUCCESS,
+    conPosts
+})
+
 export const ADD_EMPTY_CON_ENTRY = 'ADD_EMPTY_CON_ENTRY'
 export const addEmptyConEntry = () =>({
     type: ADD_EMPTY_CON_ENTRY,
@@ -93,6 +104,13 @@ export const fetchConPosts = () => dispatch =>{
     fetch(`${API_BASE_URL}/api/con/`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => dispatch(fetchConPostsSuccess(res)))
+}
+
+export const fetchConPostsSearch = (term) => dispatch => {
+    dispatch(fetchConPostsSearchRequest())
+    fetch(`${API_BASE_URL}/api/con/search/${term}`)
+    .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
+    .then(res => dispatch(fetchConPostsSearchSuccess(res)))
 }
 
 export const editConPost = (id, values) => dispatch => {

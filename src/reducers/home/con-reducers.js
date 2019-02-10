@@ -1,6 +1,8 @@
 import {
     CON_POSTS_REQUEST,
     CON_POSTS_SUCCESS,
+    CON_POSTS_SEARCH_REQUEST,
+    CON_POSTS_SEARCH_SUCCESS,
     ADD_EMPTY_CON_ENTRY,
     GET_ACTIVE_CON_POST_REQUEST,
     GET_ACTIVE_CON_POST_SUCCESS,
@@ -33,6 +35,12 @@ export default function reducer(state = initialState, action) {
         return {...state, loading: true}
     }
     else if (action.type === CON_POSTS_SUCCESS) {
+        return {...state, conPosts: action.conPosts, loading: false}
+    }
+    else if (action.type === CON_POSTS_SEARCH_REQUEST) {
+        return {...state, loading: true}
+    }
+    else if (action.type === CON_POSTS_SEARCH_SUCCESS) {
         return {...state, conPosts: action.conPosts, loading: false}
     }
     else if (action.type === GET_ACTIVE_CON_POST_REQUEST){

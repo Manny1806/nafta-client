@@ -1,6 +1,8 @@
 import {
     CONGRESS_POSTS_REQUEST,
     CONGRESS_POSTS_SUCCESS,
+    CONGRESS_POSTS_SEARCH_REQUEST,
+    CONGRESS_POSTS_SEARCH_SUCCESS,
     ADD_EMPTY_CONGRESS_ENTRY,
     GET_ACTIVE_CONGRESS_POST_REQUEST,
     GET_ACTIVE_CONGRESS_POST_SUCCESS,
@@ -33,6 +35,12 @@ export default function reducer(state = initialState, action) {
         return {...state, loading: true}
     }
     else if (action.type === CONGRESS_POSTS_SUCCESS) {
+        return {...state, congressPosts: action.congressPosts, loading: false}
+    }
+    else if (action.type === CONGRESS_POSTS_SEARCH_REQUEST) {
+        return {...state, loading: true}
+    }
+    else if (action.type === CONGRESS_POSTS_SEARCH_SUCCESS) {
         return {...state, congressPosts: action.congressPosts, loading: false}
     }
     else if (action.type === GET_ACTIVE_CONGRESS_POST_REQUEST){
