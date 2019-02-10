@@ -244,6 +244,7 @@ class Home extends Component {
             </div>
           
           </div>
+          <div className="yellow-banner">Sorting out Trump's new version of the North American Free Trade Agreement</div>
         </header>
         <div className="column-header-container">
           <div className="for-header" onClick={()=>{

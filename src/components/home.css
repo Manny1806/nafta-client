@@ -4,7 +4,7 @@ body{
 }
 .Home {
     text-align: center;
-    background-color:rgb(124, 167, 196);
+    background-color: #aed5e5;
     position: relative;
     max-width: 1500px;
     margin-left:auto;
@@ -113,6 +113,16 @@ body{
 
 .home-header-menu nav:hover{
     color: rgb(107, 107, 107);
+}
+
+.yellow-banner {
+    background-color: #FFCB05;
+    height: 30px;
+    line-height: 30px;
+    border-top: dashed black 2px;
+    border-bottom: dashed black 2px;
+    font-family: Oswald;
+    font-size: 20px;
 }
 
 .home-footer{
