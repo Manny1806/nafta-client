@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './components/home';
 import About from './components/about';
+import Feedback from './components/feedback'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
@@ -14,6 +15,7 @@ ReactDOM.render(
         <div>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/feedback" component={Feedback} />
         </div>
     </Router>
     </Provider>

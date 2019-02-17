@@ -8,6 +8,7 @@ import { showModal } from '../actions/home/modal'
 import './home.css';
 import './current-column.css';
 import './edit.css'
+import './header-footer.css'
 import ProCard from './pro/pro-card'
 import ConCard from './con/con-card'
 import CongressCard from './congress/congress-card'
@@ -263,25 +264,19 @@ class Home extends Component {
     return (
       <section className="Home">
       <Modal />
-        <header className="home-header">
-          <div className="home-banner-container">
-          <div className="home-banner-transparency"/>
+        <header className="header">
+          <div className="banner-container">
+          <div className="banner-transparency"/>
             <div className="logo-image-container">
               <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
             </div>
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
-            <div className="home-header-menu">
+            <div className="header-menu">
               <nav><span><Link to="/">home</Link></span></nav>
               <nav><span><Link to="/about">about</Link></span></nav>
-              <nav><span>contact</span></nav>
-              <nav>
-                <div className="ham-menu">
-                  <div className="ham-menu-bar"/>
-                  <div className="ham-menu-bar"/>
-                  <div className="ham-menu-bar"/>
-                </div>
-              </nav>
+              <nav><span><Link to="/feedback">feedback</Link></span></nav>
+              
             </div>
           
           </div>
@@ -329,8 +324,8 @@ class Home extends Component {
           {this.getCurrentColumn()}
         </div>
         </div>
-        <footer className="home-footer">
-            <p>&copy;2019 Alex Widner {this.getLoginNav()}</p>
+        <footer className="footer">
+            <span>&copy;2019 Alex Widner</span> {this.getLoginNav()}
             
         </footer>
       </section>

@@ -482,12 +482,40 @@ body{
 @media only screen and (max-width: 420px) {
 
     
-    .home-header-menu nav:not(:last-child){
+    /* .home-header-menu nav:not(:last-child){
         display: none;
     }
 
     .home-header-menu nav:last-child {
         display: block;
+    } */
+
+    .home-banner-container{
+        
+        height: 120px;
+        
+        
+    }
+
+    .logo-image-container{
+        
+        height: 80px;
+        width: 120px;
+        left: 5px;
+    }
+
+
+    .home-header-menu{
+        margin-top: 50px;
+        right: 0px;
+        font-size: 20px;
+    }
+
+    .yellow-banner {
+        
+        font-size: 13px;
+        
+       
     }
 
     .for-header{

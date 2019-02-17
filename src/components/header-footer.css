@@ -1,0 +1,120 @@
+.banner-container{
+    /* padding-top: 10px; */
+    position: relative;
+    width: 100%;
+    height: 180px;
+    font-size: 20px;
+    /* background-color: #2e81b8; */
+    background-image: url(https://res.cloudinary.com/siouxcitymusic/image/upload/v1549348895/horizon6.png);
+    background-size: auto 100%;
+    background-position: center;
+    color: white;
+    /* filter: blur(10px) */
+}
+
+.banner-transparency{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://res.cloudinary.com/siouxcitymusic/image/upload/v1549334732/png-seamless-chainlink-fence.png);
+    opacity: 1;
+    background-size: 60px;
+    
+}
+
+.logo-image-container{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top:0;
+    bottom:0;
+    margin-top: auto;
+    margin-bottom: auto;
+    left: 20px;
+}
+
+.logo-image{
+    height: 100%
+}
+
+.title{
+    font-size: 40px;
+    position: absolute;
+    left: 30px;
+    margin-top: 40px;
+}
+
+.sub-title{
+    font-size: 25px;
+    position: absolute;
+    left: 30px;
+    margin-top: 95px;
+}
+
+.header{
+    box-shadow: 0px 10px 40px -10px black;
+}
+
+.header-menu{
+    margin-top: 75px;
+    position: absolute;
+    right: 5px;
+    display: flex;
+    /* width: 30%; */
+    font-size: 25px;
+}
+
+.header-menu nav{
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.3s color;
+    font-style: bold;
+}
+
+.header-menu a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.header-menu nav:hover{
+    color: rgb(107, 107, 107);
+}
+
+.footer{
+    display: flex;
+    border-top: solid black 2px;
+    height: 50px;
+    color: rgb(89, 89, 89);
+    background-color: rgb(169, 202, 230);
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer nav{
+    cursor: pointer;
+    transition: 0.3s color;
+    font-style: bold;
+}
+
+.footer nav:hover{
+    color: white;
+}
+
+@media only screen and (max-width: 420px) {
+
+    .banner-container{
+        height: 120px;    
+    }
+
+    .logo-image-container{
+        height: 80px;
+        width: 120px;
+        left: 5px;
+    }
+
+    .header-menu{
+        margin-top: 50px;
+        right: 0px;
+        font-size: 20px;
+    }
+}

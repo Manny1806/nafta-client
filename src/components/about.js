@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Modal from './modal'
 import { showModal } from '../actions/home/modal'
 import './about.css';
+import './header-footer.css'
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 
@@ -37,25 +38,19 @@ class About extends Component {
       <section className="About">
       <Modal />
         
-          <header className="about-banner-container">
-          <div className="about-banner-transparency"/>
+          <header className="banner-container">
+          <div className="banner-transparency"/>
             <div className="logo-image-container">
               <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
             </div>
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
-            <div className="about-header-menu">
+            <div className="header-menu">
               <nav><span><Link to="/">home</Link></span></nav>
               <nav><span><Link to="/about">about</Link></span></nav>
               
-              <nav><span>contact</span></nav>
-              <nav>
-                <div className="ham-menu">
-                  <div className="ham-menu-bar"/>
-                  <div className="ham-menu-bar"/>
-                  <div className="ham-menu-bar"/>
-                </div>
-              </nav>
+              <nav><span><Link to="/feedback">feedback</Link></span></nav>
+              
             </div>
           
           </header>
@@ -84,8 +79,8 @@ class About extends Component {
           </p>
         </div>
         
-        <footer className="about-footer">
-            <p>&copy;2019 Alex Widner {this.getLoginNav()}</p>
+        <footer className="footer">
+            <span>&copy;2019 Alex Widner</span> {this.getLoginNav()}
         </footer>
       </section>
     );

@@ -33,21 +33,6 @@ body{
     
 }
 
-.logo-image-container{
-    position: absolute;
-    width: 150px;
-    height: 170px;
-    top:0;
-    bottom:0;
-    margin-top: auto;
-    margin-bottom: auto;
-    left: 20px;
-}
-
-.logo-image{
-    height: 100%
-}
-
 .about-header-menu{
     margin-top: 75px;
     position: absolute;
@@ -62,10 +47,6 @@ body{
     cursor: pointer;
     transition: 0.3s color;
     font-style: bold;
-}
-
-.about-header-menu nav:last-child{
-    display: none;
 }
 
 .about-header-menu a{
@@ -97,44 +78,9 @@ body{
     text-decoration: none;
 }
 
-.about-footer{
-    border-top: solid black 2px;
-    height: 50px;
-    color: rgb(89, 89, 89);
-    background-color: rgb(169, 202, 230);
-}
-
-.about-footer nav{
-    display: inline-block;
-    margin-left: 90px;
-    cursor: pointer;
-    transition: 0.3s color;
-    font-style: bold;
-}
-
-.about-footer nav:hover{
-    color: white;
-}
-
-
-
 @media only screen and (max-width: 420px) {
     .about-text-1 {
         font-size: 16px;
         max-width: 85%;
-    }
-
-    .logo-image-container{
-        
-        height: 100px;
-        
-    }
-
-    .about-header-menu nav:not(:last-child){
-        display: none;
-    }
-
-    .about-header-menu nav:last-child {
-        display: block;
     }
 }
