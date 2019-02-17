@@ -45,6 +45,14 @@ body{
     margin: 10px;
 }
 
+.feedback-button-container label{
+    background-color: rgb(220, 220, 220);
+    width: 100px;
+    border-radius: 5px;
+    border: solid rgb(138, 138, 138) 2px;
+    cursor: pointer;
+}
+
 .feedback-input-container input{
     font-size: 20px;
 }
@@ -53,9 +61,14 @@ body{
     font-size: 20px;
 }
 
+.input-error{
+    outline: solid rgb(255, 0, 0) 2px;
+}
+
 .feedback-textarea-container{
     width: 92%;
     display: flex;
+    position: relative;
     justify-content: space-between;
     margin: 10px;
 }
@@ -63,7 +76,14 @@ body{
 .feedback-textarea-container textarea{
     font-size: 20px;
     width: 650px;
-    height: 240px;
+    height: 255px;
+}
+
+.character-limit{
+    position: absolute;
+    right:5px;
+    bottom: 0;
+    font-size:14px;
 }
 
 #subject-container{

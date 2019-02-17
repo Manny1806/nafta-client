@@ -14,6 +14,19 @@ import {clearAuthToken} from '../local-storage';
 
 class Feedback extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            characterCount: 500,
+            firstNameValid: false,
+            firstNameErrorClass: "",
+            lastNameValid: false,
+            lastNameErrorClass: "",
+            emailValid: false,
+            emailErrorClass: ""
+        }
+    }
+
   getLoginNav() {
     if(this.props.loggedIn){
         return (
@@ -56,11 +69,60 @@ class Feedback extends Component {
         <div className="feedback-body">
           <h2>Thanks for diving into the NAFTA Reactor.<br/>Provide us with some feedback using the form below.</h2>
           <div className="feedback-form">
-              <div className="feedback-input-container"><label>*First Name</label><input/></div>
-              <div className="feedback-input-container"><label>*Last Name</label><input/></div>
-              <div className="feedback-input-container"><label>*Email</label><input/></div>
-              <div className="feedback-input-container"><label>Phone</label><input/></div>
-              <div className="feedback-input-container"><label>ZIP code</label><input maxLength="5" size="5"/></div>
+              <div className="feedback-input-container"><label>*First Name</label><input className={this.state.firstNameErrorClass}maxLength="25" onChange={(e)=>{
+                  if(e.target.value){
+                      this.setState({
+                          firstNameValid: true,
+                          firstNameErrorClass: ""
+                      })
+                  } else {
+                    this.setState({
+                        firstNameValid: false,
+                        firstNameErrorClass: "input-error"
+                    }) 
+                  }
+              }}/></div>
+              <div className="feedback-input-container"><label>*Last Name</label><input className={this.state.lastNameErrorClass} maxLength="25" onChange={(e)=>{
+                  if(e.target.value){
+                      this.setState({
+                          lastNameValid: true,
+                          lastNameErrorClass: ""
+                      })
+                  } else {
+                    this.setState({
+                        lastNameValid: false,
+                        lastNameErrorClass: "input-error"
+                    }) 
+                  }
+              }}/></div>
+              <div className="feedback-input-container"><label>*Email</label><input className={this.state.emailErrorClass} maxLength="75" onChange={(e)=>{
+                  if(e.target.value){
+                      this.setState({
+                          emailNameValid: true,
+                          emailErrorClass: ""
+                      })
+                  } else {
+                    this.setState({
+                        emailValid: false,
+                        emailErrorClass: "input-error"
+                    }) 
+                  }
+              }}/></div>
+              <div className="feedback-input-container"><label>Phone</label><input maxLength="10" size="10" onKeyPress={(e)=>{
+                  const keyCode = e.keyCode || e.which;
+                  const keyValue = String.fromCharCode(keyCode);
+                  if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
+                    e.preventDefault();
+                  }    
+              }}/></div>
+              <div className="feedback-input-container"><label>ZIP code</label><input maxLength="5" size="5" onKeyPress={(e)=>{
+                  const keyCode = e.keyCode || e.which;
+                  const keyValue = String.fromCharCode(keyCode);
+                  if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
+                    e.preventDefault();
+                  }
+                    
+              }}/></div>
               <div className="feedback-input-container"><label>State</label>
                 <select defaultValue="OR">
                     <option value="AL">Alabama</option>
@@ -118,14 +180,42 @@ class Feedback extends Component {
               </div>
               <div className="feedback-input-container" id="subject-container"><label>Subject</label>
                     <select name="subjects">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="fiat">Fiat</option>
-                    <option value="audi">Audi</option>
+                    <option value="1">I have a suggestion for a particular person/entity to add to the site.</option>
+                    <option value="2">I want to know more about how I can reach out to my representatives.</option>
+                    <option value="3">I would like to report problems/errors with the site.</option>
+                    <option value="4">Other</option>
                     </select>
               </div>
-              <div className="feedback-textarea-container"><label>Comment</label><textarea/></div>
-              <div className="feedback-button-container"><label className="feedback-submit-button">Submit</label></div>
+              <div className="feedback-textarea-container">
+                <label>Comment</label>
+                <textarea maxLength="500" onChange={(e)=>{
+                        this.setState({
+                            characterCount: e.target.value.length ? 500 - e.target.value.length : 500
+                        }) 
+                }}/>
+                <label className="character-limit">{this.state.characterCount} characters left</label>
+              </div>
+              <div className="feedback-button-container"><label className="feedback-submit-button" onClick={()=>{
+                  if(!this.state.firstNameValid || !this.state.lastNameValid || !this.state.emailValid){
+                      if(!this.state.firstNameValid){
+                        this.setState({
+                            firstNameErrorClass: "input-error"
+                        })
+                      }
+
+                      if(!this.state.lastNameValid){
+                        this.setState({
+                            lastNameErrorClass: "input-error"
+                        })
+                      }
+
+                      if(!this.state.emailNameValid){
+                        this.setState({
+                            emailErrorClass: "input-error"
+                        })
+                      }
+                  }
+              }}>Submit</label></div>
           </div>
           
         </div>
