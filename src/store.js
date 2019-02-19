@@ -5,11 +5,12 @@ import conReducers from './reducers/home/con-reducers'
 import congressReducers from './reducers/home/congress-reducers'
 import authReducer from './reducers/auth'
 import modal from './reducers/home/modal'
+import feedback from './reducers/feedback'
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 import {loadAuthToken} from './local-storage';
 
 
-const reducers = combineReducers({proReducers, conReducers, congressReducers, modal, auth: authReducer});
+const reducers = combineReducers({proReducers, conReducers, congressReducers, modal, auth: authReducer, feedback});
 const store = createStore(reducers, applyMiddleware(thunk));
 
 // Hydrate the authToken from localStorage if it exist

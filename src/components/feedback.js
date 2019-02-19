@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 import Modal from './modal'
 import { showModal } from '../actions/home/modal'
+import { sendFeedback } from '../actions/feedback'
 import './feedback.css';
 import './header-footer.css'
 import {clearAuth} from '../actions/auth';
@@ -16,6 +17,14 @@ class Feedback extends Component {
 
     constructor() {
         super()
+        this.firstName = React.createRef();
+        this.lastName = React.createRef();
+        this.email = React.createRef();
+        this.phone = React.createRef();
+        this.zip = React.createRef();
+        this.usState = React.createRef();
+        this.subject = React.createRef();
+        this.comment = React.createRef();
         this.state = {
             characterCount: 500,
             firstNameValid: false,
@@ -69,7 +78,7 @@ class Feedback extends Component {
         <div className="feedback-body">
           <h2>Thanks for diving into the NAFTA Reactor.<br/>Provide us with some feedback using the form below.</h2>
           <div className="feedback-form">
-              <div className="feedback-input-container"><label>*First Name</label><input className={this.state.firstNameErrorClass}maxLength="25" onChange={(e)=>{
+              <div className="feedback-input-container"><label>*First Name</label><input ref={this.firstName} className={this.state.firstNameErrorClass}maxLength="25" onChange={(e)=>{
                   if(e.target.value){
                       this.setState({
                           firstNameValid: true,
@@ -82,7 +91,7 @@ class Feedback extends Component {
                     }) 
                   }
               }}/></div>
-              <div className="feedback-input-container"><label>*Last Name</label><input className={this.state.lastNameErrorClass} maxLength="25" onChange={(e)=>{
+              <div className="feedback-input-container"><label>*Last Name</label><input ref={this.lastName} className={this.state.lastNameErrorClass} maxLength="25" onChange={(e)=>{
                   if(e.target.value){
                       this.setState({
                           lastNameValid: true,
@@ -95,10 +104,10 @@ class Feedback extends Component {
                     }) 
                   }
               }}/></div>
-              <div className="feedback-input-container"><label>*Email</label><input className={this.state.emailErrorClass} maxLength="75" onChange={(e)=>{
+              <div className="feedback-input-container"><label>*Email</label><input ref={this.email} className={this.state.emailErrorClass} maxLength="75" onChange={(e)=>{
                   if(e.target.value){
                       this.setState({
-                          emailNameValid: true,
+                          emailValid: true,
                           emailErrorClass: ""
                       })
                   } else {
@@ -108,14 +117,14 @@ class Feedback extends Component {
                     }) 
                   }
               }}/></div>
-              <div className="feedback-input-container"><label>Phone</label><input maxLength="10" size="10" onKeyPress={(e)=>{
+              <div className="feedback-input-container"><label>Phone</label><input ref={this.phone} maxLength="10" size="10" onKeyPress={(e)=>{
                   const keyCode = e.keyCode || e.which;
                   const keyValue = String.fromCharCode(keyCode);
                   if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
                     e.preventDefault();
                   }    
               }}/></div>
-              <div className="feedback-input-container"><label>ZIP code</label><input maxLength="5" size="5" onKeyPress={(e)=>{
+              <div className="feedback-input-container"><label>ZIP code</label><input ref={this.zip} maxLength="5" size="5" onKeyPress={(e)=>{
                   const keyCode = e.keyCode || e.which;
                   const keyValue = String.fromCharCode(keyCode);
                   if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
@@ -124,7 +133,7 @@ class Feedback extends Component {
                     
               }}/></div>
               <div className="feedback-input-container"><label>State</label>
-                <select defaultValue="OR">
+                <select defaultValue="OR" ref={this.usState}>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -179,16 +188,16 @@ class Feedback extends Component {
                 </select>
               </div>
               <div className="feedback-input-container" id="subject-container"><label>Subject</label>
-                    <select name="subjects">
-                    <option value="1">I have a suggestion for a particular person/entity to add to the site.</option>
-                    <option value="2">I want to know more about how I can reach out to my representatives.</option>
-                    <option value="3">I would like to report problems/errors with the site.</option>
-                    <option value="4">Other</option>
+                    <select name="subjects" ref={this.subject}>
+                    <option value="I have a suggestion for a particular person/entity to add to the site">I have a suggestion for a particular person/entity to add to the site.</option>
+                    <option value="I want to know more about how I can reach out to my representatives">I want to know more about how I can reach out to my representatives.</option>
+                    <option value="I would like to report problems/errors with the site">I would like to report problems/errors with the site.</option>
+                    <option value="Other">Other</option>
                     </select>
               </div>
               <div className="feedback-textarea-container">
                 <label>Comment</label>
-                <textarea maxLength="500" onChange={(e)=>{
+                <textarea ref={this.comment} maxLength="500" onChange={(e)=>{
                         this.setState({
                             characterCount: e.target.value.length ? 500 - e.target.value.length : 500
                         }) 
@@ -196,7 +205,7 @@ class Feedback extends Component {
                 <label className="character-limit">{this.state.characterCount} characters left</label>
               </div>
               <div className="feedback-button-container"><label className="feedback-submit-button" onClick={()=>{
-                  if(!this.state.firstNameValid || !this.state.lastNameValid || !this.state.emailValid){
+                  if(!this.state.firstNameValid || (!this.state.lastNameValid || !this.state.emailValid)){
                       if(!this.state.firstNameValid){
                         this.setState({
                             firstNameErrorClass: "input-error"
@@ -209,11 +218,26 @@ class Feedback extends Component {
                         })
                       }
 
-                      if(!this.state.emailNameValid){
+                      if(!this.state.emailValid){
                         this.setState({
                             emailErrorClass: "input-error"
                         })
                       }
+                  } else {
+                      const data = {
+                        subject: this.subject.current.value || "",
+                        firstName: this.firstName.current.value || "",
+                        lastName: this.lastName.current.value || "",
+                        email: this.email.current.value || "",
+                        phone: this.phone.current.value || "",
+                        zip: this.zip.current.value || "",
+                        state: this.usState.current.value || "",
+                        comment: this.comment.current.value || ""
+                      }
+                      this.props.dispatch(showModal('feedback-modal'))
+                      this.props.dispatch(sendFeedback(data))
+                      .then((res)=>{})
+
                   }
               }}>Submit</label></div>
           </div>

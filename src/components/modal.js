@@ -4,6 +4,7 @@ import ActiveProCard from './pro/active-pro-card'
 import ActiveConCard from './con/active-con-card'
 import ActiveCongressCard from './congress/active-congress-card'
 import Login from './login/login'
+import FeedbackModal from './feedbackModal'
 
 
 import './modal.css'
@@ -21,6 +22,9 @@ class Modal extends Component {
     }
     else if (this.props.page === 'login'){
       return <Login />
+    }
+    else if (this.props.page === 'feedback-modal'){
+      return <FeedbackModal />
     }
   }
   render() {

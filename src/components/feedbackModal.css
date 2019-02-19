@@ -1,13 +1,25 @@
-.login-container {
+.feedback-modal-container {
     width: 300px;
     height: 200px;
 }
 
-.login-header {
+.feedback-modal-header {
     
 }
 
-.login-input-container {
+.center-loader{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom:0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.feedback-modal-container {
     /* position: absolute; */
     right:0;
     left:0;
@@ -15,31 +27,7 @@
     margin-left: auto;
 }
 
-.username-label {
-    display: block;
-}
-
-.username-input {
-    display: block;
-    right:0;
-    left:0;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.password-label {
-    display: block;
-}
-
-.password-input {
-    display: block;
-    right:0;
-    left:0;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.login-button {
+.feedback-modal-close-button {
     position: absolute;
     right:0;
     left:0;
@@ -55,11 +43,11 @@
     transition: border-color 0.3s;
 }
 
-.login-button:hover {
+.feedback-modal-close-button:hover {
     border-color: rgb(92, 92, 92);
 }
 
-.login-close {
+.feedback-modal-close {
     position: absolute;
     right: 5px;
     top: -10px;
@@ -69,6 +57,6 @@
     transition: color 0.3s;
 }
 
-.login-close:hover {
+.feedback-modal-close:hover {
     color: rgb(48, 48, 48);
 }
