@@ -236,7 +236,25 @@ class Feedback extends Component {
                       }
                       this.props.dispatch(showModal('feedback-modal'))
                       this.props.dispatch(sendFeedback(data))
-                      .then((res)=>{})
+                      .then((res)=>{
+                          if(res.response === "Your feedback has been sent!"){
+                            this.subject.current.value = "I have a suggestion for a particular person/entity to add to the site"
+                            this.firstName.current.value = ""
+                            this.lastName.current.value = ""
+                            this.email.current.value = ""
+                            this.phone.current.value = ""
+                            this.zip.current.value = ""
+                            this.usState.current.value = "OR"
+                            this.comment.current.value = ""
+                            this.setState({
+                                characterCount: 500,
+                                firstNameValid: false,
+                                lastNameValid: false,
+                                emailValid: false
+                            })
+                          }
+                          console.log(res.response)
+                        })
 
                   }
               }}>Submit</label></div>
