@@ -24,5 +24,6 @@ Here is a link to the server repo https://github.com/Manny1806/nafta-server
 - Content seperated into three sections: "Who likes the new NAFTA?", "Who's left behind?", and "Where do our representatives stand?"
 - Entries to each section contain a title, image, quote, link to qoute, and comment section.
 - Logged in users are able to create new entries and edit existing ones.
+- Keyword search within each section to narrow down entries displayed.
 - Feedback page allows vistors to make suggestions and report bugs.
 
