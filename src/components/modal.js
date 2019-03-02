@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { hideModal } from '../actions/home/modal'
 import { connect } from 'react-redux'
 import ActiveProCard from './pro/active-pro-card'
 import ActiveConCard from './con/active-con-card'
@@ -33,7 +34,9 @@ class Modal extends Component {
       <div className="modal">
         { this.props.isShowing &&
           <div>
-            <div className="modal-backdrop"></div>
+            <div className="modal-backdrop" onClick={()=>{
+              document.body.style.overflow = "visible"
+              this.props.dispatch(hideModal())}}></div>
             <div className="confirm-modal-content">
             {this.setPage()} 
             </div>

@@ -82,6 +82,9 @@
 
 .footer{
     display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     border-top: solid black 2px;
     height: 50px;
     color: rgb(89, 89, 89);
