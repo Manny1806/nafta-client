@@ -19,7 +19,7 @@ class ProCard extends React.Component {
       //240 - titleHeight
       this.quoteText.current.innerHTML = this.props.cardItem.quote
 
-      while(this.quoteText.current.clientHeight >= (240 - titleHeight)){
+      while(this.quoteText.current.clientHeight >= (240 - (titleHeight + 18))){
         let lastSpaceIndex = this.quoteText.current.innerHTML.lastIndexOf(" ")
         this.quoteText.current.innerHTML = this.quoteText.current.innerHTML.slice(0, lastSpaceIndex) + "...."
       }
