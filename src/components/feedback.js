@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+//import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 import Modal from './modal'
 import { showModal } from '../actions/home/modal'
@@ -63,7 +62,7 @@ class Feedback extends Component {
           <header className="banner-container">
           <div className="banner-transparency"/>
             <div className="logo-image-container">
-              <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
+              <img className="logo-image" alt="NAFTA Reactor logo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
             </div>
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
@@ -119,15 +118,13 @@ class Feedback extends Component {
               }}/></div>
               <div className="feedback-input-container"><label>Phone</label><input ref={this.phone} maxLength="10" size="10" onKeyPress={(e)=>{
                   const keyCode = e.keyCode || e.which;
-                  const keyValue = String.fromCharCode(keyCode);
-                  if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
+                  if (keyCode !== 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
                     e.preventDefault();
                   }    
               }}/></div>
               <div className="feedback-input-container"><label>ZIP code</label><input ref={this.zip} maxLength="5" size="5" onKeyPress={(e)=>{
                   const keyCode = e.keyCode || e.which;
-                  const keyValue = String.fromCharCode(keyCode);
-                  if (keyCode != 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
+                  if (keyCode !== 46 && keyCode > 31 && (keyCode < 48 || keyCode > 57)){
                     e.preventDefault();
                   }
                     

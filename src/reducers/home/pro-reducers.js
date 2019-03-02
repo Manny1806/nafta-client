@@ -68,6 +68,12 @@ export default function reducer(state = initialState, action) {
     else if (action.type === ADD_PRO_POST_SUCCESS) {
         return {...state}
     }
+    else if (action.type === DELETE_PRO_POST_REQUEST) {
+        return {...state}
+    }
+    else if (action.type === DELETE_PRO_POST_SUCCESS) {
+        return {...state}
+    }
     else if (action.type === ADD_EMPTY_PRO_ENTRY) {
         return {...state, activeProPost: action.activeProPost}
     }

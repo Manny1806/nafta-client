@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { hideModal } from '../../actions/home/modal'
-import {fetchCongressPosts, addEmptyCongressEntry, editCongressPost, addCongressPost, deleteCongressPost, congressSetEdit, congressSetExpanded, uploadCongressImage, congressSetImgUrl} from '../../actions/home/congress-actions';
+import { editCongressPost, addCongressPost, deleteCongressPost, congressSetEdit, uploadCongressImage } from '../../actions/home/congress-actions';
 
 class ActiveCongressCard extends React.Component {
     constructor(props) {
@@ -91,7 +91,7 @@ class ActiveCongressCard extends React.Component {
                   name="file" ref={this.image} type="file" accept="image/png, image/jpeg"/>
   
                 <div className="active-image-container-edit">
-                  <img className="image" src={
+                  <img className="image" alt="" src={
                     this.state.editImg
                     }/>
                 </div>
@@ -148,13 +148,13 @@ class ActiveCongressCard extends React.Component {
             <h2>{this.props.activeCongressPost.title}</h2>
 
             <div className="active-image-container">
-              <img className="image" src={this.props.activeCongressPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"}/>
+              <img className="image" alt="" src={this.props.activeCongressPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"}/>
             </div>
 
             <p className="quote">
                 {this.props.activeCongressPost.quote}
                 <span className="reference-span">- 
-                  {this.props.activeCongressPost.quoteLink ? <a target="_blank" href={this.props.activeCongressPost.quoteLink}>{this.props.activeCongressPost.quoteReference}</a>:this.props.activeCongressPost.quoteReference}
+                  {this.props.activeCongressPost.quoteLink ? <a target="_blank" rel="noopener noreferrer" href={this.props.activeCongressPost.quoteLink}>{this.props.activeCongressPost.quoteReference}</a>:this.props.activeCongressPost.quoteReference}
                 </span>
             </p>
                 {this.props.activeCongressPost.description ? <p className="comments">{this.props.activeCongressPost.description}</p> : <p/>}

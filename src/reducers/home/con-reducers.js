@@ -67,6 +67,12 @@ export default function reducer(state = initialState, action) {
     else if (action.type === ADD_CON_POST_SUCCESS) {
         return {...state}
     }
+    else if (action.type === DELETE_CON_POST_REQUEST) {
+        return {...state}
+    }
+    else if (action.type === DELETE_CON_POST_SUCCESS) {
+        return {...state}
+    }
     else if (action.type === ADD_EMPTY_CON_ENTRY) {
         return {...state, activeConPost: action.activeConPost}
     }

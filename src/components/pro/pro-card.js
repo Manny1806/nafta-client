@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import {fetchProPosts, addEmptyProEntry, editProPost, addProPost, deleteProPost, proSetEdit, proSetExpanded, uploadProImage, proSetImgUrl, getActiveProPost} from '../../actions/home/pro-actions';
+import { getActiveProPost } from '../../actions/home/pro-actions';
 import { showModal } from '../../actions/home/modal'
 import '../current-column.css';
 import '../edit.css'
@@ -14,7 +14,6 @@ class ProCard extends React.Component {
     }
     
     componentDidMount(){
-      console.log(this.image)
       //add elipsis to quotes that all too long for collapsed card
       let titleHeight = this.quoteTitle.current.clientHeight
       //240 - titleHeight
@@ -38,7 +37,7 @@ class ProCard extends React.Component {
               }}>
             <div>
               <div className="image-container">
-                <img ref={this.image} className="image" src={this.props.cardItem.imgUrl || "https://www.freeiconspng.com/uploads/no-image-icon-11.PNG"}/>
+                <img ref={this.image} alt="" className="image" src={this.props.cardItem.imgUrl || "https://www.freeiconspng.com/uploads/no-image-icon-11.PNG"}/>
               </div>
               <h2 ref={this.quoteTitle}>{this.props.cardItem.title}</h2>
               <div className="quote-container">

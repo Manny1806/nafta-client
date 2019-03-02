@@ -67,6 +67,12 @@ export default function reducer(state = initialState, action) {
     else if (action.type === ADD_CONGRESS_POST_SUCCESS) {
         return {...state}
     }
+    else if (action.type === DELETE_CONGRESS_POST_REQUEST) {
+        return {...state}
+    }
+    else if (action.type === DELETE_CONGRESS_POST_SUCCESS) {
+        return {...state}
+    }
     else if (action.type === ADD_EMPTY_CONGRESS_ENTRY) {
         return {...state, activeCongressPost: action.activeCongressPost}
     }

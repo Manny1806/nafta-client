@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { hideModal } from '../../actions/home/modal'
-import {fetchConPosts, addEmptyConEntry, editConPost, addConPost, deleteConPost, conSetEdit, conSetExpanded, uploadConImage, conSetImgUrl} from '../../actions/home/con-actions';
+import { editConPost, addConPost, deleteConPost, conSetEdit, uploadConImage } from '../../actions/home/con-actions';
 
 class ActiveConCard extends React.Component {
     constructor(props) {
@@ -91,7 +91,7 @@ class ActiveConCard extends React.Component {
                   name="file" ref={this.image} type="file" accept="image/png, image/jpeg"/>
   
                 <div className="active-image-container-edit">
-                  <img className="image" src={
+                  <img className="image" alt="" src={
                     this.state.editImg
                     }/>
                 </div>
@@ -148,13 +148,13 @@ class ActiveConCard extends React.Component {
             <h2>{this.props.activeConPost.title}</h2>
 
             <div className="active-image-container">
-              <img className="image" src={this.props.activeConPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"}/>
+              <img className="image" alt="" src={this.props.activeConPost.imgUrl || "http://www.pinnacleeducations.in/wp-content/uploads/2017/05/no-image.jpg"}/>
             </div>
 
             <p className="quote">
                 {this.props.activeConPost.quote}
                 <span className="reference-span">- 
-                  {this.props.activeConPost.quoteLink ? <a target="_blank" href={this.props.activeConPost.quoteLink}>{this.props.activeConPost.quoteReference}</a>:this.props.activeConPost.quoteReference}
+                  {this.props.activeConPost.quoteLink ? <a target="_blank" rel="noopener noreferrer" href={this.props.activeConPost.quoteLink}>{this.props.activeConPost.quoteReference}</a>:this.props.activeConPost.quoteReference}
                 </span>
             </p>
                 {this.props.activeConPost.description ? <p className="comments">{this.props.activeConPost.description}</p> : <p/>}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 import Modal from './modal'
 import { showModal } from '../actions/home/modal'
@@ -41,7 +40,7 @@ class About extends Component {
           <header className="banner-container">
           <div className="banner-transparency"/>
             <div className="logo-image-container">
-              <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
+              <img className="logo-image" alt="NAFTA Reactor logo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
             </div>
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
@@ -63,16 +62,16 @@ class About extends Component {
           And some are those on whose shoulders the fate of the new NAFTA currently depends: members of the U.S. Congress.
           <br/><br/>
           We suggest you take particular care in reading the member-of-Congress remarks on NAFTA 2.0.  If your members of Congress 
-          are not on the record, <a target="_blank" href="https://www.usa.gov/elected-officials">reach out to them</a>.
+          are not on the record, <a target="_blank" rel="noopener noreferrer" href="https://www.usa.gov/elected-officials">reach out to them</a>.
           <br/><br/>
           NAFTA Reactor is brought to you by Oregon Fair Trade Campaign.  We are a nonprofit, grassroots coalition of a broad range 
           of organizations working in Oregon to establish social and eco justice in how our country does trade.  We organize to win a 
           dramatically remade, re-understood NAFTA, and absent that, believe a NAFTA rewrite/rebrand falls short and should be rejected.  
-          Our demands as far as the shape of a dramatically remade NAFTA can be read <a target="_blank" href="https://www.citizenstrade.org/ctc/oregon/">here</a>.
+          Our demands as far as the shape of a dramatically remade NAFTA can be read <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/oregon/">here</a>.
           <br/><br/>
-          Organize with us on our organization's <a target="_blank" href="https://www.citizenstrade.org/ctc/oregon/">site</a>. If you're not in Oregon, 
-          link up with our affiliated groups, such as <a target="_blank" href="https://www.citizenstrade.org/ctc/">Citizens Trade Campaign</a> (national) or state-based trade
-          justice <a target="_blank" href="https://www.citizenstrade.org/ctc/about-ctc/ctc-member-organizations-state-coalitions/">coalitions</a> like us near you.
+          Organize with us on our organization's <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/oregon/">site</a>. If you're not in Oregon, 
+          link up with our affiliated groups, such as <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/">Citizens Trade Campaign</a> (national) or state-based trade
+          justice <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/about-ctc/ctc-member-organizations-state-coalitions/">coalitions</a> like us near you.
           <br/><br/>
           Drop us a line in our Feedback page.  If there is an entity or person whose quote on the new NAFTA you would like to see thrown 
           in the NAFTA Reactor, let us know.

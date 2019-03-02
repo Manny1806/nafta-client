@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import {Provider} from 'react-redux';
 import { connect } from 'react-redux';
 import Modal from './modal'
 import { showModal } from '../actions/home/modal'
@@ -81,7 +80,7 @@ class Home extends Component {
           administration—this is highly contested ground, the trade battle of our day.</p>
 
           <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed off to, in a ceremony
-           on November 30, by the executives of Mexico, Canada, and the U.S.<img className="signing-photo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>  It takes
+           on November 30, by the executives of Mexico, Canada, and the U.S.<img className="signing-photo" alt="USMCA signing" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>  It takes
             effect if the legislatures of these signatory countries pass it.</p>
 
           <p className="landing-text-3">President Donald Trump touts the text that was agreed to as the fix NAFTA needed.</p>
@@ -268,7 +267,7 @@ class Home extends Component {
           <div className="banner-container">
           <div className="banner-transparency"/>
             <div className="logo-image-container">
-              <img className="logo-image" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
+              <img className="logo-image" alt="NAFTA Reactor logo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
             </div>
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
