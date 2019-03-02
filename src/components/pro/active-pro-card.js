@@ -167,6 +167,7 @@ class ActiveProCard extends React.Component {
               this.props.dispatch(this.props.dispatch(hideModal()))
             }}>X</button>
               {/* if logged in show edit and delete buttons */}
+              
               {this.props.loggedIn ? this.getEditButton() : ""}
               {this.props.loggedIn ? this.getDeleteButton() : ""}
               </div>
