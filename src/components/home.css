@@ -11,6 +11,7 @@ body{
     margin-right: auto;
     min-height: 100vh;
     padding-bottom: 50px;
+    box-sizing: border-box;
     /* overflow-y: hidden; */
 }
 
@@ -586,5 +587,24 @@ body{
         margin: 20px;
         /* border: solid rgba(63, 63, 63, 0.474) 2px; */
         border-radius: 5px;
+    }
+}
+
+@media only screen and (max-width: 374px) {
+    .yellow-banner {
+        font-size: 11px;
+    }
+
+    .for-header span{
+        font-size: 14px;
+        
+    }
+
+    .con-header span{
+        font-size: 14px;
+    }
+
+    .congress-header span{
+        font-size: 14px;
     }
 }

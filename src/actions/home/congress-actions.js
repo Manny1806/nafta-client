@@ -88,12 +88,16 @@ export const uploadCongressImageSuccess = (imgUrl) => ({
     imgUrl
 })
 
-export const uploadCongressImage = (file) => dispatch => {
-    console.log(file)
+export const uploadCongressImage = (file) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
+    //console.log(file)
     dispatch(uploadCongressImageRequest())
     return fetch(`${API_BASE_URL}/api/congress/img/`, {
         method: 'POST',
-        body: file
+        body: file,
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
     })
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => dispatch(uploadCongressImageSuccess(res)))
@@ -113,36 +117,44 @@ export const fetchCongressPostsSearch = (term) => dispatch => {
     .then(res => dispatch(fetchCongressPostsSearchSuccess(res)))
 }
 
-export const editCongressPost = (id, values) => dispatch => {
+export const editCongressPost = (id, values) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
     dispatch(editCongressPostRequest())
     fetch(`${API_BASE_URL}/api/congress/${id}`, {
         method: 'PUT',
         body: JSON.stringify(values),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         }
     }).then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => {dispatch(editCongressPostSuccess(res))})
     .then(res => dispatch(fetchCongressPosts()))
 }
 
-export const addCongressPost = (values) => dispatch => {
+export const addCongressPost = (values) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
     dispatch(addCongressPostRequest())
     fetch(`${API_BASE_URL}/api/congress/`, {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         }
     }).then(res => !res.ok ? Promise.reject(res.statusText) : undefined)
     .then(res => dispatch(addCongressPostSuccess()))
     .then(res => dispatch(fetchCongressPosts()))
 }
 
-export const deleteCongressPost = (id) => dispatch => {
+export const deleteCongressPost = (id) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
     dispatch(deleteCongressPostRequest())
     fetch(`${API_BASE_URL}/api/congress/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
     }).then(res => !res.ok ? Promise.reject(res.statusText) : undefined)
     .then(res => dispatch(deleteCongressPostSuccess()))
     .then(res => dispatch(fetchCongressPosts()))

@@ -419,6 +419,13 @@
         width: 90vw;
     }
 
+    .pro-list-item-active h2{
+        /* height: 80vw; */
+        font-size: 19px;
+        grid-row: 1/4;
+        grid-column: 1/11;
+    }
+
     .pro-list-item-active-edit{
         width: 90vw;
     }
@@ -471,6 +478,12 @@
 
     .congress-list-item-active-edit{
         width: 90vw;
+    }
+
+    .active-image-container {
+        grid-column: 1/11;
+        grid-row: 4/7;
+        
     }
 
     .image-container {

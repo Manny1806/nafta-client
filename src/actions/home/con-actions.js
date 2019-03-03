@@ -88,12 +88,16 @@ export const uploadConImageSuccess = (imgUrl) => ({
     imgUrl
 })
 
-export const uploadConImage = (file) => dispatch => {
-    console.log(file)
+export const uploadConImage = (file) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
+    //console.log(file)
     dispatch(uploadConImageRequest())
     return fetch(`${API_BASE_URL}/api/con/img/`, {
         method: 'POST',
-        body: file
+        body: file,
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
     })
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => dispatch(uploadConImageSuccess(res)))
@@ -113,36 +117,44 @@ export const fetchConPostsSearch = (term) => dispatch => {
     .then(res => dispatch(fetchConPostsSearchSuccess(res)))
 }
 
-export const editConPost = (id, values) => dispatch => {
+export const editConPost = (id, values) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
     dispatch(editConPostRequest())
     fetch(`${API_BASE_URL}/api/con/${id}`, {
         method: 'PUT',
         body: JSON.stringify(values),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         }
     }).then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => {dispatch(editConPostSuccess(res))})
     .then(res => dispatch(fetchConPosts()))
 }
 
-export const addConPost = (values) => dispatch => {
+export const addConPost = (values) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
     dispatch(addConPostRequest())
     fetch(`${API_BASE_URL}/api/con/`, {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         }
     }).then(res => !res.ok ? Promise.reject(res.statusText) : undefined)
     .then(res => dispatch(addConPostSuccess()))
     .then(res => dispatch(fetchConPosts()))
 }
 
-export const deleteConPost = (id) => dispatch => {
+export const deleteConPost = (id) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken
     dispatch(deleteConPostRequest())
     fetch(`${API_BASE_URL}/api/con/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
     }).then(res => !res.ok ? Promise.reject(res.statusText) : undefined)
     .then(res => dispatch(deleteConPostSuccess()))
     .then(res => dispatch(fetchConPosts()))

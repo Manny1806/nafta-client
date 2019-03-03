@@ -219,7 +219,7 @@ class Home extends Component {
     }
     else if(this.state.currentColumn === "con"){
       return (
-        <section className="new-entry-b color: white;utton" onClick={()=>{
+        <section className="new-entry-button" onClick={()=>{
           this.props.dispatch(conSetEdit(true))
           this.props.dispatch(addEmptyConEntry())
           this.props.dispatch(showModal('active-con-card'))
@@ -272,7 +272,7 @@ class Home extends Component {
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
             <div className="header-menu">
-              <nav><span><Link to="/">home</Link></span></nav>
+              <nav><span onClick={()=>{this.setState({currentColumn: "none"})}}><Link to="/">home</Link></span></nav>
               <nav><span><Link to="/about">about</Link></span></nav>
               <nav><span><Link to="/feedback">feedback</Link></span></nav>
               

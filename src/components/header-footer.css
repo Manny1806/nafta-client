@@ -121,3 +121,12 @@
         font-size: 20px;
     }
 }
+
+@media only screen and (max-width: 374px) {
+    .header-menu{
+        margin-top: 50px;
+        margin-right: 0px;
+        right: 0px;
+        font-size: 15px;
+    }
+}
