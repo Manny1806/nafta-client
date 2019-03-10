@@ -275,6 +275,30 @@ body{
     overflow: hidden;
 }
 
+.for-header-active {
+    position: relative;
+    display: flex;
+    /* top: 0; */
+    height: 75%;
+    width: 30%;
+    background-image: url('https://nuovonovalis.files.wordpress.com/2014/05/cigar_chomping_liberals.jpg');
+    background-position: center;
+    background-size: cover;
+    /* border-top: solid black 2px;
+    border-left: solid black 2px;
+    border-bottom: solid black 2px; */
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    box-sizing: border-box;
+    font-size: 30px;
+    color: black;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -10px black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
 .for-header span{
     width: 100%;
     height: 100%;
@@ -292,12 +316,23 @@ body{
     filter: grayscale(0%);
 }
 
+
+
 .for-header:hover .column-header-hover{
     /* height: 0%; */
     bottom: 100%;
 }
 
+.column-header-hover-active{
+    /* height: 0%; */
+    bottom: 100%;
+}
+
 .for-header:hover .column-header-hover-white{
+    bottom: 0;
+}
+
+.column-header-hover-white-active{
     bottom: 0;
 }
 
@@ -403,6 +438,13 @@ body{
     filter: grayscale(0%);
 }
 
+.column-header-active{
+    color: black;
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    transition: all 0.5s;
+}
+
 .search-input{
     height: 25px;
     font-size: 15px;
@@ -484,6 +526,20 @@ body{
 
 @media only screen and (max-width: 420px) {
 
+    /* .for-header:hover {
+        color: white;
+        -webkit-filter: none;
+        filter: none;
+    }
+
+    .for-header:hover .column-header-hover{
+       
+        bottom: auto;
+    }
+    
+    .for-header:hover .column-header-hover-white{
+        bottom: -100%;
+    } */
     
     /* .home-header-menu nav:not(:last-child){
         display: none;
@@ -594,6 +650,8 @@ body{
     .yellow-banner {
         font-size: 11px;
     }
+
+    
 
     .for-header span{
         font-size: 14px;

@@ -282,37 +282,37 @@ class Home extends Component {
           <div className="yellow-banner">Sorting out Trump's new version of the North American Free Trade Agreement</div>
         </header>
         <div className="column-header-container">
-          <div className="for-header" onClick={()=>{
+          <div className={`for-header ${this.state.currentColumn === "pro"? "column-header-active" : ""}`} onClick={()=>{
             if(this.state.currentColumn !== "pro"){
               this.props.dispatch(fetchProPosts())
               this.setState({
               currentColumn: "pro"
             })}
             }}>
-            <div className="column-header-hover"/>
-            <div className="column-header-hover-white"/>
+            <div className={`column-header-hover ${this.state.currentColumn === "pro"? "column-header-hover-active" : ""}`}/>
+            <div className={`column-header-hover-white ${this.state.currentColumn === "pro"? "column-header-hover-white-active" : ""}`}/>
             <span>Who likes the new NAFTA?</span>
           </div>
-          <div className="con-header" onClick={()=>{
+          <div className={`con-header ${this.state.currentColumn === "con"? "column-header-active" : ""}`} onClick={()=>{
             if(this.state.currentColumn !== "con"){
               this.props.dispatch(fetchConPosts())
               this.setState({
               currentColumn: "con"
             })}
             }}>
-            <div className="column-header-hover"/>
-            <div className="column-header-hover-white"/>
+            <div className={`column-header-hover ${this.state.currentColumn === "con"? "column-header-hover-active" : ""}`}/>
+            <div className={`column-header-hover-white ${this.state.currentColumn === "con"? "column-header-hover-white-active" : ""}`}/>
             <span>Who's left behind?</span>
           </div>
-          <div className="congress-header" onClick={()=>{
+          <div className={`congress-header ${this.state.currentColumn === "congress"? "column-header-active" : ""}`} onClick={()=>{
             if(this.state.currentColumn !== "congress"){
               this.props.dispatch(fetchCongressPosts())
               this.setState({
               currentColumn: "congress"
             })}
             }}>
-            <div className="column-header-hover"/>
-            <div className="column-header-hover-white"/>
+            <div className={`column-header-hover ${this.state.currentColumn === "congress"? "column-header-hover-active" : ""}`}/>
+            <div className={`column-header-hover-white ${this.state.currentColumn === "congress"? "column-header-hover-white-active" : ""}`}/>
             <span>Where do our representatives stand?</span>
           </div>
         </div>
