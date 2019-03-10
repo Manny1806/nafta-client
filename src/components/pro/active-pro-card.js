@@ -11,6 +11,7 @@ class ActiveProCard extends React.Component {
       this.quoteLink = React.createRef();
       this.description = React.createRef();
       this.title = React.createRef();
+      this.type = React.createRef();
       this.image = React.createRef();
       
       // this.staticImage = this.staticImage.bind(this);
@@ -71,6 +72,13 @@ class ActiveProCard extends React.Component {
                 }}
                 />
                 <label className="title-error">{this.state.titleError}</label>
+
+                <label className="type-label">Type</label>
+                <select className="type-input" ref={this.type} defaultValue={this.props.activeProPost.type || "Individual"}>
+                    <option value="Individual">Individual</option>
+                    <option value="Corporate Interest">Corporate Interest</option>
+                    <option value="Business Press">Business Press</option>
+                </select>
     
                 <label className="quote-label">Quote</label>
                 <textarea className="quote-input" ref={this.quote} defaultValue={this.props.activeProPost.quote || ""}/>
@@ -106,9 +114,10 @@ class ActiveProCard extends React.Component {
                     imgData.append("file", this.image.current.files[0])
                     this.props.dispatch(uploadProImage(imgData))
                     .then((res)=>{
-                    console.log(res)
+                    //console.log(res)
                     const data = {
                       title: this.title.current.value,
+                      type: this.type.current.value,
                       quote: this.quote.current.value,
                       quoteReference: this.quoteReference.current.value || "",
                       quoteLink: this.quoteLink.current.value || "",
