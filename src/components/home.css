@@ -230,9 +230,9 @@ body{
     opacity: 0.6;
     pointer-events: none;
     /* border-radius: 5px; */
-    transition: height 0.5s, bottom 0.5s;
+    transition: transform 0.5s;
     z-index: 0;
-    bottom:0;
+    transform: translateY(0%)
 }
 
 .column-header-hover-white{
@@ -245,9 +245,9 @@ body{
     opacity: 0.3;
     pointer-events: none;
     /* border-radius: 5px; */
-    transition: height 0.5s, bottom 0.5s;
+    transition: transform 0.5s;
     z-index: 0;
-    bottom: -100%;
+    transform: translateY(100%)
 }
 
 /* header button/div for those in favor of new NAFTA */
@@ -284,9 +284,6 @@ body{
     background-image: url('https://nuovonovalis.files.wordpress.com/2014/05/cigar_chomping_liberals.jpg');
     background-position: center;
     background-size: cover;
-    /* border-top: solid black 2px;
-    border-left: solid black 2px;
-    border-bottom: solid black 2px; */
     -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
     filter: grayscale(0%);
     box-sizing: border-box;
@@ -320,20 +317,20 @@ body{
 
 .for-header:hover .column-header-hover{
     /* height: 0%; */
-    bottom: 100%;
+    transform: translateY(-100%)
 }
 
 .column-header-hover-active{
     /* height: 0%; */
-    bottom: 100%;
+    transform: translateY(-100%)
 }
 
 .for-header:hover .column-header-hover-white{
-    bottom: 0;
+    transform: translateY(0%)
 }
 
 .column-header-hover-white-active{
-    bottom: 0;
+    transform: translateY(0%)
 }
 
 /* header button/div for those against new NAFTA */
@@ -380,11 +377,11 @@ body{
 }
 
 .con-header:hover .column-header-hover{
-    bottom: 100%;
+    transform: translateY(-100%)
 }
 
 .con-header:hover .column-header-hover-white{
-    bottom: 0;
+    transform: translateY(0%)
 }
 
 /* header button/div for members of congress' stances */
@@ -425,11 +422,11 @@ body{
 }
 
 .congress-header:hover .column-header-hover{
-    bottom: 100%;
+    transform: translateY(-100%)
 }
 
 .congress-header:hover .column-header-hover-white{
-    bottom: 0;
+    transform: translateY(0%)
 }
 
 .congress-header:hover {

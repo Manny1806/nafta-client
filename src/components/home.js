@@ -8,6 +8,7 @@ import './home.css';
 import './current-column.css';
 import './edit.css'
 import './header-footer.css'
+import './filters.css'
 import ProCard from './pro/pro-card'
 import ConCard from './con/con-card'
 import CongressCard from './congress/congress-card'
@@ -25,16 +26,45 @@ class Home extends Component {
     super()
     this.state = {
       currentColumn: "none",
+      proFilter: "all",
       editing: false
     }
     this.timeout = 0
+    this.filter = React.createRef();
+    this.search = React.createRef();
+  }
+
+  
+
+  componentDidMount(){
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  handleClickOutside(e){
+    if(document.getElementsByClassName('pro-filter-dropdown')[0]){
+      if (!document.getElementsByClassName('pro-filter-dropdown')[0].contains(e.target)){
+        var dropdowns = document.getElementsByClassName("pro-filter-dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    
   }
 
   proSearch(e){
     let searchText = e.target.value
     if(this.timeout) clearTimeout(this.timeout)
     if(searchText){
-      this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText))
+      this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText, this.state.proFilter))
       }, 500)
     } else {
       this.timeout = setTimeout(()=>{this.props.dispatch(fetchProPosts())
@@ -44,7 +74,7 @@ class Home extends Component {
   }
 
   conSearch(e){
-    let searchText = e.target.value
+    let searchText = e.targetermt.value
     if(this.timeout) clearTimeout(this.timeout)
     if(searchText){
       this.timeout = setTimeout(()=>{this.props.dispatch(fetchConPostsSearch(searchText))
@@ -183,7 +213,19 @@ class Home extends Component {
     else if (this.state.currentColumn === "pro"){
     return (
       <div className="filter-bar">
-        <input className="search-input" placeholder="Search" onChange={e=>this.proSearch(e)}/>
+        <input className="search-input" ref={this.search} placeholder="Search" onChange={e=>this.proSearch(e)}/>
+        <div className="pro-filter-dropdown">
+          <button className="pro-filter-dropbtn" onClick={()=>{
+            document.getElementById("pro-filter-dropdown").classList.toggle("show");
+          }}>Type &#9660;</button>
+          <div id="pro-filter-dropdown" className="pro-filter-dropdown-content" >
+            <label onClick={()=>{this.setState({proFilter: "Individual"})}}>Individuals</label>
+            <label onClick={()=>{this.setState({proFilter: "Business Press"})}}>Business Press</label>
+            <label onClick={()=>{this.setState({proFilter: "Corporate Interest"})}}>Corporate Interests</label>
+            <label onClick={()=>{this.setState({proFilter: "all"})}}>All</label>
+
+          </div>
+        </div>
         {this.props.loggedIn?this.getNewEntryButton(): ""}
       </div>
     )

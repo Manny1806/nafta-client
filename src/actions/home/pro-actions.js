@@ -110,9 +110,9 @@ export const fetchProPosts = () => dispatch =>{
     .then(res => dispatch(fetchProPostsSuccess(res)))
 }
 
-export const fecthProPostsSearch = (term) => dispatch => {
+export const fecthProPostsSearch = (term, filter) => dispatch => {
     dispatch(fetchProPostsSearchRequest())
-    fetch(`${API_BASE_URL}/api/pro/search/${term}`)
+    fetch(`${API_BASE_URL}/api/pro/search?term=${encodeURIComponent(term)}&filter=${encodeURIComponent(filter)}`)
     .then(res => !res.ok ? Promise.reject(res.statusText) : res.json())
     .then(res => dispatch(fetchProPostsSearchSuccess(res)))
 }

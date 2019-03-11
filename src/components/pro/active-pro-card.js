@@ -171,10 +171,10 @@ class ActiveProCard extends React.Component {
             </p>
                 {this.props.activeProPost.description ? <p className="comments">{this.props.activeProPost.description}</p> : <p/>}
             
-            <button className="collapse-button" onClick={()=>{
+            <label className="collapse-button" onClick={()=>{
               document.body.style.overflow = "visible"
               this.props.dispatch(this.props.dispatch(hideModal()))
-            }}>X</button>
+            }}>X</label>
               {/* if logged in show edit and delete buttons */}
               
               {this.props.loggedIn ? this.getEditButton() : ""}
