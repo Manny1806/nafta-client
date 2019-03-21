@@ -26,7 +26,7 @@ class Home extends Component {
     super()
     this.state = {
       currentColumn: "none",
-      proFilter: "all",
+      proFilter: "All",
       editing: false
     }
     this.timeout = 0
@@ -60,21 +60,20 @@ class Home extends Component {
     
   }
 
-  proSearch(e){
-    let searchText = e.target.value
+  proSearch(searchText, filter){
+    // let searchText = e.target.value
     if(this.timeout) clearTimeout(this.timeout)
-    if(searchText){
-      this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText, this.state.proFilter))
-      }, 500)
-    } else {
-      this.timeout = setTimeout(()=>{this.props.dispatch(fetchProPosts())
-      }, 500)
-    }
+    // if(searchText){
+      this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText, filter))}, 500)
+    // } else {
+    //   this.timeout = setTimeout(()=>{this.props.dispatch(fetchProPosts())
+    //   }, 500)
+    // }
     
   }
 
   conSearch(e){
-    let searchText = e.targetermt.value
+    let searchText = e.target.value
     if(this.timeout) clearTimeout(this.timeout)
     if(searchText){
       this.timeout = setTimeout(()=>{this.props.dispatch(fetchConPostsSearch(searchText))
@@ -109,13 +108,15 @@ class Home extends Component {
           the USMCA (United States-Mexico-Canada Agreement) by the Trump 
           administration—this is highly contested ground, the trade battle of our day.</p>
 
-          <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed off to, in a ceremony
-           on November 30, by the executives of Mexico, Canada, and the U.S.<img className="signing-photo" alt="USMCA signing" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>  It takes
+          <img className="signing-photo" alt="USMCA signing" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>
+
+          <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed, in a ceremony
+           on November 30, by the executives of Mexico, Canada, and the U.S. It takes
             effect if the legislatures of these signatory countries pass it.</p>
 
-          <p className="landing-text-3">President Donald Trump touts the text that was agreed to as the fix NAFTA needed.</p>
+          <p className="landing-text-3">President Donald Trump touts his version of NAFTA as the solution our country needed.</p>
 
-          <p className="landing-text-4">What are other people saying about the new NAFTA?
+          <p className="landing-text-4"><span style={{"font-weight": '700'}}>What are other people saying about the new NAFTA? </span>
           Click on a section above to take in a range of views by people and 
           organizations on the deal—whether they be the sort to like NAFTA 2.0, 
           to be left behind by NAFTA and NAFTA 2.0, or to be our own members of 
@@ -213,18 +214,35 @@ class Home extends Component {
     else if (this.state.currentColumn === "pro"){
     return (
       <div className="filter-bar">
-        <input className="search-input" ref={this.search} placeholder="Search" onChange={e=>this.proSearch(e)}/>
+        
         <div className="pro-filter-dropdown">
           <button className="pro-filter-dropbtn" onClick={()=>{
             document.getElementById("pro-filter-dropdown").classList.toggle("show");
-          }}>Type &#9660;</button>
+          }}>Type: {this.state.proFilter} &#9660;</button>
           <div id="pro-filter-dropdown" className="pro-filter-dropdown-content" >
-            <label onClick={()=>{this.setState({proFilter: "Individual"})}}>Individuals</label>
-            <label onClick={()=>{this.setState({proFilter: "Business Press"})}}>Business Press</label>
-            <label onClick={()=>{this.setState({proFilter: "Corporate Interest"})}}>Corporate Interests</label>
-            <label onClick={()=>{this.setState({proFilter: "all"})}}>All</label>
+            <label onClick={()=>{
+              this.setState({proFilter: "Individuals"})
+              this.proSearch(this.search.current.value, "Individuals")
+              document.getElementById("pro-filter-dropdown").classList.remove("show")
+              }}>Individuals</label>
+            <label onClick={()=>{
+              this.setState({proFilter: "Business Press"})
+              this.proSearch(this.search.current.value, "Business Press")
+              document.getElementById("pro-filter-dropdown").classList.remove("show")
+              }}>Business Press</label>
+            <label onClick={()=>{
+              this.setState({proFilter: "Corporate Interests"})
+              this.proSearch(this.search.current.value, "Corporate Interests")
+              document.getElementById("pro-filter-dropdown").classList.remove("show")
+              }}>Corporate Interests</label>
+            <label onClick={()=>{
+              this.setState({proFilter: "All"})
+              this.proSearch(this.search.current.value, "All")
+              document.getElementById("pro-filter-dropdown").classList.remove("show")
+              }}>All</label>
 
           </div>
+          <input className="search-input" ref={this.search} placeholder="Search" onChange={e=>this.proSearch(e.target.value, this.state.proFilter)}/>
         </div>
         {this.props.loggedIn?this.getNewEntryButton(): ""}
       </div>
@@ -328,7 +346,8 @@ class Home extends Component {
             if(this.state.currentColumn !== "pro"){
               this.props.dispatch(fetchProPosts())
               this.setState({
-              currentColumn: "pro"
+              currentColumn: "pro",
+              proFilter: "All"
             })}
             }}>
             <div className={`column-header-hover ${this.state.currentColumn === "pro"? "column-header-hover-active" : ""}`}/>
@@ -339,7 +358,8 @@ class Home extends Component {
             if(this.state.currentColumn !== "con"){
               this.props.dispatch(fetchConPosts())
               this.setState({
-              currentColumn: "con"
+              currentColumn: "con",
+              proFilter: "All"
             })}
             }}>
             <div className={`column-header-hover ${this.state.currentColumn === "con"? "column-header-hover-active" : ""}`}/>
@@ -350,7 +370,8 @@ class Home extends Component {
             if(this.state.currentColumn !== "congress"){
               this.props.dispatch(fetchCongressPosts())
               this.setState({
-              currentColumn: "congress"
+              currentColumn: "congress",
+              proFilter: "All"
             })}
             }}>
             <div className={`column-header-hover ${this.state.currentColumn === "congress"? "column-header-hover-active" : ""}`}/>

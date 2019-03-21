@@ -165,7 +165,7 @@ class ActiveProCard extends React.Component {
 
             <p className="quote">
                 {this.props.activeProPost.quote}
-                <span className="reference-span">- 
+                <span className="reference-span">
                   {this.props.activeProPost.quoteLink ? <a target="_blank" rel="noopener noreferrer" href={this.props.activeProPost.quoteLink}>{this.props.activeProPost.quoteReference}</a>:this.props.activeProPost.quoteReference}
                 </span>
             </p>

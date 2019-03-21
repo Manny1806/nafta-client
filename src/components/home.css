@@ -119,13 +119,14 @@ body{
 }
 
 .yellow-banner {
-    background-color: #FFCB05;
+    background-color: rgb(240, 202, 36);
     height: 40px;
     line-height: 38px;
     /* border-top: dashed black 2px; */
     /* border-bottom: dashed black 2px; */
-    font-family: Oswald;
+    font-family: Playfair Display;
     font-size: 20px;
+    font-weight: 600;
     /* z-index: 1; */
    
 }
@@ -192,19 +193,19 @@ body{
 }
 
 .landing-text-1{
-    font-family: Poppins;
+    font-family: Libre Franklin;
 }
 
 .landing-text-2{
-    font-family: Poppins;
+    font-family: Libre Franklin;
 }
 
 .landing-text-3{
-    font-family: Poppins;
+    font-family: Libre Franklin;
 }
 
 .landing-text-4{
-    font-family: Poppins;
+    font-family: Libre Franklin;
 }
 
 /* container for the three different 'column' header buttons */
@@ -242,7 +243,7 @@ body{
     box-sizing: border-box;
     background-color: white;
     /* background-image: radial-gradient(circle, white, rgba(255, 255, 255, 0)); */
-    opacity: 0.3;
+    opacity: 0.05;
     pointer-events: none;
     /* border-radius: 5px; */
     transition: transform 0.5s;
@@ -340,10 +341,10 @@ body{
     height: 75%;
     width: 30%;
     /* left: 33.33%; */
-    background-image: url('https://res.cloudinary.com/siouxcitymusic/image/upload/v1549571378/grass-plant-field-meadow-wheat-grain-750831-pxhere.com.jpg');
+    background-image: url('https://res.cloudinary.com/siouxcitymusic/image/upload/v1553144587/stealing_image_from_Janet_Jarman_2019.01.29.jpg');
     /* border: solid black 2px; */
     background-size: cover;
-    background-position-y: -20px;
+    background-position-y: -40px;
     box-sizing: border-box;
     font-size: 30px;
     color: white;
@@ -443,7 +444,7 @@ body{
 }
 
 .search-input{
-    height: 25px;
+    height: 28px;
     font-size: 15px;
     margin-right:15px;
 }
@@ -569,7 +570,7 @@ body{
 
     .yellow-banner {
         
-        font-size: 13px;
+        font-size: 10px;
         
        
     }
@@ -645,7 +646,7 @@ body{
 
 @media only screen and (max-width: 374px) {
     .yellow-banner {
-        font-size: 11px;
+        font-size: 9px;
     }
 
     

@@ -153,7 +153,7 @@ class ActiveConCard extends React.Component {
 
             <p className="quote">
                 {this.props.activeConPost.quote}
-                <span className="reference-span">- 
+                <span className="reference-span"> 
                   {this.props.activeConPost.quoteLink ? <a target="_blank" rel="noopener noreferrer" href={this.props.activeConPost.quoteLink}>{this.props.activeConPost.quoteReference}</a>:this.props.activeConPost.quoteReference}
                 </span>
             </p>

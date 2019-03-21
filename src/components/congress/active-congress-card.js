@@ -153,7 +153,7 @@ class ActiveCongressCard extends React.Component {
 
             <p className="quote">
                 {this.props.activeCongressPost.quote}
-                <span className="reference-span">- 
+                <span className="reference-span">
                   {this.props.activeCongressPost.quoteLink ? <a target="_blank" rel="noopener noreferrer" href={this.props.activeCongressPost.quoteLink}>{this.props.activeCongressPost.quoteReference}</a>:this.props.activeCongressPost.quoteReference}
                 </span>
             </p>

@@ -67,7 +67,7 @@ class About extends Component {
           NAFTA Reactor is brought to you by Oregon Fair Trade Campaign.  We are a nonprofit, grassroots coalition of a broad range 
           of organizations working in Oregon to establish social and eco justice in how our country does trade.  We organize to win a 
           dramatically remade, re-understood NAFTA, and absent that, believe a NAFTA rewrite/rebrand falls short and should be rejected.  
-          Our demands as far as the shape of a dramatically remade NAFTA can be read <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/oregon/">here</a>.
+          Our demands as far as the shape of a dramatically remade NAFTA can be read <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/wp-content/uploads/2018/03/NAFTAOrgSignOnLetter_032118.pdf">here</a>.
           <br/><br/>
           Organize with us on our organization's <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/oregon/">site</a>. If you're not in Oregon, 
           link up with our affiliated groups, such as <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/">Citizens Trade Campaign</a> (national) or state-based trade
@@ -75,6 +75,20 @@ class About extends Component {
           <br/><br/>
           Drop us a line in our Feedback page.  If there is an entity or person whose quote on the new NAFTA you would like to see thrown 
           in the NAFTA Reactor, let us know.
+          </p>
+          <h2>Helpful Links</h2>
+          <p className="about-text-1">
+            <a target="_blank" rel="noopener noreferrer" href="https://ustr.gov/trade-agreements/free-trade-agreements/united-states-mexico-canada-agreement/agreement-between">The text of the new NAFTA, according to the USTR (United States Trade Representative)</a>
+            <br/><br/>
+            <a target="_blank" rel="noopener noreferrer" href="http://infographic.replacenafta.org/the-selling-of-nafta-2-0-is-a-lot-like-that-of-the-original-nafta/">The selling of NAFTA 2.0 as compared to selling of NAFTA in 1993</a>
+            <br/><br/>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.citizenstrade.org/ctc/wp-content/uploads/2018/03/ReplaceNAFTASignOnLetter_TextReleaseAnnotations_1018.pdf">How the new NAFTA measures up against public-interest demands, as presented by Citizens Trade Campaign</a>
+            <br/><br/>
+            <a target="_blank" rel="noopener noreferrer" href="http://infographic.replacenafta.org/">How the new NAFTA measures up against public-interest demands, as presented by Public Citizen's Global Trade Watch</a>
+            <br/><br/>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.citizen.org/potentially-lethal-new-nafta-ip-chapter-requires-10-year-biologics-monopolies-worst-such-rule-us-fta">The new NAFTA's impacts on people's access to medicines</a>
+            <br/><br/>
+            <a target="_blank" rel="noopener noreferrer" href="https://aflcio.org/aboutleadershipstatements/trade-must-build-inclusive-economy-all">Statement by the AFL-CIO Executive Council re: NAFTA and trade</a>
           </p>
         </div>
         
