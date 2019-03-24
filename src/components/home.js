@@ -116,7 +116,7 @@ class Home extends Component {
 
           <p className="landing-text-3">President Donald Trump touts his version of NAFTA as the solution our country needed.</p>
 
-          <p className="landing-text-4"><span style={{"font-weight": '700'}}>What are other people saying about the new NAFTA? </span>
+          <p className="landing-text-4"><span style={{"fontWeight": '700'}}>What are other people saying about the new NAFTA? </span>
           Click on a section above to take in a range of views by people and 
           organizations on the deal—whether they be the sort to like NAFTA 2.0, 
           to be left behind by NAFTA and NAFTA 2.0, or to be our own members of 
@@ -339,7 +339,7 @@ class Home extends Component {
             </div>
           
           </div>
-          <div className="yellow-banner">Sorting out Trump's new version of the North American Free Trade Agreement</div>
+          <div className="yellow-banner"><span>Sorting out Trump's new version of the North American Free Trade Agreement</span></div>
         </header>
         <div className="column-header-container">
           <div className={`for-header ${this.state.currentColumn === "pro"? "column-header-active" : ""}`} onClick={()=>{

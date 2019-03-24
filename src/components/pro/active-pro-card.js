@@ -132,12 +132,13 @@ class ActiveProCard extends React.Component {
                   } else {
                     const data = {
                       title: this.title.current.value,
+                      type: this.type.current.value,
                       quote: this.quote.current.value,
                       quoteReference: this.quoteReference.current.value || "",
                       quoteLink: this.quoteLink.current.value || "",
                       description: this.description.current.value || "",
                       imgUrl: this.props.activeProPost.imgUrl || ""
-                    }
+                    }                   
                     id ? this.props.dispatch(editProPost(id, data)) : this.props.dispatch(addProPost(data))
                     document.body.style.overflow = "visible"
                     this.props.dispatch(hideModal())

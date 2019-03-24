@@ -121,14 +121,20 @@ body{
 .yellow-banner {
     background-color: rgb(240, 202, 36);
     height: 40px;
-    line-height: 38px;
+    /* line-height: 38px; */
     /* border-top: dashed black 2px; */
     /* border-bottom: dashed black 2px; */
     font-family: Playfair Display;
     font-size: 20px;
     font-weight: 600;
     /* z-index: 1; */
-   
+}
+
+.yellow-banner span {
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
