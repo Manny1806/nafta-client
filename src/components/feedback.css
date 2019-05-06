@@ -13,10 +13,11 @@
     min-height: 100vh;
     padding-bottom: 50px;
     box-sizing: border-box;
+    font-family: Antic;
 }
 
 .feedback-body{
-    font-family: Libre Franklin;
+    
     justify-content: center;
     max-width: 70%;
     margin-left: auto;

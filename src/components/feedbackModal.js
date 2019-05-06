@@ -17,7 +17,7 @@ class FeedbackModal extends React.Component {
         else {
             return (
                 <div className="feedback-modal-container">
-                    <h2 className="feedback-modal-header">{this.props.response}</h2>
+                    <span className="feedback-modal-header">{this.props.response}</span>
                     <label className="feedback-modal-close" onClick={()=>{
                             document.body.style.overflow = "visible"
                             this.props.dispatch(hideModal())

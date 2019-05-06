@@ -4,7 +4,7 @@
 }
 
 .feedback-modal-header {
-    
+    font-size: 20px;
 }
 
 .center-loader{
@@ -25,6 +25,9 @@
     left:0;
     margin-right: auto;
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .feedback-modal-close-button {

@@ -11,6 +11,7 @@
     min-height: 100vh;
     padding-bottom: 50px;
     box-sizing: border-box;
+    font-family: Antic;
 }
 
 .about-banner-container{
@@ -61,7 +62,7 @@
 }
 
 .about-body{
-    font-family: Libre Franklin;
+    /* font-family: Antic; */
 }
 
 .about-text-1 {

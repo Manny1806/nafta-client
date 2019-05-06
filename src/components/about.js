@@ -55,11 +55,10 @@ class About extends Component {
           </header>
         
         <div className="about-body">
-          <h2>This website is just the facts.</h2>
+          <h2>This website is composed entirely of quotes...</h2>
           <p className="about-text-1">
-           The facts of what people and organizations have said about the new NAFTA, 
-          in their own words.  Some of these are big business interests, some are media, some are defenders of people and the planet.  
-          And some are those on whose shoulders the fate of the new NAFTA currently depends: members of the U.S. Congress.
+           Quotes of organizations' and individuals' remarks on the the new NAFTA. Some of these are big business interests, some are media, some are defenders of people and the planet.  
+          And some are those who will decide the fate of the new NAFTA: members of the U.S. Congress.
           <br/><br/>
           We suggest you take particular care in reading the member-of-Congress remarks on NAFTA 2.0.  If your members of Congress 
           are not on the record, <a target="_blank" rel="noopener noreferrer" href="https://www.usa.gov/elected-officials">reach out to them</a>.

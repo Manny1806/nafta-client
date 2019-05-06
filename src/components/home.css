@@ -12,6 +12,7 @@ body{
     min-height: 100vh;
     padding-bottom: 50px;
     box-sizing: border-box;
+    font-family: Antic;
     /* overflow-y: hidden; */
 }
 
@@ -124,7 +125,7 @@ body{
     /* line-height: 38px; */
     /* border-top: dashed black 2px; */
     /* border-bottom: dashed black 2px; */
-    font-family: Playfair Display;
+    font-family: Orienta;
     font-size: 20px;
     font-weight: 600;
     /* z-index: 1; */
@@ -199,19 +200,19 @@ body{
 }
 
 .landing-text-1{
-    font-family: Libre Franklin;
+    /* font-family: Libre Franklin; */
 }
 
 .landing-text-2{
-    font-family: Libre Franklin;
+    /* font-family: Libre Franklin; */
 }
 
 .landing-text-3{
-    font-family: Libre Franklin;
+    /* font-family: Libre Franklin; */
 }
 
 .landing-text-4{
-    font-family: Libre Franklin;
+    /* font-family: Libre Franklin; */
 }
 
 /* container for the three different 'column' header buttons */
@@ -222,7 +223,7 @@ body{
     justify-content: space-around;
     align-items: center;
     position: relative;
-    font-family: Francois One;
+    /* font-family: Francois One; */
     /* background-color: #88BBE9; */
 }
 
@@ -474,10 +475,13 @@ body{
 }
 
 .signing-photo{
-    float: right;
+    display: block;
+    /* float: right; */
     height: 300px;
     box-shadow: -10px 10px 40px -10px black;
     margin: 20px;
+    margin-right: auto;
+    margin-left: auto;
     /* border: solid rgba(63, 63, 63, 0.474) 2px; */
     border-radius: 5px;
 }

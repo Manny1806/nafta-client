@@ -38,6 +38,25 @@ class Home extends Component {
 
   componentDidMount(){
     document.addEventListener('mousedown', this.handleClickOutside);
+    var url_string = window.location.href
+    var url = new URL(url_string);
+    var currentColumn = url.searchParams.get("currentColumn")
+    console.log(currentColumn)
+    if(currentColumn){
+      this.setState({
+        currentColumn: currentColumn
+      })
+      if(currentColumn === "pro"){
+        this.props.dispatch(fetchProPosts())
+      } else if (currentColumn === "con"){
+        this.props.dispatch(fetchConPosts())
+      } else if (currentColumn === "congress"){
+        this.props.dispatch(fetchCongressPosts())
+      }
+    }
+    window.addEventListener('popstate', function () {
+      window.location.reload();
+    });
   }
 
   componentWillUnmount() {
@@ -108,21 +127,36 @@ class Home extends Component {
           the USMCA (United States-Mexico-Canada Agreement) by the Trump 
           administration—this is highly contested ground, the trade battle of our day.</p>
 
-          <img className="signing-photo" alt="USMCA signing" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>
-
-          <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed, in a ceremony
-           on November 30, by the executives of Mexico, Canada, and the U.S. It takes
-            effect if the legislatures of these signatory countries pass it.</p>
-
-          <p className="landing-text-3">President Donald Trump touts his version of NAFTA as the solution our country needed.</p>
-
           <p className="landing-text-4"><span style={{"fontWeight": '700'}}>What are other people saying about the new NAFTA? </span>
+          Click on any of the three sections above to take in a range of views by people and 
+          organizations on the deal—views such as...
+          </p>
+
+          <div style={{width: "100%", display: "flex", alignItems:"center", justifyContent:"space-evenly"}}>
+            <img src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_14.png"/>
+            <img src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_16.png"/>
+            <img src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_15.png"/>
+          </div>
+
+          {/* <p className="landing-text-4"><span style={{"fontWeight": '700'}}>What are other people saying about the new NAFTA? </span>
           Click on a section above to take in a range of views by people and 
           organizations on the deal—whether they be the sort to like NAFTA 2.0, 
           to be left behind by NAFTA and NAFTA 2.0, or to be our own members of 
           Congress, whose pleasure or displeasure at the new NAFTA makes all the 
           difference.
-          </p>
+          </p> */}
+
+          
+
+          <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed, in a ceremony
+           on November 30, by the executives of Mexico, Canada, and the U.S. It takes
+            effect if the legislatures of these signatory countries pass it.</p>
+
+          <img className="signing-photo" alt="USMCA signing" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>
+
+          {/* <p className="landing-text-3">President Donald Trump touts his version of NAFTA as the solution our country needed.</p> */}
+
+          
       </div>
       )
     }
@@ -349,6 +383,7 @@ class Home extends Component {
               currentColumn: "pro",
               proFilter: "All"
             })}
+            window.history.pushState({}, null, '?currentColumn=pro')
             }}>
             <div className={`column-header-hover ${this.state.currentColumn === "pro"? "column-header-hover-active" : ""}`}/>
             <div className={`column-header-hover-white ${this.state.currentColumn === "pro"? "column-header-hover-white-active" : ""}`}/>
@@ -361,6 +396,7 @@ class Home extends Component {
               currentColumn: "con",
               proFilter: "All"
             })}
+              window.history.pushState({}, null, '?currentColumn=con')
             }}>
             <div className={`column-header-hover ${this.state.currentColumn === "con"? "column-header-hover-active" : ""}`}/>
             <div className={`column-header-hover-white ${this.state.currentColumn === "con"? "column-header-hover-white-active" : ""}`}/>
@@ -373,6 +409,7 @@ class Home extends Component {
               currentColumn: "congress",
               proFilter: "All"
             })}
+              window.history.pushState({}, null, '?currentColumn=congress')
             }}>
             <div className={`column-header-hover ${this.state.currentColumn === "congress"? "column-header-hover-active" : ""}`}/>
             <div className={`column-header-hover-white ${this.state.currentColumn === "congress"? "column-header-hover-white-active" : ""}`}/>
