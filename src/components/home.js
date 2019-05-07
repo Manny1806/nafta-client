@@ -41,7 +41,6 @@ class Home extends Component {
     var url_string = window.location.href
     var url = new URL(url_string);
     var currentColumn = url.searchParams.get("currentColumn")
-    console.log(currentColumn)
     if(currentColumn){
       this.setState({
         currentColumn: currentColumn
@@ -80,14 +79,10 @@ class Home extends Component {
   }
 
   proSearch(searchText, filter){
-    // let searchText = e.target.value
+    
     if(this.timeout) clearTimeout(this.timeout)
-    // if(searchText){
+    
       this.timeout = setTimeout(()=>{this.props.dispatch(fecthProPostsSearch(searchText, filter))}, 500)
-    // } else {
-    //   this.timeout = setTimeout(()=>{this.props.dispatch(fetchProPosts())
-    //   }, 500)
-    // }
     
   }
 
@@ -132,10 +127,10 @@ class Home extends Component {
           organizations on the deal—views such as...
           </p>
 
-          <div style={{width: "100%", display: "flex", alignItems:"center", justifyContent:"space-evenly"}}>
-            <img src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_14.png"/>
-            <img src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_16.png"/>
-            <img src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_15.png"/>
+          <div style={{width: "100%", display: "flex", alignItems:"center", flexWrap: "wrap", justifyContent:"space-evenly"}}>
+            <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_14.png"/>
+            <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_16.png"/>
+            <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_15.png"/>
           </div>
 
           {/* <p className="landing-text-4"><span style={{"fontWeight": '700'}}>What are other people saying about the new NAFTA? </span>
@@ -360,8 +355,8 @@ class Home extends Component {
         <header className="header">
           <div className="banner-container">
           <div className="banner-transparency"/>
-            <div className="logo-image-container">
-              <img className="logo-image" alt="NAFTA Reactor logo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
+            <div className="logo-image-container" onClick={()=>{this.setState({currentColumn: "none"})}}>
+            <Link to="/"><img className="logo-image" alt="NAFTA Reactor logo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/></Link>
             </div>
             {/* <span className="home-title"> NAFTA Reactor</span> */}
             {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}

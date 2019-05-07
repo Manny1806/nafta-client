@@ -40,10 +40,8 @@ class About extends Component {
           <header className="banner-container">
           <div className="banner-transparency"/>
             <div className="logo-image-container">
-              <img className="logo-image" alt="NAFTA Reactor logo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/>
+            <Link to="/"><img className="logo-image" alt="NAFTA Reactor logo" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549600202/NAFTA_Reactor_logo_new.png"/></Link>
             </div>
-            {/* <span className="home-title"> NAFTA Reactor</span> */}
-            {/* <span className="home-sub-title">Sorting out Trump's New NAFTA</span> */}
             <div className="header-menu">
               <nav><span><Link to="/">home</Link></span></nav>
               <nav><span><Link to="/about">about</Link></span></nav>
