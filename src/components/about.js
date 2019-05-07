@@ -83,7 +83,9 @@ class About extends Component {
             <br/><br/>
             <a target="_blank" rel="noopener noreferrer" href="http://infographic.replacenafta.org/">How the new NAFTA measures up against public-interest demands, as presented by Public Citizen's Global Trade Watch</a>
             <br/><br/>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.citizen.org/potentially-lethal-new-nafta-ip-chapter-requires-10-year-biologics-monopolies-worst-such-rule-us-fta">The new NAFTA's impacts on people's access to medicines</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.citizen.org/article/restricting-access-to-affordable-medicines/">The new NAFTA's impacts on people's access to medicines</a>
+            <br/><br/>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.sierraclub.org/sites/www.sierraclub.org/files/NAFTA-environment-statement.pdf">Sixteen environmental and climate groups' shared statement on the new NAFTA</a>
             <br/><br/>
             <a target="_blank" rel="noopener noreferrer" href="https://aflcio.org/aboutleadershipstatements/trade-must-build-inclusive-economy-all">Statement by the AFL-CIO Executive Council re: NAFTA and trade</a>
           </p>

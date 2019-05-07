@@ -117,19 +117,19 @@ class Home extends Component {
       return (
         <div className="landing-page-text-container">
         
-        <p className="landing-text-1">The U.S. Congress is set to take up the new version of the 
+        <p className="landing-text-1">The U.S. Congress is being asked to take up the new version of the 
           North American Free Trade Agreement. Called NAFTA 2.0 by many—called 
           the USMCA (United States-Mexico-Canada Agreement) by the Trump 
           administration—this is highly contested ground, the trade battle of our day.</p>
 
-          <p className="landing-text-4"><span style={{"fontWeight": '700'}}>What are other people saying about the new NAFTA? </span>
+          <p className="landing-text-4"><span style={{"fontWeight": '700'}}>What are people saying about the new NAFTA? </span>
           Click on any of the three sections above to take in a range of views by people and 
           organizations on the deal—views such as...
           </p>
 
           <div style={{width: "100%", display: "flex", alignItems:"center", flexWrap: "wrap", justifyContent:"space-evenly"}}>
-            <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_14.png"/>
-            <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_16.png"/>
+            <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557203390/Screenshot_18.png"/>
+            <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557203390/Screenshot_17.png"/>
             <img style={{margin:"20px"}} alt="example card" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1557097643/Screenshot_15.png"/>
           </div>
 
@@ -141,17 +141,13 @@ class Home extends Component {
           difference.
           </p> */}
 
-          
-
           <p className="landing-text-2">NAFTA 2.0's content is a 1,809-page text that was signed, in a ceremony
            on November 30, by the executives of Mexico, Canada, and the U.S. It takes
-            effect if the legislatures of these signatory countries pass it.</p>
+            effect if the legislatures of these signatory countries pass it. Whether Congress adopts the proposed 
+            revision to NAFTA, or demands comprehensive changes, will have major implications for jobs, wages, 
+            human rights, and public health for years to come.</p>
 
-          <img className="signing-photo" alt="USMCA signing" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>
-
-          {/* <p className="landing-text-3">President Donald Trump touts his version of NAFTA as the solution our country needed.</p> */}
-
-          
+          <img className="signing-photo" alt="USMCA signing" src="https://res.cloudinary.com/siouxcitymusic/image/upload/v1549582185/2018120100384_0.jpg"/>   
       </div>
       )
     }
@@ -408,7 +404,7 @@ class Home extends Component {
             }}>
             <div className={`column-header-hover ${this.state.currentColumn === "congress"? "column-header-hover-active" : ""}`}/>
             <div className={`column-header-hover-white ${this.state.currentColumn === "congress"? "column-header-hover-white-active" : ""}`}/>
-            <span>Where do our representatives stand?</span>
+            <span>Where do representatives and candidates stand?</span>
           </div>
         </div>
         <div className="column-entries-container">
